@@ -1,0 +1,7 @@
+START_CHAR = 'S'
+GOAL_CHAR = 'G'
+PATH_CHAR = '.'
+WALL_CHAR = '#'
+
+ITEMS_CHAR = 'I'
+VILAIN_CHAR = 'V'
