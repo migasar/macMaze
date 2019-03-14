@@ -1,4 +1,5 @@
 import config.settings as constants
+from .position import Position
 
 class Map():
 
@@ -47,6 +48,9 @@ class Map():
 
 def main():
     map = Map('data/maps/map-01.txt')
+
+    p = Position(-1, 0)
+    print(map.is_valid_position(p))
 
 if __name__ == "__main__":
     pass

@@ -19,13 +19,17 @@ class Position:
         return self.position == pos.position
 
     def up(self):
+        x, y = self.position
         return Position(x, y-1)
 
     def down(self):
+        x, y = self.position
         return Position(x, y+1)
 
     def right(self):
+        x, y = self.position
         return Position(x+1, y)
 
     def left(self):
+        x, y = self.position
         return Position(x-1, y)
