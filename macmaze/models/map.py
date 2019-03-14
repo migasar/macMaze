@@ -13,14 +13,40 @@ class Map():
         self.start = set()
         self.goal = set()
 
+        self.load_from_file()
+
+    def is_path_position(self, position):
+        # check if a position is valid
+        return position in self.paths
+
     def load_from_file():
 
         with open(self.filename) as infile:
-            for x, line in enumerate(infile):
-            # ma 1ere boucle for va iterer sur mon fichier ligne par ligne 
-            # (ma ligne est x ou y dans mon cas?)
-                for y, col in enumerate(line):
-                # ma 2nde boucle va iterer sur chaque ligne colonne par colonne 
-                    if c == constants.PATH_CHAR:
-                        self.path.add(Position(x, y))
-                    elif #...
+            # ma 1ere boucle for va iterer sur mon fichier ligne par ligne
+            # (ma ligne est x ou y dans mon cas?), (x or line)
+            for line in enumerate(infile):
+                # ma boucle va iterer sur chaque ligne colonne par colonne
+                # (y or col) 
+                for col in enumerate(line):
+                    if col == constants.PATH_CHAR:
+                        self.paths.add(Position(x, y))
+                    elif col == constants.START_CHAR:
+                        self.start.add(Position(x, y))
+                        self.paths.add(Position(x, y))
+                    elif col == constants.GOAL_CHAR:
+                        self.goal.add(Position(x, y))
+                        self.paths.add(Position(x, y))
+                    else:
+                        # This is a wall
+                        pass
+
+
+###
+### The following lines are only used to test my code
+###
+
+def main():
+    map = Map('data/maps/map-01.txt')
+
+if __name__ == "__main__":
+    pass
