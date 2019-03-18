@@ -5,3 +5,5 @@ WALL_CHAR = '#'
 
 EQUIPMENT_CHAR = 'E'
 VILAIN_CHAR = 'V'
+
+

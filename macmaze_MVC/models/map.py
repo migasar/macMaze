@@ -6,8 +6,8 @@ class Map():
     def __init__(self, filename):
         self.filename = filename
 
-        self.paths = set()
-        # listing des chemis praticables
+        self.path = set()
+        # listing des chemins praticables
         # pourquoi des sets?
         self.walls = set()
         # pas forcément  nécessaire
@@ -18,7 +18,7 @@ class Map():
 
     def is_path_position(self, position):
         # check if a position is valid
-        return position in self.paths
+        return position in self.path
 
     def load_from_file():
 
@@ -30,13 +30,13 @@ class Map():
                 # (y or col) 
                 for col in enumerate(line):
                     if col == constants.PATH_CHAR:
-                        self.paths.add(Position(x, y))
+                        self.path.add(Position(x, y))
                     elif col == constants.START_CHAR:
                         self.start.add(Position(x, y))
-                        self.paths.add(Position(x, y))
+                        self.path.add(Position(x, y))
                     elif col == constants.GOAL_CHAR:
                         self.goal.add(Position(x, y))
-                        self.paths.add(Position(x, y))
+                        self.path.add(Position(x, y))
                     else:
                         # This is a wall
                         pass
