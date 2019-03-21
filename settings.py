@@ -1,9 +1,0 @@
-START_CHAR = 'S'
-GOAL_CHAR = 'G'
-PATH_CHAR = '.'
-WALL_CHAR = '#'
-
-EQUIPMENT_CHAR = 'E'
-VILAIN_CHAR = 'V'
-
-
