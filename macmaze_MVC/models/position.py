@@ -33,3 +33,13 @@ class Position:
     def left(self):
         x, y = self.position
         return Position(x-1, y)
+
+"""
+foo = Position(1, 2)
+bar = Position (2, 2)
+
+print(foo)
+print(foo.__hash__)
+print(foo.__repr__())
+print(foo.__eq__(bar))
+"""

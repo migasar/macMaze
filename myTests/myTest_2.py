@@ -1,13 +1,13 @@
 #########
 # IMPORTS
 #########
-
+"""
 # import the pygame module
 import pygame
 
 # import pygame.locals for easier access to key coordinates
 from pygame.locals import *
-
+"""
 # from config.settings import *
 import config.settings as constants
 
@@ -22,7 +22,7 @@ class Position:
     def __init__(self, x, y):
         self.position = (x, y)
 
-    # methods to add this class to make it usable by the other classes 
+    # methods to add this class to make it usable by the other classes
     # to complete the game
     def __repr__(self):
         # ???
@@ -40,25 +40,25 @@ class Position:
 
     def up(self):
         x, y = self.position
-        return Position(x, y-1)
+        return Position(x, y - constants.sprite_size)
 
     def down(self):
         x, y = self.position
-        return Position(x, y+1)
+        return Position(x, y + constants.sprite_size)
 
     def right(self):
         x, y = self.position
-        return Position(x+1, y)
+        return Position(x + constants.sprite_size, y)
 
     def left(self):
         x, y = self.position
-        return Position(x-1, y)
+        return Position(x - constants.sprite_size, y)
 
 
 class Board:
-    def __init__(self, filename):
-        self.filename = filename
-        # exemple : filename is 'data/board-01.txt'
+    def __init__(self, blueprint):
+        self.blueprint = constants.board_blueprint
+        # exemple : blueprint is 'data/board-01.txt'
         # --> board = Board('data/board-01.txt')
 
         # pourquoi des sets?
@@ -79,7 +79,7 @@ class Board:
         return position in self.path
 
     def load_from_file():
-        with open(self.filename, "r") as infile:
+        with open(self.blueprint, "r") as infile:
             # ma 1ere boucle for va iterer sur mon fichier ligne par ligne
             # (ma ligne est x ou y dans mon cas?), (x or line)
             for line in enumerate(infile):
@@ -111,14 +111,25 @@ class Hero(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect()
 """
 
+"""
 class Hero(pygame.sprite.Sprite):
     def __init__(self):
         super(Hero, self).__init__()
         self.image = pygame.image.load(constants.image_hero).convert_alpha()
         #self.image.set_colorkey((255, 255, 255), RLEACCEL)
         self.rect = self.image.get_rect()
+"""
 
+class Hero:
+    def __init__(self, position):
+        self.position = (0, 0)
+        #self.image = pygame.image.load(constants.image_hero).convert_alpha()
+        #self.rect = self.image.get_rect()
 
+    def get_up(self, Position):
+        return self.Position.up
+
+"""
 ############
 # GAME START
 ############
@@ -133,6 +144,7 @@ screen = pygame.display.set_mode((600, 600))
 # instantiate our player; right now he's just a rectangle
 hero = Hero()
 
+print(hero.position.__repr__)
 
 ###########
 # MAIN LOOP
@@ -158,3 +170,11 @@ while running:
     screen.blit(hero.image, (0, 0))
     # Update the display
     pygame.display.flip()
+
+"""
+
+hero = Hero()
+
+print(hero.position)
+hero.get_up()
+print(hero.position)

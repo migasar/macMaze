@@ -45,7 +45,7 @@ class Map():
 ###
 ### The following lines are only used to test my code
 ###
-
+"""
 def main():
     map = Map('data/maps/map-01.txt')
 
@@ -54,3 +54,4 @@ def main():
 
 if __name__ == "__main__":
     pass
+"""
