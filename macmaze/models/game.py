@@ -1,0 +1,1 @@
+# modèle principal quie va enrober/ orchestrer les interactions entre les modèles

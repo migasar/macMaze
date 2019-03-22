@@ -40,19 +40,19 @@ class Position:
 
     def up(self):
         x, y = self.position
-        return Position(x, y - constants.sprite_size)
+        return Position(x, y - 1)
 
     def down(self):
         x, y = self.position
-        return Position(x, y + constants.sprite_size)
+        return Position(x, y + 1)
 
     def right(self):
         x, y = self.position
-        return Position(x + constants.sprite_size, y)
+        return Position(x + 1, y)
 
     def left(self):
         x, y = self.position
-        return Position(x - constants.sprite_size, y)
+        return Position(x - 1, y)
 
 
 class Board:
@@ -122,12 +122,12 @@ class Hero(pygame.sprite.Sprite):
 
 class Hero:
     def __init__(self, position):
-        self.position = (0, 0)
+        self.position = position
         #self.image = pygame.image.load(constants.image_hero).convert_alpha()
         #self.rect = self.image.get_rect()
 
-    def get_up(self, Position):
-        return self.Position.up
+    def get_up(self):
+        return self.position.up()
 
 """
 ############
@@ -173,8 +173,15 @@ while running:
 
 """
 
-hero = Hero()
+hero = Hero((0, 0))
 
 print(hero.position)
-hero.get_up()
+hero.position = hero.position.up()
 print(hero.position)
+
+"""
+here = Position(1, 1)
+print(here)
+here = here.up()
+print(here)
+"""
