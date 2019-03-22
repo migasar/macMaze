@@ -175,13 +175,14 @@ while running:
 
 hero = Hero((0, 0))
 
+
 print(hero.position)
-hero.position = hero.position.up()
+hero.get_up()
 print(hero.position)
 
 """
 here = Position(1, 1)
 print(here)
-here = here.up()
+here.position.up()
 print(here)
 """

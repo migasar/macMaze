@@ -15,7 +15,11 @@ class Board:
 
         self.load_from_file()
 
-    def is_path_position(self, position):
+    @property
+    def start(self):
+        return list(self._start)[0]
+
+    def __contains__(self, position):
         return position in self._paths
 
     def load_from_file():
