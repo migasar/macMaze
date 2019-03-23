@@ -1,7 +1,7 @@
 """Constantes du jeu de Labyrinthe Mac Maze"""
 
 #Paramètres du labyrinthe
-board_blueprint = "data/board-01.txt"
+board_blueprint = "data/boards/board-01.txt"
 
 START_CHAR = 'S'
 GOAL_CHAR = 'G'

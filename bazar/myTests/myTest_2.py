@@ -1,16 +1,15 @@
 #########
 # IMPORTS
 #########
+
 """
 # import the pygame module
 import pygame
-
 # import pygame.locals for easier access to key coordinates
 from pygame.locals import *
 """
-# from config.settings import *
-import config.settings as constants
 
+import config.settings as constants
 #from .position import Position
 
 
@@ -18,116 +17,91 @@ import config.settings as constants
 # CLASSES
 #########
 
+
+# gere les déplacements des objets
 class Position:
+
     def __init__(self, x, y):
         self.position = (x, y)
 
-    # methods to add this class to make it usable by the other classes
-    # to complete the game
     def __repr__(self):
-        # ???
         return str(self.position)
 
-    def __hash___(self):
-        # ???
+    def __hash__(self):
         return hash(self.position)
 
     def __eq__(self, pos):
-        # without this method, we can't compare 2 instances of position
-        # this define that 2 positions are considered equals,
-        # if their tuples are equal
         return self.position == pos.position
 
     def up(self):
         x, y = self.position
-        return Position(x, y - 1)
+        return Position(x, y-1)
 
     def down(self):
         x, y = self.position
-        return Position(x, y + 1)
+        return Position(x, y+1)
 
     def right(self):
         x, y = self.position
-        return Position(x + 1, y)
+        return Position(x+1, y)
 
     def left(self):
         x, y = self.position
-        return Position(x - 1, y)
+        return Position(x-1, y)
 
 
+# gere la map des objets
 class Board:
-    def __init__(self, blueprint):
-        self.blueprint = constants.board_blueprint
-        # exemple : blueprint is 'data/board-01.txt'
-        # --> board = Board('data/board-01.txt')
 
-        # pourquoi des sets?
-        # listing des chemins praticables
-        self.path = set()
+    def __init__(self, filename):
+        self.filename = filename
 
-        # l'attribut wall n'est pas forcément nécessaire
-        # selon le mécanisme de mon programme
-        self.wall = set()
-
-        self.start = set()
-        self.goal = set()
+        self._paths = set()
+        self._start = set()
+        self._goal = set()
+        self._walls = set()
 
         self.load_from_file()
 
-    def is_path_position(self, position):
-        # check if a position is valid
-        return position in self.path
+    @property
+    def start(self):
+        return list(self._start)[0]
+
+    def __contains__(self, position):
+        return position in self._paths
 
     def load_from_file():
-        with open(self.blueprint, "r") as infile:
-            # ma 1ere boucle for va iterer sur mon fichier ligne par ligne
-            # (ma ligne est x ou y dans mon cas?), (x or line)
-            for line in enumerate(infile):
-                # ma boucle va iterer sur chaque ligne colonne par colonne
-                # (y or col)
-                for col in enumerate(line):
-                    if col == constants.PATH_CHAR:
-                        self.path.add(Position(x, y))
-                    elif col == constants.START_CHAR:
-                        self.start.add(Position(x, y))
-                        self.path.add(Position(x, y))
-                    elif col == constants.GOAL_CHAR:
-                        self.goal.add(Position(x, y))
-                        self.path.add(Position(x, y))
-                    else:
-                        # This is a wall
-                        pass
+            with open(self.filename) as infile:
+                for y, line in enumerate(infile):
+                    for x, col in enumerate(line):
+                        if col == constants.PATH_CHAR:
+                            self._paths.add(Position(x, y))
+                        elif col == constants.START_CHAR:
+                            self._start.add(Position(x, y))
+                            self._paths.add(Position(x, y))
+                        elif col == constants.GOAL_CHAR:
+                            self._goal.add(Position(x, y))
+                            self._paths.add(Position(x, y))
+                        else :
+                            self._walls.add(Position(x, y))
 
 
-# Define our player object and call super to give it all the properties and methods of pygame.sprite.Sprite
-# The surface we draw on the screen is now a property of 'player'
-
-"""
-class Hero(pygame.sprite.Sprite):
-    def __init__(self):
-        super(Hero, self).__init__()
-        self.surf = pygame.Surface((75, 25))
-        self.surf.fill((255, 255, 255))
-        self.rect = self.surf.get_rect()
-"""
-
-"""
-class Hero(pygame.sprite.Sprite):
-    def __init__(self):
-        super(Hero, self).__init__()
-        self.image = pygame.image.load(constants.image_hero).convert_alpha()
-        #self.image.set_colorkey((255, 255, 255), RLEACCEL)
-        self.rect = self.image.get_rect()
-"""
-
+# gere le personnage
 class Hero:
-    def __init__(self, position):
-        self.position = position
-        #self.image = pygame.image.load(constants.image_hero).convert_alpha()
-        #self.rect = self.image.get_rect()
 
-    def get_up(self):
-        return self.position.up()
+    def __init__(self, board):
+        self.board = board
+        self.position = self.board.start
+
+    def move(self, direction):
+        """docstring."""
+        # getattr can access an object property using a string
+        new_position = getattr(self.position, direction)()
+        if new_position in self.map:
+            self.position = new_position
+
+
+
 
 """
 ############
@@ -173,16 +147,16 @@ while running:
 
 """
 
-hero = Hero((0, 0))
 
 
+#def main():
+board = Board(constants.board_blueprint)
+hero = Hero(board)
 print(hero.position)
-hero.get_up()
-print(hero.position)
+
+
 
 """
-here = Position(1, 1)
-print(here)
-here.position.up()
-print(here)
+if __name__ == "__main__":
+    main()
 """
