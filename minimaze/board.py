@@ -39,13 +39,13 @@ class Board:
                             self.wall.add(Position(x, y))
 
 
-
+""" 
+# TEST
 def main():
     board = Board('board-01.txt')
-    
     p = Position(1, 1)
     print(board.is_path_position(p))
 
 if __name__ == "__main__":
     main()
-
+"""

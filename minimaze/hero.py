@@ -7,9 +7,8 @@ class Hero:
         self.position = self.board.start
 
     def move(self, direction):
-        """docstring.""""
+        """docstring."""
         # getattr can access an object property using a string
         new_position = getattr(self.position, direction)()
         if new_position in self.map:
             self.position = new_position
-
