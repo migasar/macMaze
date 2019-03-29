@@ -20,20 +20,23 @@ class Position:
     # Methods to modify a position
     def up(self):
         x, y = self.position
-        print(x)
-        print(y)
-        print(y - 1)
         self.position = (x, y - 1)
         return self.position
 
     def down(self):
-        pass
-
-    def right(self):
-        pass
+        x, y = self.position
+        self.position = (x, y + 1)
+        return self.position
 
     def left(self):
-        pass
+        x, y = self.position
+        self.position = (x - 1, y)
+        return self.position
+
+    def right(self):
+        x, y = self.position
+        self.position = (x + 1, y)
+        return self.position
 
 
 class Board:
@@ -60,14 +63,14 @@ class Hero:
         self.board = board
 
 
+"""
 p = Position(1, 1)
 
 def main():
     print(p)
-    print(type(p))
     p.up()
     print(p)
-    print(type(p))
     return p
 
 main()
+"""
