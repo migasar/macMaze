@@ -20,7 +20,7 @@ cote_fenetre = nombre_sprite_cote * taille_sprite
 titre_fenetre = "Mac Maze"
 slogan_fenetre = "Save MacGyver, Save my project"
 
-#Listes des images du jeu
+#Listes des ressources du jeu
 image_path = "images/tile_path_resized40.png"
 image_wall = "images/tile_wall_resized40.png"
 image_way = "images/tile_point_resized40.png"
@@ -33,3 +33,5 @@ image_needle = "images/item_needle_resized40.png"
 image_tube = "images/item_tube_resized40.png"
 
 image_syringe = "images/item_syringe_resized40.png"
+
+blueprint = "minimaze/board-01.txt"
