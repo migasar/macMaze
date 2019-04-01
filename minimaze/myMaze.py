@@ -44,38 +44,101 @@ le héros peut se déplacer dans 4 directions(en haut, en bas, à gauche, )
 
 
 class Position:
+
     def __init__(self, x, y):
         self.position = (x, y)
     
+    # Magic Methods:
     # __repr__
     # __eq__
 
-    # methods for moves
+    # Methods : 
+    # 4 moves (up, down, left, right)
 
 
 
 class Case:
+
+    # def __init__(self, position, wall, landing, toping)
+
+    # Attributes : 
+    # position (main attribute) - fixed
+    # is_path (boolean) - fixed
+    # type_of_path: only one from the list ["regular", "start", "goal"] - fixed
+    # toping: None or only one from the 3 equipments and the 2 persons - not fixed
+
+    # Magic Methods :
+    # __repr__
+    # __str__
+
+    # Methods :
+    # def remove_toping(self, top):
+    # def test_collision():
+    # def solve_collision():
+        # if collide with equipment:
+            # load remove_toping()
+            # modify count in toolbox of the hero
+        # if collide with enemy --> showdown
+            # if toolbox is completed, hero wins
+            #  --> "winner, winner, needle dinner"
+            # if toolbox is not completed, hero loses
+            #  --> "these violent delights have violent ends"
     pass
 
 
 
-class Maze:
+class Board:
+
+    # def __init__()
+
+    # Methods:
+    # create an empty grid (a list of list --> 15 * 15)
+    # load the structure of the board from a file
+    # the data fetched from the file will be used as a blueprint
+    # with each element from the file, we will create an object case per element of the list to populate the grid
+
     pass
 
 
 
 class Hero:
+
+    # def __init__()
+
+    # Attributes :
+    # position (main attribute --> begin with the position on the case "start")
+    # toolbox (start empty --> counter full at 3)
+
+    # Magic Methods :
+    # __repr__
+
+    # Methods :
+    # def move(self, direction):
+        """this method permits the movement of the hero by verifying if the position is a valid one, and by solving eventual collisions with any object standing on the case"""
+        # test if the new position doesn't put the hero outside of the board
+        # test if the new position is not a wall
+        # test if the new position is an empty case
+        # if the case is not empty, solve the collision between the hero and the object standing on the case
+
     pass
 
 
 
 class Enemy:
     #Enemy et Hero pouraient avoir une classe parent (la classe Person)
+    # def __init__()
+
+    # Attributes :
+    # position (main attribute)
     pass
 
 
 
 class Equipment:
+    # def __init__()
+
+    # Attributes :
+    # position (main attribute)
     pass
 
 
