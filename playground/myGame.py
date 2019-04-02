@@ -1,13 +1,11 @@
+"""
+Fonctionnement
+    le programme crée un labyrinthe avec des chemins, des murs, 3 équipements, 1 méchant qui garde la sortie, et 1 héros 
+    l'utilisatur controle les mouvements du héros
+    l'utilisateur gagne si son héros atteint la sortie après avoir récupéré les 3 équipements
+    l'utilisatuer perd si le héros atteint la sortie (et son garde) avant d'avoir récupéré les 3 équipements
 
-"""
-le programme crée un labyrinthe avec des chemins, des murs, 3 équipements, 1 méchant qui garde la sortie, et 1 héros 
-l'utilisatur controle les mouvements du héros
-l'utilisateur gagne si son héros atteint la sortie après avoir récupéré les 3 équipements
-l'utilisatuer perd si le héros atteint la sortie (et son garde) avant d'avoir récupéré les 3 équipements
-"""
-
-"""
-le labyrinthe
+Le labyrinthe
     le programme crée une grille vide pour recevoir la structure du labyrinthe
     la structure du labyrinthe est reprise d'un fichier enregistré
         le labyrinthe se compose de plusieurs cases (1 case par sprite)
@@ -23,11 +21,9 @@ le labyrinthe
         les 2 personnes apparaissent chacun sur une case de chemin spécial qui leur est dédiée
             le garde apparait à l'emplacement de la case de chemin de sortie
             le héros apparait à l'emplacement de la case de chemin de départ
-"""
 
-"""
-le héros
-le héros peut se déplacer dans 4 directions(en haut, en bas, à gauche, )
+Le héros
+    le héros peut se déplacer dans 4 directions(en haut, en bas, à gauche, )
         le héros change d'emplacement en passant à la case d'à coté si la nouvelle case est valide 
             la case est valide si elle n'est pas un mur
         si le nouvelle emplacement du héros est une case qui n'est pas vide, alors cela a un effet
@@ -43,25 +39,55 @@ le héros peut se déplacer dans 4 directions(en haut, en bas, à gauche, )
 """
 
 
+import config.settings as constants
+
+
 class Position:
 
     def __init__(self, x, y):
         self.position = (x, y)
-    
+
     # Magic Methods:
-    # __repr__
-    # __eq__
+    def __repr__(self):
+        return str(self.position)
 
-    # Methods : 
+    def __eq__(self, pos):
+        return self.position == pos.position
+
+    # Methods :
     # 4 moves (up, down, left, right)
+    def up(self):
+        """Brings a new position based on the previous position"""
+            """
+            The trick with this function is that it doesn't modify the instance position that is calling it
+            It creates an entirely new instance position, with a modification of the data (x, y) stored in the previous instance position
+            That's why the function starts by using an instance position and ends by using a class Position
+            """
+        # create new x and y by retrieving the coordinates of the instance
+        x, y = self.position
+        # create a new object position with modified coordinates
+        return Position(x, y-1)
 
+    def down(self):
+        x, y = self.position
+        return Position(x, y+1)
+
+    def right(self):
+        x, y = self.position
+        return Position(x+1, y)
+
+    def left(self):
+        x, y = self.position
+        return Position(x-1, y)
+
+    # pass
 
 
 class Case:
 
     # def __init__(self, position, wall, landing, toping)
 
-    # Attributes : 
+    # Attributes :
     # position (main attribute) - fixed
     # is_path (boolean) - fixed
     # type_of_path: only one from the list ["regular", "start", "goal"] - fixed
@@ -86,7 +112,6 @@ class Case:
     pass
 
 
-
 class Board:
 
     # def __init__()
@@ -96,9 +121,7 @@ class Board:
     # load the structure of the board from a file
     # the data fetched from the file will be used as a blueprint
     # with each element from the file, we will create an object case per element of the list to populate the grid
-
     pass
-
 
 
 class Hero:
@@ -118,14 +141,15 @@ class Hero:
         # test if the new position doesn't put the hero outside of the board
         # test if the new position is not a wall
         # test if the new position is an empty case
-        # if the case is not empty, solve the collision between the hero and the object standing on the case
-
+        # if the case is not empty
+            # solve the collision between the hero
+            # and the object standing on the case
     pass
-
 
 
 class Enemy:
     #Enemy et Hero pouraient avoir une classe parent (la classe Person)
+
     # def __init__()
 
     # Attributes :
@@ -133,8 +157,8 @@ class Enemy:
     pass
 
 
-
 class Equipment:
+
     # def __init__()
 
     # Attributes :
