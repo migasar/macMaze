@@ -3,11 +3,11 @@
 ## Fonctionnement du jeu
 
 le programme crée un **labyrinthe** contenant
-    des chemins,
-    des murs,
-    3 équipements,
-    1 méchant qui garde la sortie,
-    1 héros
+    - des chemins,
+    - des murs,
+    - 3 équipements,
+    - 1 méchant qui garde la sortie,
+    - 1 héros
 l'utilisatur controle les mouvements du **héros**
 l'utilisateur gagne si son héros atteint la sortie après avoir récupéré les 3 équipements
 l'utilisatuer perd si le héros atteint la sortie (et son garde) avant d'avoir récupéré les 3 équipements
