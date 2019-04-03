@@ -85,8 +85,17 @@ class Position:
 
 class Case:
 
-    # def __init__(self, position, wall, landing, toping)
+    # Attributes of the clas :
+    is_path = ["True", "False"]
+    landing = [None, "start", "goal"]
+    toping = [None, "hero", "enemy", "item1", "item2", "item3"]
 
+    # def __init__(self, position, wall, landing, toping)
+    def __init__(self, position, is_path, londing = None, toping = None):
+        self.position = position
+        self.is_path = is_path
+        self.landing = landing
+        self.toping  = toping 
     # Attributes :
     # position (main attribute) - fixed
     # is_path (boolean) - fixed
@@ -115,9 +124,20 @@ class Case:
 class Board:
 
     # def __init__()
+    def __init__(self, filename):
+        self.filename = filename
+
+        self.board = []
+
+        self.paths = []
+        self.walls = []
+
+        self.start = []
+        self.goal = []
 
     # Methods:
     # create an empty grid (a list of list --> 15 * 15)
+    
     # load the structure of the board from a file
     # the data fetched from the file will be used as a blueprint
     # with each element from the file, we will create an object case per element of the list to populate the grid
@@ -127,10 +147,12 @@ class Board:
 class Hero:
 
     # def __init__()
-
+    def __init__(self, board):
     # Attributes :
     # position (main attribute --> begin with the position on the case "start")
     # toolbox (start empty --> counter full at 3)
+        self.board = board
+        # self.position = self.board.start
 
     # Magic Methods :
     # __repr__
