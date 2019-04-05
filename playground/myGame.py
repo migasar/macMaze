@@ -39,7 +39,8 @@ Le héros
 """
 
 
-import config.settings as constants
+# import config.settings as constants
+from dataclasses import dataclass
 
 
 class Position:
@@ -50,6 +51,9 @@ class Position:
     # Magic Methods:
     def __repr__(self):
         return str(self.position)
+    
+    # def __hash__(self):
+    #    return hash(self.position)
 
     def __eq__(self, pos):
         return self.position == pos.position
@@ -57,12 +61,11 @@ class Position:
     # Methods :
     # 4 moves (up, down, left, right)
     def up(self):
-        """Brings a new position based on the previous position"""
-            """
+        """Brings a new position based on the previous position.
             The trick with this function is that it doesn't modify the instance position that is calling it
             It creates an entirely new instance position, with a modification of the data (x, y) stored in the previous instance position
             That's why the function starts by using an instance position and ends by using a class Position
-            """
+        """
         # create new x and y by retrieving the coordinates of the instance
         x, y = self.position
         # create a new object position with modified coordinates
@@ -83,28 +86,45 @@ class Position:
     # pass
 
 
+@dataclass(order=True)
+class Case:
+    x : int
+    y : int
+    position : tuple
+    path : bool
+    landing : str
+    toping : str
+
+
+"""
 class Case:
 
     # Attributes of the class :
-    is_path = ["True", "False"]
+    path = ["True", "False"]
     landing = [None, "start", "goal"]
     toping = [None, "hero", "enemy", "item1", "item2", "item3"]
 
-    # def __init__(self, position, wall, landing, toping)
-    def __init__(self, position, is_path, landing = None, toping=None):
+
+    def __init__(self, position, path, landing=None, toping=None):
         self.position = position
-        self.is_path = is_path
+        self.path = path
         self.landing = landing
         self.toping = toping
     # Attributes :
     # position (main attribute) - fixed
-    # is_path (boolean) - fixed
-    # type_of_path: only one from the list ["regular", "start", "goal"] - fixed
+    # path (boolean) - fixed
+    # landing: only one from the list ["regular", "start", "goal"] - fixed
     # toping: None or only one from the 3 equipments and the 2 persons - not fixed
 
     # Magic Methods :
     # __repr__
     # __str__
+
+    # Properties :
+
+    @property
+    def path(self):
+        return self.path
 
     # Methods :
     # def remove_toping(self, top):
@@ -119,7 +139,7 @@ class Case:
             # if toolbox is not completed, hero loses
             #  --> "these violent delights have violent ends"
     pass
-
+"""
 
 class Board:
 
@@ -188,4 +208,13 @@ class Equipment:
     pass
 
 
+def main():
 
+    point1 = Position(0, 1)
+    print(point1)
+
+    1 = Case((1, 1), True, "start", "hero")
+    
+    #print(type(1.position))
+    
+main()
