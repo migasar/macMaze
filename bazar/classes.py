@@ -52,12 +52,12 @@ class Board:
         self.filename = filename
         # exemple : filename is 'data/board-01.txt'
         # --> board = Board('data/board-01.txt')
-        
+
         # pourquoi des sets?
         # listing des chemins praticables
         self.path = set()
 
-        # l'attribut wall n'est pas forcément nécessaire 
+        # l'attribut wall n'est pas forcément nécessaire
         # selon le mécanisme de mon programme
         self.wall = set()
 

@@ -85,17 +85,17 @@ class Position:
 
 class Case:
 
-    # Attributes of the clas :
+    # Attributes of the class :
     is_path = ["True", "False"]
     landing = [None, "start", "goal"]
     toping = [None, "hero", "enemy", "item1", "item2", "item3"]
 
     # def __init__(self, position, wall, landing, toping)
-    def __init__(self, position, is_path, londing = None, toping = None):
+    def __init__(self, position, is_path, landing = None, toping=None):
         self.position = position
         self.is_path = is_path
         self.landing = landing
-        self.toping  = toping 
+        self.toping = toping
     # Attributes :
     # position (main attribute) - fixed
     # is_path (boolean) - fixed
