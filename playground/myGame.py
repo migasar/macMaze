@@ -51,9 +51,9 @@ class Position:
     # Magic Methods:
     def __repr__(self):
         return str(self.position)
-    
-    # def __hash__(self):
-    #    return hash(self.position)
+
+    def __hash__(self):
+        return hash(self.position)
 
     def __eq__(self, pos):
         return self.position == pos.position
@@ -90,10 +90,11 @@ class Position:
 class Case:
     x : int
     y : int
-    position : tuple
+    #position : tuple
     path : bool
-    landing : str
-    toping : str
+    landing : str = ""
+    toping : str = ""
+#    visual : str
 
 
 """
@@ -144,17 +145,17 @@ class Case:
 
 class Board:
 
-    # def __init__()
     def __init__(self, filename):
         self.filename = filename
 
+        """
         self.board = []
-
         self.paths = []
         self.walls = []
-
         self.start = []
         self.goal = []
+        """
+        self.load_from_file()
 
     # Methods:
     # create an empty grid (a list of list --> 15 * 15)
@@ -162,7 +163,33 @@ class Board:
     # load the structure of the board from a file
     # the data fetched from the file will be used as a blueprint
     # with each element from the file, we will create an object case per element of the list to populate the grid
-    pass
+
+    
+    @classmethod
+    def load_blueprint(cls, filename)
+    grid = {}
+
+    with open(filename) as blueprint:
+        k = 0
+        for y, line in enumerate(blueprint):
+            for x, col in enumerate(line):
+                k += 1
+                if visual == "S":
+                    f"case_{k}" = Case(x, y, path=True, landing="start")
+                    grid[Position(x, y)] = f"case_{k}"
+                elif visual == "G":
+                    f"case_{k}" = Case(x, y, path=True, landing="goal")
+                    grid[Position(x, y)] = f"case_{k}"
+                elif visual == ".":
+                    f"case_{k}" = Case(x, y, path=True)
+                    grid[Position(x, y)] = f"case_{k}"
+                else :
+                    f"case_{k}" = Case(x, y, path=False)
+                    grid[Position(x, y)] = f"case_{k}"
+                    
+    return grid
+
+    #pass
 
 
 class Hero:
@@ -212,10 +239,41 @@ class Equipment:
 def main():
 
     point1 = Position(0, 1)
-    print(point1)
-
-    1 = Case((1, 1), True, "start", "hero")
     
-    #print(type(1.position))
+    case1 = Case(0, 0, True, )
+    case2 = Case(0, 1, True, "start", "hero")
+    
+    myDict = {(0, 0): case1}
+    
+    q = 1
+    z = 2
+    #k = q + z
+    
+    #case + str(q+z) = 10
+    """
+    yourDict = {}
+    a = 1 
+    b = 1
+    
+    for i in range(3):
+        yourDict[f"case_{a}"] = b
+        a += 1
+        b = b * 2
+
+    print(yourDict)
+    """
+
+    a = [i for i in range(10)]
+    b = [i for i in range(10)]
+    c = []
+    for j in a:
+        for i in b:
+            k = i + j
+            c.append(k)
+    d = set(c)
+    
+
+
+    print(c[5 : 15])
     
 main()
