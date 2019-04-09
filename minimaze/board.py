@@ -1,50 +1,82 @@
 # gere la map des objets
+"""DOCSTRING"""
+
 
 import settings as constants
-from position import Position
+
+from .position import Position
+from .case import Case
+
 
 class Board:
 
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self, grid, pathway, starting, ending, width, height):
 
-        self.path = list()
-        self.wall = list()
-        self.start = list()
-        self.goal = list()
+        self.grid = grid
 
-        self.load_from_file()
+        self.pathway = pathway
+        self.starting = starting
+        self.ending = ending
 
-    @property
-    def start(self):
-        return list(self.start)[0]
+        self.width = width
+        self.height = height
 
-    def is_path_position(self, position):
-        # check if a position is valid
-        return position in self.path
+    # Methods:
+    # create an empty grid (a list of list --> 15 * 15)
+    # load the structure of the board from a file
+    # the data fetched from the file will be used as a blueprint
+    # with each element from the file,
+    # #we will create an object case per element of the list to populate the grid
+    @classmethod
+    def load_blueprint(cls, filename):
+        #grid = {}
+        grid = []
+        pathway = []
+        starting = None
+        ending = None
+        width = 0
+        height = 0
 
-    def load_from_file():
-        with open(self.filename) as infile:
+        with open(filename) as infile:
+            #k = 0
             for y, line in enumerate(infile):
                 for x, col in enumerate(line):
-                    if col == constants.PATH_CHAR:
-                        self.path.add(Position(x, y))
-                    elif col == constants.START_CHAR:
-                        self.start.add(Position(x, y))
-                        self.path.add(Position(x, y))
-                    elif col == constants.GOAL_CHAR:
-                        self.goal.add(Position(x, y))
-                        self.path.add(Position(x, y))
-                    else :
-                        self.wall.add(Position(x, y))
+                    #k += 1
+
+                    if col == "S":
+                        #f"case_{k}" = Case(x, y, path=True, landing="start")
+                        #grid[Position(x, y)] = f"case_{k}"
+                        grid.append(Case(x, y, path=True, landing="start"))
+                        pathway.append(Position(x, y))
+                        starting = Position(x, y)
+
+                    elif col == "G":
+                        #f"case_{k}" = Case(x, y, path=True, landing="goal")
+                        #grid[Position(x, y)] = f"case_{k}"
+                        grid.append(Case(x, y, path=True, landing="goal"))
+                        pathway.append(Position(x, y))
+                        ending = Position(x, y)
+
+                    elif col == ".":
+                        #f"case_{k}" = Case(x, y, path=True)
+                        #grid[Position(x, y)] = f"case_{k}"
+                        grid.append(Case(x, y, path=True))
+                        pathway.append(Position(x, y))
+
+                    else:
+                        #f"case_{k}" = Case(x, y, path=False)
+                        #grid[Position(x, y)] = f"case_{k}"
+                        grid.append(Case(x, y, path=False))
+
+        return cls(grid, pathway, starting, ending, x+1, y+1)
+
+    #pass
 
 
 """ 
 # TEST
 def main():
-    board = Board('board-01.txt')
-    p = Position(1, 1)
-    print(board.is_path_position(p))
+    pass
 
 if __name__ == "__main__":
     main()

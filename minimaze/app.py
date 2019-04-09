@@ -1,3 +1,6 @@
+"""DOCSTRING"""
+
+
 from .events.core import TicketEvent, QuitEvent
 
 class Application:
