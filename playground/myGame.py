@@ -39,7 +39,7 @@ Le héros
 """
 
 
-# import config.settings as constants
+import settings as constants
 from dataclasses import dataclass
 
 
@@ -145,49 +145,67 @@ class Case:
 
 class Board:
 
-    def __init__(self, filename):
-        self.filename = filename
+    def __init__(self, grid, pathway, starting, ending, width, height):
 
-        """
-        self.board = []
-        self.paths = []
-        self.walls = []
-        self.start = []
-        self.goal = []
-        """
-        self.load_from_file()
+        self.grid = grid
+
+        self.pathway = pathway
+        self.starting = starting
+        self.ending = ending
+
+        self.width = width
+        self.height = height
+
+        #self.load_from_file()
 
     # Methods:
     # create an empty grid (a list of list --> 15 * 15)
-    
     # load the structure of the board from a file
     # the data fetched from the file will be used as a blueprint
-    # with each element from the file, we will create an object case per element of the list to populate the grid
-
-    
+    # with each element from the file, 
+    # #we will create an object case per element of the list to populate the grid
     @classmethod
-    def load_blueprint(cls, filename)
-    grid = {}
+    def load_blueprint(cls, filename):
+        #grid = {}
+        grid = []
+        pathway = []
+        starting = None
+        ending = None
+        width = 0
+        height = 0
 
-    with open(filename) as blueprint:
-        k = 0
-        for y, line in enumerate(blueprint):
-            for x, col in enumerate(line):
-                k += 1
-                if visual == "S":
-                    f"case_{k}" = Case(x, y, path=True, landing="start")
-                    grid[Position(x, y)] = f"case_{k}"
-                elif visual == "G":
-                    f"case_{k}" = Case(x, y, path=True, landing="goal")
-                    grid[Position(x, y)] = f"case_{k}"
-                elif visual == ".":
-                    f"case_{k}" = Case(x, y, path=True)
-                    grid[Position(x, y)] = f"case_{k}"
-                else :
-                    f"case_{k}" = Case(x, y, path=False)
-                    grid[Position(x, y)] = f"case_{k}"
-                    
-    return grid
+        with open(filename) as infile:
+            #k = 0
+            for y, line in enumerate(infile):
+                for x, col in enumerate(line):
+                    #k += 1
+
+                    if col == "S":
+                        #f"case_{k}" = Case(x, y, path=True, landing="start")
+                        #grid[Position(x, y)] = f"case_{k}"
+                        grid.append(Case(x, y, path=True, landing="start"))
+                        pathway.append(Position(x, y))
+                        starting = Position(x, y)
+
+                    elif col == "G":
+                        #f"case_{k}" = Case(x, y, path=True, landing="goal")
+                        #grid[Position(x, y)] = f"case_{k}"
+                        grid.append(Case(x, y, path=True, landing="goal"))
+                        pathway.append(Position(x, y))
+                        ending = Position(x, y)
+
+                    elif col == ".":
+                        #f"case_{k}" = Case(x, y, path=True)
+                        #grid[Position(x, y)] = f"case_{k}"
+                        grid.append(Case(x, y, path=True))
+                        pathway.append(Position(x, y))
+
+                    else :
+                        #f"case_{k}" = Case(x, y, path=False)
+                        #grid[Position(x, y)] = f"case_{k}"
+                        grid.append(Case(x, y, path=False))
+                        
+        return cls(grid, pathway, starting, ending, x+1, y+1)
 
     #pass
 
@@ -238,42 +256,43 @@ class Equipment:
 
 def main():
 
-    point1 = Position(0, 1)
-    
-    case1 = Case(0, 0, True, )
-    case2 = Case(0, 1, True, "start", "hero")
-    
-    myDict = {(0, 0): case1}
-    
-    q = 1
-    z = 2
-    #k = q + z
-    
-    #case + str(q+z) = 10
     """
-    yourDict = {}
-    a = 1 
-    b = 1
-    
-    for i in range(3):
-        yourDict[f"case_{a}"] = b
-        a += 1
-        b = b * 2
+    bazar():
+        point1 = Position(0, 1)
+        case1 = Case(0, 0, True, )
+        case2 = Case(0, 1, True, "start", "hero")
 
-    print(yourDict)
+        myDict = {(0, 0): case1}
+        
+        q = 1
+        z = 2
+        #k = q + z
+        
+        #case + str(q+z) = 10
+        yourDict = {}
+        a = 1 
+        b = 1
+        
+        for i in range(3):
+            yourDict[f"case_{a}"] = b
+            a += 1
+            b = b * 2
+
+        print(yourDict)
+
+        a = [i for i in range(10)]
+        b = [i for i in range(10)]
+        c = []
+        for j in a:
+            for i in b:
+                k = i + j
+                c.append(k)
+        d = set(c)
+
+        print(c[5 : 15])
     """
-
-    a = [i for i in range(10)]
-    b = [i for i in range(10)]
-    c = []
-    for j in a:
-        for i in b:
-            k = i + j
-            c.append(k)
-    d = set(c)
     
+    board = Board.load_blueprint("board-01.txt")
 
 
-    print(c[5 : 15])
-    
 main()

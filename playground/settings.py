@@ -10,7 +10,7 @@ ITEM_CHAR = 'I'
 ENEMY_CHAR = 'E'
 HERO_CHAR = 'H'
 
-blueprint = "config/board-01.txt"
+blueprint = "board-01.txt"
 
 # Paramètres de la fenêtre
 nombre_sprite_cote = 15
