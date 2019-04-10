@@ -4,8 +4,8 @@
 
 import settings as constants
 
-from .position import Position
-from .case import Case
+from position import Position
+from case import Case
 
 
 class Board:
@@ -37,47 +37,53 @@ class Board:
         width = 0
         height = 0
 
-        with open(filename) as infile:
+        with open(filename, 'r') as infile:
             #k = 0
             for y, line in enumerate(infile):
                 for x, col in enumerate(line):
                     #k += 1
 
                     if col == "S":
-                        #f"case_{k}" = Case(x, y, path=True, landing="start")
+                        #f"case_{k}" = Case(x, y, walk=True, landing="start")
                         #grid[Position(x, y)] = f"case_{k}"
-                        grid.append(Case(x, y, path=True, landing="start"))
+                        grid.append(Case(x, y, walk=True, landing="start"))
                         pathway.append(Position(x, y))
                         starting = Position(x, y)
 
                     elif col == "G":
-                        #f"case_{k}" = Case(x, y, path=True, landing="goal")
+                        #f"case_{k}" = Case(x, y, walk=True, landing="goal")
                         #grid[Position(x, y)] = f"case_{k}"
-                        grid.append(Case(x, y, path=True, landing="goal"))
+                        grid.append(Case(x, y, walk=True, landing="goal"))
                         pathway.append(Position(x, y))
                         ending = Position(x, y)
 
                     elif col == ".":
-                        #f"case_{k}" = Case(x, y, path=True)
+                        #f"case_{k}" = Case(x, y, walk=True)
                         #grid[Position(x, y)] = f"case_{k}"
-                        grid.append(Case(x, y, path=True))
+                        grid.append(Case(x, y, walk=True))
                         pathway.append(Position(x, y))
 
                     else:
-                        #f"case_{k}" = Case(x, y, path=False)
+                        #f"case_{k}" = Case(x, y, walk=False)
                         #grid[Position(x, y)] = f"case_{k}"
-                        grid.append(Case(x, y, path=False))
+                        grid.append(Case(x, y, walk=False))
 
         return cls(grid, pathway, starting, ending, x+1, y+1)
 
     #pass
 
 
-""" 
+
+"""
 # TEST
 def main():
-    pass
+    board = Board.load_blueprint(constants.blueprint)
+    print(board.starting())
+    
 
 if __name__ == "__main__":
     main()
 """
+
+board = Board.load_blueprint(constants.blueprint)
+print(board.starting())

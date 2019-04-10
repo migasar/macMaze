@@ -70,8 +70,8 @@ class Case:
 
     # Attributes :
     # position (main attribute) - fixed
-    # is_path (boolean) - fixed
-    # type_of_path: only one from the list ["regular", "start", "goal"] - fixed
+    # walk (boolean) - fixed
+    # landing: only one from the list ["regular", "start", "goal"] - fixed
     # toping: None or only one from the 3 equipments and the 2 persons - not fixed
 
     # Magic Methods :

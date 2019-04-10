@@ -9,7 +9,7 @@ class Case:
     x: int
     y: int
     #position : tuple
-    path: bool
+    walk: bool
     landing: str = ""
     toping: str = ""
 #    visual : str
@@ -19,19 +19,19 @@ class Case:
 class Case:
 
     # Attributes of the class :
-    path = ["True", "False"]
+    walk = ["True", "False"]
     landing = [None, "start", "goal"]
     toping = [None, "hero", "enemy", "item1", "item2", "item3"]
 
 
-    def __init__(self, position, path, landing=None, toping=None):
+    def __init__(self, position, walk, landing=None, toping=None):
         self.position = position
-        self.path = path
+        self.walk = walk
         self.landing = landing
         self.toping = toping
     # Attributes :
     # position (main attribute) - fixed
-    # path (boolean) - fixed
+    # walk (boolean) - fixed
     # landing: only one from the list ["regular", "start", "goal"] - fixed
     # toping: None or only one from the 3 equipments and the 2 persons - not fixed
 
@@ -42,8 +42,8 @@ class Case:
     # Properties :
 
     @property
-    def path(self):
-        return self.path
+    def walk(self):
+        return self.walk
 
     # Methods :
     # def remove_toping(self, top):
@@ -61,11 +61,3 @@ class Case:
 """
 
 
-""" 
-# TEST
-def main():
-    pass
-
-if __name__ == "__main__":
-    main()
-"""
