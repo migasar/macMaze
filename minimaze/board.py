@@ -3,8 +3,8 @@
 
 import settings as constants
 
-from position import Position
-from case import Case
+from .position import Position
+from .case import Case
 
 
 class Board:
@@ -18,6 +18,14 @@ class Board:
 
         self.width = width
         self.height = height
+
+    @property
+    def strating(self):
+        return self.starting
+    
+    @property
+    def ending(self):
+        return self.ending
 
     @classmethod
     def load_blueprint(cls, filename):
