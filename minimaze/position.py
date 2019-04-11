@@ -1,5 +1,4 @@
-# gere les déplacements des objets
-"""DOCSTRING"""
+"""Gere les déplacements des objets"""
 
 
 class Position:

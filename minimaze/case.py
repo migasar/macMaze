@@ -12,7 +12,7 @@ class Case:
     walk: bool
     landing: str = ""
     toping: str = ""
-#    visual : str
+
 
 
 """
