@@ -1,6 +1,0 @@
-"""DOCSTRING"""
-
-
-class Views:
-
-    pass
