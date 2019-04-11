@@ -57,15 +57,20 @@ class Case:
 
 class Board:
 
-    def __init__(self, grid, starting, ending, width, height):
+    def __init__(self, grid, starting, ending):
 
         self.grid = grid
 
         self.starting = starting
         self.ending = ending
 
-        self.width = width
-        self.height = height
+    @property
+    def strating(self):
+        return self.starting
+    
+    @property
+    def ending(self):
+        return self.ending
 
     @classmethod
     def load_blueprint(cls, filename):
@@ -74,8 +79,6 @@ class Board:
 
         starting = None
         ending = None
-        width = 0
-        height = 0
 
         with open(filename, 'r') as infile:
             for y, line in enumerate(infile):
@@ -92,7 +95,7 @@ class Board:
                     else:
                         grid.append(Case(x, y, walk=False))
 
-        return cls(grid, starting, ending, x+1, y+1)
+        return cls(grid, starting, ending)
 
 
 class Hero:
