@@ -5,7 +5,7 @@ import settings as constants
 
 from .position import Position
 from .case import Case
-
+ 
 
 class Board:
 
