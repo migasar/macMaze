@@ -1,7 +1,7 @@
 """Constantes du jeu de Labyrinthe Mac Maze"""
 
-
-from pathlib import Path
+import os
+#from pathlib import Path
 
 
 START_CHAR = 'S'
@@ -38,4 +38,10 @@ image_tube = 'images/item_tube_resized40.png'
 image_syringe = 'images/item_syringe_resized40.png'
 
 #blueprint = Path.cwd().joinpath('board_01.txt')
-blueprint = 'board_01.txt'
+#blueprint = 'board_01.txt'
+
+blueprint = '{}/board_01.txt'.format(
+    os.path.dirname(__file__)
+    )
+
+#print(blueprint)

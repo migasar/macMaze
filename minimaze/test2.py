@@ -1,4 +1,11 @@
-from pathlib import Path
+#import os
+import settings
 
+"""
+entries = os.scandir('MACMAZE/')
 
-print(Path.cwd())
+for entry in entries:
+print(entry)
+"""
+
+print(settings.blueprint)
