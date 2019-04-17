@@ -1,4 +1,4 @@
-"""DOCSTRING"""
+"""Gere les cases du plateau de jeu et leurs contenus"""
 
 
 from dataclasses import dataclass
@@ -12,3 +12,4 @@ class Case:
     walk: bool
     landing: str = ""
     toping: str = ""
+    visual: str = ""

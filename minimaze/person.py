@@ -1,21 +1,29 @@
 """Gere les personnages"""
 
 
-from .position import Position
-from .board import Board
+from position import Position
+from board import Board
 
 
 class Hero:
 
     def __init__(self, board):
-        # Attributes :
-        # position (main attribute --> begin with the position on the case "start")
+
         # toolbox (start empty --> counter full at 3)
         self.board = board
-        self.position = self.board.starting
+        self.position = None
 
+        self.localize()
+    
+    def localize(self):
+        for block in self.board.grid:
+            if block.landing == "start":
+                self.position = (block.x, block.y)
+            break
+        return self.position
+    
     def move(self, direction):
-        """docstring."""
+        """docstring"""
         # getattr can access an object property using a string
         new_position = getattr(self.position, direction)()
         if new_position in self.board:

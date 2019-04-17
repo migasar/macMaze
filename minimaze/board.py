@@ -1,4 +1,4 @@
-"""Gere la map des objets"""
+"""Gere le plateau de jeu et les interactions des objets"""
 
 
 import settings as constants
@@ -23,22 +23,27 @@ class Board:
             for y, line in enumerate(content):
                 for x, col in enumerate(line):
                     if col == "S":
-                        grid.append(Case(x+1, y+1, walk=True, landing="start"))
+                        grid.append(Case(x+1, y+1, walk=True, landing="start", visual = col))
                     elif col == "G":
-                        grid.append(Case(x+1, y+1, walk=True, landing="goal"))
+                        grid.append(Case(x+1, y+1, walk=True, landing="goal", visual = col))
                     elif col == ".":
-                        grid.append(Case(x+1, y+1, walk=True))
+                        grid.append(Case(x+1, y+1, walk=True, visual = col))
                     else:
-                        grid.append(Case(x+1, y+1, walk=False))
+                        grid.append(Case(x+1, y+1, walk=False, visual = col))
 
         return cls(grid)
 
 
+
+
+
+"""
 # TEST
 def main():
     board = Board.load_blueprint(constants.blueprint)
-    print(len(board.grid))
+    print(board.grid[0])
+
 
 if __name__ == "__main__":
     main()
-
+"""

@@ -16,6 +16,14 @@ class Position:
     def __eq__(self, pos):
         return self.position == pos.position
 
+    @property
+    def x(self):
+        return self[0]
+    
+    @property
+    def y(self):
+        return self[1]
+
     # Methods :
     # 4 moves (up, down, left, right)
     def up(self):
