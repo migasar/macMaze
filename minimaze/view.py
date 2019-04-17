@@ -1,28 +1,11 @@
-"""DOCSTRING"""
-
+"""docstring"""
 
 from board import Board
-from person import Hero
-#from view import View
 
-import settings as constants
-
-
-class Game:
+class View:
 
     def __init__(self):
-        self.board = None
-        self.hero = None
-        self.view = None
-
-    def start(self):
-        self.board = Board.load_blueprint(constants.blueprint)
-        self.hero = Hero(self.board)
-        #self.view = View(self.board)
-
-    def move(self, direction):
-        self.hero.move(direction)
-
+        self.board = board
 
     def visualize_text(self):
         visual_line = ""
@@ -49,20 +32,3 @@ class Game:
     
     def invitation(self):
         variable = input("Qu'allez vous faire ?  ")
-
-
-def main():
-    game = Game()
-    game.start()
-
-    game.display_title()
-    game.visualize_text()
-    game.display_explanation()
-    game.invitation()
-
-    print(len(game.board.grid))
-    print(game.hero.position)
-
-if __name__ == "__main__":
-    main()
-
