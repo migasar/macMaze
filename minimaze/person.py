@@ -40,7 +40,7 @@ class Hero:
         for block in self.board.grid:
             if block.x == new_position.x and block.y == new_position.y:
                 new_case = block
-            break
+                break
         if new_case.walk is True:
             self.position = new_position
             return self.position

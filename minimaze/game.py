@@ -13,15 +13,11 @@ class Game:
     def __init__(self):
         self.board = None
         self.hero = None
-        self.view = None
 
     def start(self):
         self.board = Board.load_blueprint(constants.blueprint)
         self.hero = Hero(self.board)
         #self.view = View(self.board)
-
-    def move(self, direction):
-        self.hero.move(direction)
 
 
     def visualize_text(self):
@@ -106,10 +102,11 @@ def main():
     game.invitation()
     game.turn_solver()
     """
+
     #game.hero.up() 
 
-    
-    print(game.hero.position.x)
+    game.hero.up()
+    print(game.hero.position)
 
 
 if __name__ == "__main__":

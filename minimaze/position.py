@@ -7,8 +7,10 @@ class Position:
         self.position = (x, y)
 
     # Magic Methods:
+    
     def __repr__(self):
         return str(self.position)
+    
 
     def __hash__(self):
         return hash(self.position)
@@ -18,11 +20,11 @@ class Position:
 
     @property
     def x(self):
-        return self[0]
+        return self.position[0]
     
     @property
     def y(self):
-        return self[1]
+        return self.position[1]
 
     # Methods :
     # 4 moves (up, down, left, right)
