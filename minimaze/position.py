@@ -35,11 +35,12 @@ class Position:
         # create new x and y by retrieving the coordinates of the instance
         x, y = self.position
         # create a new object position with modified coordinates
-        return Position(x, y-1)
+        return Position(x, y+1)
+        
 
     def down(self):
         x, y = self.position
-        return Position(x, y+1)
+        return Position(x, y-1)
 
     def right(self):
         x, y = self.position

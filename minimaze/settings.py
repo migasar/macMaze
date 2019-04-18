@@ -1,7 +1,6 @@
 """Constantes du jeu de Labyrinthe Mac Maze"""
 
 import os
-#from pathlib import Path
 
 
 START_CHAR = 'S'
@@ -21,7 +20,7 @@ cote_fenetre = nombre_sprite_cote * taille_sprite
 
 #Personnalisation de la fenêtre
 titre_fenetre = 'Mac Maze'
-slogan_fenetre = 'Save MacGyver, Save my project'
+slogan_fenetre = 'Sauvez MacGyver, Sauvez mon projet'
 
 #Listes des ressources du jeu
 image_path = 'images/tile_path_resized40.png'
@@ -37,11 +36,7 @@ image_tube = 'images/item_tube_resized40.png'
 
 image_syringe = 'images/item_syringe_resized40.png'
 
-#blueprint = Path.cwd().joinpath('board_01.txt')
-#blueprint = 'board_01.txt'
 
 blueprint = '{}/board_01.txt'.format(
     os.path.dirname(__file__)
     )
-
-#print(blueprint)
