@@ -23,8 +23,8 @@ class Game:
     def visualize_text(self):
         visual_line = ""
         for block in self.board.grid:
-            if block.toping == "hero":
-                visual_line += "@"
+            if block.toping:
+                visual_line += block.toping
             else:
                 visual_line += block.visual
         visual_grid = [visual_line[i:i+15] for i in range(0, 225, 15)]
@@ -103,11 +103,11 @@ def main():
     game.turn_solver()
     """
 
-    #game.hero.up() 
-
-    game.hero.up()
+    
+    game.hero.right()
     print(game.hero.position)
 
+    game.visualize_text()
 
 if __name__ == "__main__":
     main()

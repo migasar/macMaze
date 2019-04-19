@@ -9,8 +9,12 @@ PATH_CHAR = '.'
 WALL_CHAR = '#'
 
 ITEM_CHAR = 'I'
-ENEMY_CHAR = 'E'
-HERO_CHAR = 'H'
+ITEM_1_CHAR = '1'
+ITEM_2_CHAR = '2'
+ITEM_3_CHAR = '3'
+
+ENEMY_CHAR = 'X'
+HERO_CHAR = '@'
 
 
 #Paramètres de la fenêtre
