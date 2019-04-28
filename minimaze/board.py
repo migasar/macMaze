@@ -19,22 +19,31 @@ class Board:
         grid = []
 
         with open(filename, 'r') as infile:
-            content = [line.strip() for line in infile.readlines() if line.strip()]
+
+            content = [
+                line.strip() for line in infile.readlines() if line.strip()
+                ]
+
             for y, line in enumerate(content):
                 for x, col in enumerate(line):
                     if col == "S":
-                        grid.append(Case(x+1, y+1, walk=True, landing="start", visual = col))
+                        grid.append(
+                            Case(x+1, y+1, walk=True, landing="start", visual=col)
+                            )
                     elif col == "G":
-                        grid.append(Case(x+1, y+1, walk=True, landing="goal", visual = col))
+                        grid.append(
+                            Case(x+1, y+1, walk=True, landing="goal", visual=col)
+                            )
                     elif col == ".":
-                        grid.append(Case(x+1, y+1, walk=True, visual = col))
+                        grid.append(
+                            Case(x+1, y+1, walk=True, visual=col)
+                            )
                     else:
-                        grid.append(Case(x+1, y+1, walk=False, visual = col))
-
+                        grid.append(
+                            Case(x+1, y+1, walk=False, visual=col)
+                            )
+                            
         return cls(grid)
-
-
-
 
 
 """
