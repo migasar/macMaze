@@ -4,6 +4,7 @@
 from board import Board
 from person import Hero
 from position import Position
+from view import View
 
 import settings as constants
 
@@ -13,101 +14,72 @@ class Game:
     def __init__(self):
         self.board = None
         self.hero = None
+        self.view = None
+
 
     def start(self):
         self.board = Board.load_blueprint(constants.blueprint)
         self.hero = Hero(self.board)
-        #self.view = View(self.board)
+        self.view = View(self.board)
 
+    def onboarding(self):
+        self.view.display_title()
+        self.view.display_board()
+        #self.view.display_explanation()
+        #self.turn_action()
 
-    def visualize_text(self):
-        visual_line = ""
-        for block in self.board.grid:
-            if block.toping:
-                visual_line += block.toping
-            else:
-                visual_line += block.visual
-        visual_grid = [visual_line[i:i+15] for i in range(0, 225, 15)]
-        for line in visual_grid:
-            print(line)
-
-    def display_title(self):
-            print("\t**********************************************")
-            print(
-                "\t  " + constants.titre_fenetre 
-                + " - " + constants.slogan_fenetre
-                )
-            print("\t**********************************************")
-
-    def display_explanation(self):
-        print("\t Dirigez MacGyver jusqu'à la sortie du labyrinthe")
-        print("\t  - pour aller en haut, appuyez sur Z")
-        print("\t  - pour aller en bas, appuyez sur S")
-        print("\t  - pour aller à gauche, appuyez sur A")
-        print("\t  - pour aller à droite, appuyez sur E")
-        print("\t  - pour quitter le jeu, appuyez sur Q")
-    
-    def invitation(self):
-        self.new_order = input("Qu'allez vous faire ?  ")
-        return self.new_order
 
     def new_turn(self):
-        self.visualize_text()
-        self.display_explanation()
-        self.invitation()
+        self.view.display_board()
+        self.turn_action()
+
+
+    def turn_action(self):
+
+        #invit de commande
+        self.view.display_invitation()
+
+        print(self.view.new_order)
+        print("")
+
+        if self.view.new_order == "q":
+            return self.view.display_goodbye()
+
+        elif self.view.new_order == "s":
+            return self.hero.move_up()
+        elif self.view.new_order == "x":
+            return self.hero.move_down()
+        elif self.view.new_order == "w":
+            return self.hero.move_left()
+        elif self.view.new_order == "c":
+            return self.hero.move_right()
+
+        else:
+            self.view.display_failure_input()
+            self.view.display_explanation()
+            return self.turn_action()
 
     def turn_solver(self):
-
-        if self.new_order == "q":
-            print(
-                """
-                Vous quittez le jeu.
-                Le labyrinthe n'était sans doute pas fait pour vous,
-                mais nous vous remercions d'avoir essayé.
-                """
-                )
-        
-        elif self.new_order == "z":
-            return self.hero.move.up()
-        
-        elif self.new_order == "s":
-            return self.hero.move.down()
-
-        elif self.new_order == "a":
-            return self.hero.move.left()
-        
-        elif self.new_order == "e":
-            return self.hero.position.right()
-        
-        else:
-            print(
-                """
-                
-                Désolé, commande non valide
-                
-                """
-                )
-            return self.new_turn()
+        pass
 
 def main():
 
     game = Game()
     game.start()
+    game.onboarding()
 
-    game.display_title()
-    game.visualize_text()
-    game.display_explanation()
 
-    """
-    game.invitation()
-    game.turn_solver()
-    """
 
     
-    game.hero.right()
+    #game.view.display_invitation()
+    #game.turn_action()
+    
+    #game.hero.move_right()
+    #game.hero.move_down()
     print(game.hero.position)
 
-    game.visualize_text()
+    #game.view.display_board()
+    #print(game.board.height)
 
 if __name__ == "__main__":
     main()
