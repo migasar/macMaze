@@ -6,8 +6,8 @@ class Position:
     def __init__(self, x, y):
         self.position = (x, y)
 
+
     # Magic Methods:
-    
     def __repr__(self):
         return str(self.position)
     
@@ -16,6 +16,7 @@ class Position:
 
     def __eq__(self, pos):
         return self.position == pos.position
+
 
     @property
     def x(self):

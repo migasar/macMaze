@@ -12,6 +12,7 @@ class Board:
     def __init__(self, grid):
         self.grid = grid
 
+
     @classmethod
     def load_blueprint(cls, filename):
         grid = []
@@ -52,30 +53,31 @@ class Board:
     def height(self):
         return self.grid[-1].y
 
-    """
+    
     def get_case(self, att, val):
         for i, block in enumerate(self.grid):
-            if block.att == val:
-                return self.grid[i]
-    
-    def get_case(self, val):
-        for block in self.grid:
-            if val in block:
+            if getattr(block, att) == val:
                 return block
 
-    
     def get_case_index(self, att, val):
         for i, block in enumerate(self.grid):
-            if block.att == val:
-                return int(i)
-    """
+            if getattr(block, att) == val:
+                return i
 
+    
+    def targeting(self):
+        target = self.get_case_index("landing", "goal")
+        hero_case = self.get_case_index("toping", constants.HERO_CHAR)
+        return target == hero_case
+    
 
 """
 # TEST
 def main():
     board = Board.load_blueprint(constants.blueprint)
-    print(board.grid[0])
+
+    print(board.get_case_index("landing", "goal"))
+    print(board.grid[-1])
 
 if __name__ == "__main__":
     main()

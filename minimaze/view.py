@@ -1,4 +1,4 @@
-"""docstring"""
+"""Gere l'affichage des elements du jeu"""
 
 from board import Board
 
@@ -8,6 +8,7 @@ class View:
 
     def __init__(self, board):
         self.board = board
+
 
     def display_board(self):
         visual_line = ""
@@ -34,17 +35,18 @@ class View:
         print("\t Le labyrinthe n'était sans doute pas fait pour vous, ")
         print("\t mais nous vous remercions d'avoir essayé.")
 
-    
     def display_victory(self):
         print(" ")
         print("\t**********************************************")
         print(" ")
         print("\t Bravo, vous avez trouvé le chemin du labyrinthe.")
-        print("\t Mais ces jeux violents auront une fin violante.")
+        print("\t Mais ces jeux violents auront une fin violente.")
         print("")
+
 
     def display_failure_input(self):
         print("\t Désolé, votre commande n'est pas valide.")
+
 
     def display_explanation(self):
         print("\t Dirigez MacGyver jusqu'à la sortie du labyrinthe")
@@ -53,7 +55,7 @@ class View:
         print("\t  - pour aller à gauche, appuyez sur W")
         print("\t  - pour aller à droite, appuyez sur C")
         print("\t  - pour quitter le jeu, appuyez sur Q")
-    
+
     def display_invitation(self):
         self.new_order = input("Qu'allez vous faire ?  ")
         return self.new_order

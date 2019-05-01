@@ -1,7 +1,7 @@
 """Gere les cases du plateau de jeu et leurs contenus"""
 
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass(order=True)
@@ -13,3 +13,4 @@ class Case:
     landing: str = ""
     toping: str = ""
     visual: str = ""
+

@@ -16,29 +16,16 @@ class Hero:
         self.position = None
 
         self.homing()
-        #self.homer()
     
-
+    # Initialize the starting position of the Hero
     def homing(self):
-
-        for block in self.board.grid:
-            if block.landing == "start":
-                block.toping = constants.HERO_CHAR
-                self.position = Position(block.x, block.y)
-            break
-
-        return self.position
-
-    """
-    def homer(self):
-        home = self.board.get_case("start")
+        home = self.board.get_case("landing", "start")
         home.toping = constants.HERO_CHAR
         self.position = Position(home.x, home.y)
         return self.position
-    """
+    
 
     # 4 moves (up, down, left, right)
-
     def move_up(self):
 
         back_step = Position(self.position.x, self.position.y)
@@ -150,6 +137,7 @@ class Hero:
                         print("Mac Gyver ne peut pas aller par là.")
         else:
             print("Mac Gyver ne peut pas aller par là.")
+
 
 
 class Enemy:
