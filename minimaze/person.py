@@ -17,6 +17,7 @@ class Hero:
 
         self.homing()
     
+    
     # Initialize the starting position of the Hero
     def homing(self):
         home = self.board.get_case("landing", "start")
@@ -26,15 +27,30 @@ class Hero:
     
 
     # 4 moves (up, down, left, right)
-    def move_up(self):
-
+    def move(self, next_step):
         back_step = Position(self.position.x, self.position.y)
-        next_step = Position(self.position.x, self.position.y - 1)
 
         #check that the new position is inside the board
-        if 1 <= next_step.y <= self.board.height:
+        if self.board.inside(next_step) == True:
             
             #check that the new position is not a wall
+            blockade = self.board.get_coordinates("x", "y", next_step.x, next_step.y)
+
+            if blockade.walk is True:
+                blockade.toping = constants.HERO_CHAR
+
+                #clean the case of the previous position
+                back = self.board.get_coordinates("x", "y", back_step.x, back_step.y)
+                back.toping = ""
+
+                #change the position of the hero
+                self.position = next_step
+                return self.position
+
+            else:
+                print("Mac Gyver ne peut pas aller par là.")
+
+            """
             for i, block in enumerate(self.board.grid):
                 if block.x == next_step.x and block.y == next_step.y:
                     if block.walk is True:
@@ -51,93 +67,22 @@ class Hero:
 
                     else:
                         print("Mac Gyver ne peut pas aller par là.")
+            """
+
         else:
             print("Mac Gyver ne peut pas aller par là.")
+
+    def move_up(self):
+        return self.move(Position(self.position.x, self.position.y - 1))
 
     def move_down(self):
-
-        back_step = Position(self.position.x, self.position.y)
-        next_step = Position(self.position.x, self.position.y + 1)
-
-        #check that the new position is inside the board
-        if 1 <= next_step.y <= self.board.height:
-
-            #check that the new position is not a wall
-            for i, block in enumerate(self.board.grid):
-                if block.x == next_step.x and block.y == next_step.y:
-                    if block.walk is True:
-                        self.board.grid[i].toping = constants.HERO_CHAR
-
-                        #clean the case of the previous position
-                        for j, back in enumerate(self.board.grid):
-                            if back.x == back_step.x and back.y == back_step.y:
-                                self.board.grid[j].toping = ""
-                                break
-                        
-                        self.position = next_step
-                        return self.position
-
-                    else:
-                        print("Mac Gyver ne peut pas aller par là.")
-        else:
-            print("Mac Gyver ne peut pas aller par là.")
+        return self.move(Position(self.position.x, self.position.y + 1))
 
     def move_left(self):
-
-        back_step = Position(self.position.x, self.position.y)
-        next_step = Position(self.position.x - 1, self.position.y)
-        
-        #check that the new position is inside the board
-        if 1 <= next_step.x <= self.board.width:
-
-            #check that the new position is not a wall
-            for i, block in enumerate(self.board.grid):
-                if block.x == next_step.x and block.y == next_step.y:
-                    if block.walk is True:
-                        self.board.grid[i].toping = constants.HERO_CHAR
-
-                        #clean the case of the previous position
-                        for j, back in enumerate(self.board.grid):
-                            if back.x == back_step.x and back.y == back_step.y:
-                                self.board.grid[j].toping = ""
-                                break
-
-                        self.position = next_step
-                        return self.position
-
-                    else:
-                        print("Mac Gyver ne peut pas aller par là.")
-        else:
-            print("Mac Gyver ne peut pas aller par là.")
-
+        return self.move(Position(self.position.x - 1, self.position.y))
+    
     def move_right(self):
-
-        back_step = Position(self.position.x, self.position.y)
-        next_step = Position(self.position.x + 1, self.position.y)
-        
-        #check that the new position is inside the board
-        if 1 <= next_step.x <= self.board.width:
-
-            #check that the new position is not a wall
-            for i, block in enumerate(self.board.grid):
-                if block.x == next_step.x and block.y == next_step.y:
-                    if block.walk is True:
-                        self.board.grid[i].toping = constants.HERO_CHAR
-
-                        #clean the case of the previous position
-                        for j, back in enumerate(self.board.grid):
-                            if back.x == back_step.x and back.y == back_step.y:
-                                self.board.grid[j].toping = ""
-                                break
-
-                        self.position = next_step
-                        return self.position
-                        
-                    else:
-                        print("Mac Gyver ne peut pas aller par là.")
-        else:
-            print("Mac Gyver ne peut pas aller par là.")
-
+        return self.move(Position(self.position.x + 1, self.position.y))
 
 
 class Enemy:

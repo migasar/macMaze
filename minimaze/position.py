@@ -16,7 +16,7 @@ class Position:
 
     def __eq__(self, pos):
         return self.position == pos.position
-
+    
 
     @property
     def x(self):
@@ -25,4 +25,3 @@ class Position:
     @property
     def y(self):
         return self.position[1]
-

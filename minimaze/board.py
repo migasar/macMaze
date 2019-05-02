@@ -53,7 +53,10 @@ class Board:
     def height(self):
         return self.grid[-1].y
 
+    def inside(self,step):
+        return (1, 1) <= (step.x, step.y) <= (self.width, self.height)
     
+
     def get_case(self, att, val):
         for i, block in enumerate(self.grid):
             if getattr(block, att) == val:
@@ -64,12 +67,17 @@ class Board:
             if getattr(block, att) == val:
                 return i
 
+    def get_coordinates(self, attx, atty, valx, valy):
+        for i, block in enumerate(self.grid):
+            if getattr(block, attx) == valx and getattr(block, atty) == valy:
+                return block
     
+
     def targeting(self):
         target = self.get_case_index("landing", "goal")
         hero_case = self.get_case_index("toping", constants.HERO_CHAR)
         return target == hero_case
-    
+
 
 """
 # TEST

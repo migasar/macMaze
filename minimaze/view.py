@@ -39,8 +39,8 @@ class View:
         print(" ")
         print("\t**********************************************")
         print(" ")
-        print("\t Bravo, vous avez trouvé le chemin du labyrinthe.")
-        print("\t Mais ces jeux violents auront une fin violente.")
+        print("\t Bravo, vous avez trouvé le chemin du labyrinthe,")
+        print("\t mais ces jeux violents auront une fin violente.")
         print("")
 
 

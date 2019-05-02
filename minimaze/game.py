@@ -22,12 +22,12 @@ class Game:
         self.hero = Hero(self.board)
         self.view = View(self.board)
 
-
     def onboarding(self):
         self.view.display_title()
         self.view.display_board()
         self.view.display_explanation()
         self.turn_action()
+
 
     def new_turn(self):
         self.view.display_board()
@@ -37,7 +37,6 @@ class Game:
         self.view.display_failure_input()
         self.view.display_explanation()
         self.turn_action()
-
 
 
     def turn_action(self):
@@ -73,22 +72,15 @@ class Game:
         else:
             return self.new_turn()
 
+
 def main():
 
     game = Game()
     game.start()
     game.onboarding()
 
-    
-    #game.view.display_invitation()
-    #game.turn_action()
-    
-    #game.hero.move_right()
-    #game.hero.move_down()
     #print(game.hero.position)
 
-    #game.view.display_board()
-    #print(game.board.height)
 
 if __name__ == "__main__":
     main()
