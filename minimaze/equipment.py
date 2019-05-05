@@ -1,6 +1,12 @@
 """Gere les items à récupérer"""
 
 
+from position import Position
+from board import Board
+
+import settings as constants
+
+
 class Equipment:
 
     def __init__(self, board):

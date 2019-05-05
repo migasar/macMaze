@@ -1,8 +1,10 @@
 """Gere l'affichage des elements du jeu"""
 
+
 from board import Board
 
 import settings as constants
+
 
 class View:
 

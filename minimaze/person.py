@@ -1,11 +1,10 @@
 """Gere les personnages"""
 
 
-import settings as constants
-
-
 from position import Position
 from board import Board
+
+import settings as constants
 
 
 class Hero:

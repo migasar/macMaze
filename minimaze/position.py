@@ -1,6 +1,13 @@
 """Gere les déplacements des objets"""
 
 
+from collections import namedtuple
+
+Position = namedtuple('Position', ['x', 'y'])
+
+
+"""
+
 class Position:
 
     def __init__(self, x, y):
@@ -25,3 +32,6 @@ class Position:
     @property
     def y(self):
         return self.position[1]
+
+"""
+

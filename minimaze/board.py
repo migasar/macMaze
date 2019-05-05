@@ -1,11 +1,11 @@
 """Gere le plateau de jeu et les interactions des objets"""
 
 
-import settings as constants
-
 from position import Position
 from case import Case
- 
+
+import settings as constants
+
 
 class Board:
 
