@@ -14,5 +14,3 @@ class Case:
     landing: str = ""
     toping: str = ""
     visual: str = ""
-
-    #coordinates: tuple = (x, y)
