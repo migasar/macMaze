@@ -71,12 +71,12 @@ class Board:
         for i, block in enumerate(self.grid):
             if getattr(block, attx) == valx and getattr(block, atty) == valy:
                 return block
-    
 
-    def targeting(self):
-        target = self.get_case_index("landing", "goal")
+
+    def ending(self):
+        end = self.get_case_index("landing", "goal")
         hero_case = self.get_case_index("toping", constants.HERO_CHAR)
-        return target == hero_case
+        return end == hero_case
 
 
 """

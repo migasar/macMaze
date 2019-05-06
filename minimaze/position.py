@@ -6,8 +6,9 @@ from collections import namedtuple
 Position = namedtuple('Position', ['x', 'y'])
 
 
+# FIXME: delete  my old version of the class Position 
+#   - when I am certain that the namedtuple works as well
 """
-
 class Position:
 
     def __init__(self, x, y):
@@ -32,7 +33,5 @@ class Position:
     @property
     def y(self):
         return self.position[1]
-
-
 """
 

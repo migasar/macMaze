@@ -7,23 +7,30 @@ from board import Board
 import settings as constants
 
 
-class Hero:
+# TODO: rework the class Hero 
+#   - introduce a superclass Person
+#   - takes in charge the method homing() for the subclass Hero and Enemy
 
+
+class Person:
     def __init__(self, board):
-        # toolbox (start empty --> counter full at 3)
         self.board = board
         self.position = None
 
-        self.homing()
-    
-    
-    # Initialize the starting position of the Hero
-    def homing(self):
-        home = self.board.get_case("landing", "start")
-        home.toping = constants.HERO_CHAR
+        self.homing(self.aim, self.char)
+
+    # Initialize the starting position of the person
+    def homing(self, aim, char):
+        home = self.board.get_case("landing", aim)
+        home.toping = char
         self.position = Position(home.x, home.y)
         return self.position
-    
+
+
+class Hero(Person):
+
+    aim = "start"
+    char = constants.HERO_CHAR
 
     # 4 moves (up, down, left, right)
     def move(self, next_step):
@@ -79,16 +86,14 @@ class Hero:
 
     def move_left(self):
         return self.move(Position(self.position.x - 1, self.position.y))
-    
+
     def move_right(self):
         return self.move(Position(self.position.x + 1, self.position.y))
 
 
-class Enemy:
+class Enemy(Person):
     #Enemy et Hero pouraient avoir une classe parent (la classe Person)
 
-    # def __init__()
+    aim = "goal"
+    char = constants.ENEMY_CHAR
 
-    # Attributes :
-    # position (main attribute)
-    pass

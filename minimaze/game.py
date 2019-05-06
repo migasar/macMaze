@@ -2,7 +2,8 @@
 
 
 from board import Board
-from person import Hero
+from person import Hero, Enemy
+from equipment import Ether, Needle, Tube
 from position import Position
 from view import View
 
@@ -12,17 +13,18 @@ import settings as constants
 class Game:
 
     def __init__(self):
-        self.board = None
-        self.hero = None
-        self.view = None
-
-
-    def start(self):
         self.board = Board.load_blueprint(constants.blueprint)
+
         self.hero = Hero(self.board)
+        self.enemy = Enemy(self.board)
+        
+        self.ether = Ether(self.board)
+        self.needle = Needle(self.board)
+        self.tube = Tube(self.board)
+
         self.view = View(self.board)
 
-    def onboarding(self):
+    def start(self):
         self.view.display_title()
         self.view.display_board()
         self.view.display_explanation()
@@ -67,7 +69,7 @@ class Game:
             return self.repeat_turn()
 
     def turn_solver(self):
-        if self.board.targeting() is True:
+        if self.board.ending() is True:
             return self.view.display_victory()
         else:
             return self.new_turn()
@@ -77,9 +79,10 @@ def main():
 
     game = Game()
     game.start()
-    game.onboarding()
+
 
     #print(game.hero.position)
+    print(game.equipment.position)
 
 
 if __name__ == "__main__":
