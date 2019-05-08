@@ -24,12 +24,12 @@ class Game:
 
         self.view = View(self.board)
 
+
     def start(self):
         self.view.display_title()
         self.view.display_board()
         self.view.display_explanation()
         self.turn_action()
-
 
     def new_turn(self):
         self.view.display_board()
@@ -82,7 +82,6 @@ def main():
 
 
     #print(game.hero.position)
-    print(game.equipment.position)
 
 
 if __name__ == "__main__":

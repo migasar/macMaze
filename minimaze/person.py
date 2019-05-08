@@ -7,20 +7,16 @@ from board import Board
 import settings as constants
 
 
-# TODO: rework the class Hero 
-#   - introduce a superclass Person
-#   - takes in charge the method homing() for the subclass Hero and Enemy
-
-
 class Person:
+
     def __init__(self, board):
         self.board = board
         self.position = None
-
         self.homing(self.aim, self.char)
 
-    # Initialize the starting position of the person
+
     def homing(self, aim, char):
+    # Initialize the starting position of the person
         home = self.board.get_case("landing", aim)
         home.toping = char
         self.position = Position(home.x, home.y)
@@ -32,8 +28,9 @@ class Hero(Person):
     aim = "start"
     char = constants.HERO_CHAR
 
-    # 4 moves (up, down, left, right)
+
     def move(self, next_step):
+    # 4 moves (up, down, left, right)
         back_step = Position(self.position.x, self.position.y)
 
         #check that the new position is inside the board
@@ -56,25 +53,6 @@ class Hero(Person):
             else:
                 print("Mac Gyver ne peut pas aller par là.")
 
-            """
-            for i, block in enumerate(self.board.grid):
-                if block.x == next_step.x and block.y == next_step.y:
-                    if block.walk is True:
-                        self.board.grid[i].toping = constants.HERO_CHAR
-
-                        #clean the case of the previous position
-                        for j, back in enumerate(self.board.grid):
-                            if back.x == back_step.x and back.y == back_step.y:
-                                self.board.grid[j].toping = ""
-                                break
-
-                        self.position = next_step
-                        return self.position
-
-                    else:
-                        print("Mac Gyver ne peut pas aller par là.")
-            """
-
         else:
             print("Mac Gyver ne peut pas aller par là.")
 
@@ -92,7 +70,6 @@ class Hero(Person):
 
 
 class Enemy(Person):
-    #Enemy et Hero pouraient avoir une classe parent (la classe Person)
 
     aim = "goal"
     char = constants.ENEMY_CHAR

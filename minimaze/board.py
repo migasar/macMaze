@@ -1,6 +1,8 @@
 """Gere le plateau de jeu et les interactions des objets"""
 
 
+from random import choice
+
 from position import Position
 from case import Case
 
@@ -57,12 +59,22 @@ class Board:
         return (1, 1) <= (step.x, step.y) <= (self.width, self.height)
     
 
+    def random_path(self):
+    # Return a case selected randomly from the empty ones
+        free_path = None
+        while free_path == None:
+            if choice(self.grid).free == True:
+                free_path = choice(self.grid)
+        return free_path
+
     def get_case(self, att, val):
+    # Return a case with a specific attribute
         for i, block in enumerate(self.grid):
             if getattr(block, att) == val:
                 return block
 
     def get_case_index(self, att, val):
+    # Return the index a case with a specific attribute
         for i, block in enumerate(self.grid):
             if getattr(block, att) == val:
                 return i
