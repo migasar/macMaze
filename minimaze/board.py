@@ -29,11 +29,11 @@ class Board:
                 for x, col in enumerate(line):
                     if col == "S":
                         grid.append(
-                            Case(x+1, y+1, walk=True, toping="start", visual=col)
+                            Case(x+1, y+1, walk=True, landing="start", visual=col)
                             )
                     elif col == "G":
                         grid.append(
-                            Case(x+1, y+1, walk=True, toping="goal", visual=col)
+                            Case(x+1, y+1, walk=True, landing="goal", visual=col)
                             )
                     elif col == ".":
                         grid.append(
@@ -57,15 +57,21 @@ class Board:
 
     def inside(self,step):
         return (1, 1) <= (step.x, step.y) <= (self.width, self.height)
-    
+
+
+    def pathfinder(self):
+        pathway = []
+        for i, block in enumerate(self.grid):
+            if block.free == True:
+                pathway.append(i)
+        return pathway
 
     def random_path(self):
-    # Return a case selected randomly from the empty ones
-        free_path = None
-        while free_path == None:
-            if choice(self.grid).free == True:
-                free_path = choice(self.grid)
+        pathway = self.pathfinder()
+        path_index = choice(pathway)
+        free_path = self.grid[path_index]
         return free_path
+
 
     def get_case(self, att, val):
     # Return a case with a specific attribute
@@ -85,12 +91,17 @@ class Board:
                 return block
 
 
-    # TODO: creer une methode pour gerer les collisions entre les elements present sur les cases
+    # TODO: méthode collision
+    # creer une methode pour gerer les collisions entre les elements present sur les cases
  
-    # TODO: gerer les conditions de victoire
+    # TODO: conditions de victoire
+    #   - gerer toutes les conditions de victoire et de defaite
+
+    def colliding(self):
+        pass
 
     def ending(self):
-        end = self.get_case_index("toping", "goal")
+        end = self.get_case_index("landing", "goal")
         hero_case = self.get_case_index("toping", constants.HERO_CHAR)
         return end == hero_case
 

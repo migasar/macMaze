@@ -17,8 +17,8 @@ class Person:
 
     def homing(self, aim, char):
     # Initialize the starting position of the person
-        home = self.board.get_case("toping", aim)
-        home.toping = char
+        home = self.board.get_case("landing", aim)
+        home.landing = char
         self.position = Position(home.x, home.y)
         return self.position
 
@@ -28,7 +28,8 @@ class Hero(Person):
     aim = "start"
     char = constants.HERO_CHAR
 
-    # TODO: creer un attribut toolbox pour gerer la récupération des éléments par le héros
+    # TODO: attribut toolbox
+    #   - creer un attribut toolbox pour gerer la récupération des éléments par le héros
 
     def move(self, next_step):
     # 4 moves (up, down, left, right)
