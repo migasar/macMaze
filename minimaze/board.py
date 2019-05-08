@@ -29,11 +29,11 @@ class Board:
                 for x, col in enumerate(line):
                     if col == "S":
                         grid.append(
-                            Case(x+1, y+1, walk=True, landing="start", visual=col)
+                            Case(x+1, y+1, walk=True, toping="start", visual=col)
                             )
                     elif col == "G":
                         grid.append(
-                            Case(x+1, y+1, walk=True, landing="goal", visual=col)
+                            Case(x+1, y+1, walk=True, toping="goal", visual=col)
                             )
                     elif col == ".":
                         grid.append(
@@ -90,7 +90,7 @@ class Board:
     # TODO: gerer les conditions de victoire
 
     def ending(self):
-        end = self.get_case_index("landing", "goal")
+        end = self.get_case_index("toping", "goal")
         hero_case = self.get_case_index("toping", constants.HERO_CHAR)
         return end == hero_case
 
@@ -100,7 +100,7 @@ class Board:
 def main():
     board = Board.load_blueprint(constants.blueprint)
 
-    print(board.get_case_index("landing", "goal"))
+    print(board.get_case_index("toping", "goal"))
     print(board.grid[-1])
 
 if __name__ == "__main__":

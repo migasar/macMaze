@@ -17,7 +17,7 @@ class Person:
 
     def homing(self, aim, char):
     # Initialize the starting position of the person
-        home = self.board.get_case("landing", aim)
+        home = self.board.get_case("toping", aim)
         home.toping = char
         self.position = Position(home.x, home.y)
         return self.position
