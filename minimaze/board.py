@@ -85,6 +85,10 @@ class Board:
                 return block
 
 
+    # TODO: creer une methode pour gerer les collisions entre les elements present sur les cases
+ 
+    # TODO: gerer les conditions de victoire
+
     def ending(self):
         end = self.get_case_index("landing", "goal")
         hero_case = self.get_case_index("toping", constants.HERO_CHAR)

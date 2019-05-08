@@ -28,6 +28,7 @@ class Hero(Person):
     aim = "start"
     char = constants.HERO_CHAR
 
+    # TODO: creer un attribut toolbox pour gerer la récupération des éléments par le héros
 
     def move(self, next_step):
     # 4 moves (up, down, left, right)
