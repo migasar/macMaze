@@ -28,6 +28,8 @@ class Hero(Person):
     aim = "start"
     char = constants.HERO_CHAR
 
+    self.toolbox = []
+
     # TODO: attribut toolbox
     #   - creer un attribut toolbox pour gerer la récupération des éléments par le héros
 
@@ -41,7 +43,8 @@ class Hero(Person):
             #check that the new position is not a wall
             blockade = self.board.get_coordinates("x", "y", next_step.x, next_step.y)
 
-            if blockade.walk is True:
+            if blockade.free is True:
+                # instead of blockade.walk
                 blockade.toping = constants.HERO_CHAR
 
                 #clean the case of the previous position
@@ -51,6 +54,13 @@ class Hero(Person):
                 #change the position of the hero
                 self.position = next_step
                 return self.position
+            """   
+            elif blockade.toping != "":
+                colliding(blockade)
+                    loading
+                    ending
+                pass
+            """
 
             else:
                 print("Mac Gyver ne peut pas aller par là.")

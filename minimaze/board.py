@@ -97,8 +97,30 @@ class Board:
     # TODO: conditions de victoire
     #   - gerer toutes les conditions de victoire et de defaite
 
-    def colliding(self):
-        pass
+    """
+    def colliding(self, case):
+        if case.toping == constants.ENEMY_CHAR:
+            self.ender(case)
+        else:
+            self.loading(case)
+    
+    def loading(self, case):
+        if case.toping == constants.ITEM_1_CHAR:
+            ether
+            toolbox
+        elif case.toping == constants.ITEM_2_CHAR:
+            needle
+            toolbox
+        elif case.toping == constants.ITEM_3_CHAR:
+            tube
+            toolbox
+
+    def ender(self, case):
+        if hero.toolbox is full:
+            WIN
+        else:
+            LOST
+    """
 
     def ending(self):
         end = self.get_case_index("landing", "goal")
