@@ -61,3 +61,7 @@ class View:
     def display_invitation(self):
         self.new_order = input("Qu'allez vous faire ?  ")
         return self.new_order
+
+
+# TODO: Pygame GUI
+#   - create another class View based on pygame for a version with a GUI
