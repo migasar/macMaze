@@ -14,7 +14,12 @@ class Game:
 
     def __init__(self):
         self.board = Board.load_blueprint(constants.blueprint)
+        # FIXME: randomize blueprint
+        #   - create a method to randomize the choice of the file used as a blueprint
+        #   - it will be a way to generate different mazes
+        #   - this method could be put into the class Board
 
+        
         self.hero = Hero(self.board)
         self.enemy = Enemy(self.board)
         
