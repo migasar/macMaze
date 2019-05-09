@@ -1,4 +1,4 @@
-"""Gere les cases du plateau de jeu et leurs contenus"""
+"""Manage the cases of the board and their content"""
 
 
 from dataclasses import dataclass
@@ -17,5 +17,5 @@ class Case:
 
     @property
     def free(self):
-    #check if the case is empty
+        #check if the case is empty
         return self.walk == True and self.toping == "" and self.landing == ""

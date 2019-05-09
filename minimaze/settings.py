@@ -1,4 +1,4 @@
-"""Constantes du jeu de Labyrinthe Mac Maze"""
+"""Settings of the game"""
 
 import os
 
@@ -17,16 +17,18 @@ ENEMY_CHAR = 'X'
 HERO_CHAR = '@'
 
 
-#Paramètres de la fenêtre
+# parameters of the window
 nombre_sprite_cote = 15
 taille_sprite = 40
 cote_fenetre = nombre_sprite_cote * taille_sprite
 
-#Personnalisation de la fenêtre
+
+# customization of the window
 titre_fenetre = 'Mac Maze'
 slogan_fenetre = 'Sauvez MacGyver, Sauvez mon projet'
 
-#Listes des ressources du jeu
+
+# listing of ressources for the game
 image_path = 'images/tile_path_resized40.png'
 image_wall = 'images/tile_wall_resized40.png'
 image_way = 'images/tile_point_resized40.png'

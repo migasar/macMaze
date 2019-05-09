@@ -1,4 +1,4 @@
-"""Gere les déplacements des objets"""
+"""Manage the location of every object on the board"""
 
 
 from collections import namedtuple
@@ -34,4 +34,3 @@ class Position:
     def y(self):
         return self.position[1]
 """
-

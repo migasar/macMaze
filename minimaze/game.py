@@ -1,4 +1,4 @@
-"""Gere le deroulement du jeu"""
+"""Manage the flow of the game"""
 
 
 from board import Board
@@ -13,13 +13,13 @@ import settings as constants
 class Game:
 
     def __init__(self):
+
         self.board = Board.load_blueprint(constants.blueprint)
         # FIXME: randomize blueprint
         #   - create a method to randomize the choice of the file used as a blueprint
         #   - it will be a way to generate different mazes
-        #   - this method could be put into the class Board
+        #   - this method could also be in the class Board
 
-        
         self.hero = Hero(self.board)
         self.enemy = Enemy(self.board)
         
@@ -48,7 +48,7 @@ class Game:
 
     def turn_action(self):
 
-        #invit de commande
+        # invit de commande
         self.view.display_invitation()
 
         print(self.view.new_order)
@@ -74,8 +74,12 @@ class Game:
             return self.repeat_turn()
 
     def turn_solver(self):
-        if self.board.ending() is True:
-            return self.view.display_victory()
+        # check if it is the last turn
+        if self.hero.terminus is True:
+            if self.board.game_over() is True:
+                return self.view.display_victory()
+            else:
+                return self.view.display_defeat()
         else:
             return self.new_turn()
 
@@ -86,9 +90,5 @@ def main():
     game.start()
 
 
-    #print(game.hero.position)
-
-
 if __name__ == "__main__":
     main()
-

@@ -1,4 +1,4 @@
-"""Gere l'affichage des elements du jeu"""
+"""Manage the display of every elements of the game"""
 
 
 from board import Board
@@ -37,6 +37,7 @@ class View:
         print("\t Le labyrinthe n'était sans doute pas fait pour vous, ")
         print("\t mais nous vous remercions d'avoir essayé.")
 
+
     def display_victory(self):
         print(" ")
         print("\t**********************************************")
@@ -44,6 +45,14 @@ class View:
         print("\t Bravo, vous avez trouvé le chemin du labyrinthe,")
         print("\t mais ces jeux violents auront une fin violente.")
         print("")
+
+    def display_defeat(self):
+        print(" ")
+        print("\t**********************************************")
+        print(" ")
+        print("\t Désolé, le gardien vous a vaincu,")
+        print("\t et ces jeux violents ont eu une fin violente.")
+        print("")       
 
 
     def display_failure_input(self):

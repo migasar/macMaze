@@ -1,4 +1,4 @@
-"""Gere les items à récupérer"""
+"""Manage the items that need to be collected"""
 
 
 from position import Position
@@ -12,12 +12,11 @@ class Equipment:
     def __init__(self, board):
         self.board = board
         self.position = None
-
         self.clustering(self.char)
  
  
     def clustering(self, char):
-    # Initialize the position of the equipment on the grid
+        # initialize the position of the equipment on the grid
         cluster = self.board.random_path()
         cluster.toping = char
         self.position = Position(cluster.x, cluster.y)

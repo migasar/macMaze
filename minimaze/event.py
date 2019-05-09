@@ -1,4 +1,5 @@
-"""Gere les inputs du joueur"""
+"""Manage the commands of the gamer"""
+
 
 # TODO: class Event
 #   - create a class Event to treat keyboard input from the gamer
@@ -6,4 +7,3 @@
 
 class event:
     pass
-

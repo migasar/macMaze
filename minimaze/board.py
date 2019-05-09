@@ -1,4 +1,4 @@
-"""Gere le plateau de jeu et les interactions des objets"""
+"""Manage the board of the game and the interactions between its cases and the other elements of the game"""
 
 
 from random import choice
@@ -56,10 +56,12 @@ class Board:
         return self.grid[-1].y
 
     def inside(self,step):
+        # check if the position is still inside the boundaries of the board 
         return (1, 1) <= (step.x, step.y) <= (self.width, self.height)
 
 
     def pathfinder(self):
+        # return a list with every empty cases of the board
         pathway = []
         for i, block in enumerate(self.grid):
             if block.free == True:
@@ -67,6 +69,7 @@ class Board:
         return pathway
 
     def random_path(self):
+        # select randomly an empty case of the board
         pathway = self.pathfinder()
         path_index = choice(pathway)
         free_path = self.grid[path_index]
@@ -74,68 +77,25 @@ class Board:
 
 
     def get_case(self, att, val):
-    # Return a case with a specific attribute
+        # return a case with a specific attribute
         for i, block in enumerate(self.grid):
             if getattr(block, att) == val:
                 return block
 
     def get_case_index(self, att, val):
-    # Return the index a case with a specific attribute
+        # return the index of a case with a specific attribute
         for i, block in enumerate(self.grid):
             if getattr(block, att) == val:
                 return i
 
     def get_coordinates(self, attx, atty, valx, valy):
+        # return a case matching a specific position
         for i, block in enumerate(self.grid):
             if getattr(block, attx) == valx and getattr(block, atty) == valy:
                 return block
+   
 
-
-    # TODO: méthode collision
-    # creer une methode pour gerer les collisions entre les elements present sur les cases
- 
-    # TODO: conditions de victoire
-    #   - gerer toutes les conditions de victoire et de defaite
-
-    """
-    def colliding(self, case):
-        if case.toping == constants.ENEMY_CHAR:
-            self.ender(case)
-        else:
-            self.loading(case)
-    
-    def loading(self, case):
-        if case.toping == constants.ITEM_1_CHAR:
-            ether
-            toolbox
-        elif case.toping == constants.ITEM_2_CHAR:
-            needle
-            toolbox
-        elif case.toping == constants.ITEM_3_CHAR:
-            tube
-            toolbox
-
-    def ender(self, case):
-        if hero.toolbox is full:
-            WIN
-        else:
-            LOST
-    """
-
-    def ending(self):
-        end = self.get_case_index("landing", "goal")
-        hero_case = self.get_case_index("toping", constants.HERO_CHAR)
-        return end == hero_case
-
-
-"""
-# TEST
-def main():
-    board = Board.load_blueprint(constants.blueprint)
-
-    print(board.get_case_index("toping", "goal"))
-    print(board.grid[-1])
-
-if __name__ == "__main__":
-    main()
-"""
+    def game_over(self):
+        # check if the hero has won the game
+        end = self.get_case("landing", "goal")
+        return end.toping == constants.HERO_CHAR
