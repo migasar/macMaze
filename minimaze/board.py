@@ -57,7 +57,7 @@ class Board:
 
     def inside(self,step):
         # check if the position is still inside the boundaries of the board 
-        return (1, 1) <= (step.x, step.y) <= (self.width, self.height)
+        return 1 <= step.x <= self.width and 1 <= step.y <= self.height
 
 
     def pathfinder(self):

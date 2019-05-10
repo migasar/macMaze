@@ -5,7 +5,7 @@ from board import Board
 from person import Hero, Enemy
 from equipment import Ether, Needle, Tube
 from position import Position
-from view import View
+from view import View_text
 
 import settings as constants
 
@@ -15,7 +15,7 @@ class Game:
     def __init__(self):
 
         self.board = Board.load_blueprint(constants.blueprint)
-        # FIXME: randomize blueprint
+        # TODO: randomize blueprint
         #   - create a method to randomize the choice of the file used as a blueprint
         #   - it will be a way to generate different mazes
         #   - this method could also be in the class Board
@@ -27,7 +27,7 @@ class Game:
         self.needle = Needle(self.board)
         self.tube = Tube(self.board)
 
-        self.view = View(self.board)
+        self.view = View_text(self.board)
 
 
     def start(self):
@@ -51,6 +51,8 @@ class Game:
         # invit de commande
         self.view.display_invitation()
 
+        # FIXME: print(self.view.new_order)
+        #   - maybe, I should delete that line
         print(self.view.new_order)
         print("")
 
@@ -58,16 +60,20 @@ class Game:
             return self.view.display_goodbye()
 
         elif self.view.new_order == "s":
-            self.hero.move_up()
+            if self.hero.move_up() == False:
+                self.view.display_no_motion()
             return self.turn_solver()
         elif self.view.new_order == "x":
-            self.hero.move_down()
+            if self.hero.move_down() == False:
+                self.view.display_no_motion()
             return self.turn_solver()
         elif self.view.new_order == "w":
-            self.hero.move_left()
+            if self.hero.move_left() == False:
+                self.view.display_no_motion()
             return self.turn_solver()
         elif self.view.new_order == "c":
-            self.hero.move_right()
+            if self.hero.move_right() == False:
+                self.view.display_no_motion()
             return self.turn_solver()
 
         else:

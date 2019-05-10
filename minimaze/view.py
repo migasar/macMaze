@@ -6,7 +6,7 @@ from board import Board
 import settings as constants
 
 
-class View:
+class View_text:
 
     def __init__(self, board):
         self.board = board
@@ -58,6 +58,9 @@ class View:
     def display_failure_input(self):
         print("\t Désolé, votre commande n'est pas valide.")
 
+    def display_no_motion(self):
+        print("\t Mac Gyver ne peut pas aller par là.")
+
 
     def display_explanation(self):
         print("\t Dirigez MacGyver jusqu'à la sortie du labyrinthe")
@@ -74,3 +77,6 @@ class View:
 
 # TODO: Pygame GUI
 #   - create another class View based on pygame for a version with a GUI
+
+class View_GUI:
+    pass

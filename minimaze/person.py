@@ -40,17 +40,18 @@ class Hero(Person):
         # 4 moves (up, down, left, right), depending of the value of next_step
 
         back_step = Position(self.position.x, self.position.y)
+        motion = True
 
         # check that the new position is still inside the board
         if self.board.inside(next_step) == False:
-            print("Mac Gyver ne peut pas aller par là.")
+            motion = False
         
         else:
             blockade = self.board.get_coordinates("x", "y", next_step.x, next_step.y)
 
             # manage potential collision with other elements on the next case
             if self.check_path(blockade) is False:
-                print("Mac Gyver ne peut pas aller par là.")
+                motion = False
             
             else:
                 # clean the case of the previous position
@@ -59,7 +60,12 @@ class Hero(Person):
 
                 # change the position of the hero
                 self.position = next_step
-                return self.position
+                # FIXME: modifying position silently
+                #   - the new position of the hero comes as a side-effect,
+                #   - instead of returning directly the new position,
+                #   - it might confuse someone reading or modifying this code
+
+        return motion
 
     def move_up(self):
         return self.move(Position(self.position.x, self.position.y - 1))
@@ -78,24 +84,24 @@ class Hero(Person):
         # check the attributes of the case on the next position
         # initiate the methods in case of collisions
 
-        motion = False
+        pathway = False
 
         if case.free is True:
             # check that the new position is not a wall
             case.toping = constants.HERO_CHAR
-            motion = True
+            pathway = True
 
         elif case.landing == "start":
             # check if the hero came back to starting case
             case.toping = constants.HERO_CHAR
-            motion = True
+            pathway = True
 
         elif case.toping != "":
             # check if there is already something on the next position
             self.colliding(case)
-            motion = True
+            pathway = True
         
-        return motion
+        return pathway
  
 
     def colliding(self, case):
