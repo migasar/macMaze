@@ -1,4 +1,7 @@
-"""Manage the board of the game and the interactions between its cases and the other elements of the game"""
+"""
+Manage the board of the game 
+and the interactions between its cases and the other elements of the game
+"""
 
 
 from random import choice
