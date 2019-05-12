@@ -51,13 +51,6 @@ class Game:
         # invit de commande
         self.view.display_invitation()
 
-        """
-        # FIXME: print(self.view.new_order)
-        #   - maybe, I should delete that line
-        print(self.view.new_order)
-        print("")
-        """
-
         if self.view.new_order == "q":
             return self.view.display_goodbye()
 

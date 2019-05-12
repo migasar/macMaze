@@ -1,6 +1,11 @@
 """Manage the display of every elements of the game"""
 
 
+import pygame
+from pygame.locals import *
+from pygame import display
+from pygame import event
+
 from board import Board
 
 import settings as constants
@@ -86,4 +91,32 @@ class View_text:
 #   - create another class View based on pygame for a version with a GUI
 
 class View_GUI:
-    pass
+
+    def __init__(self, board):
+        self.board = board
+
+
+
+
+def main():
+
+    pygame.init()
+
+    #Ouverture de la fenêtre Pygame
+    window = pygame.display.set_mode((800, 600),  RESIZABLE) #FULLSCREEN
+
+    #Chargement et collage du fond
+    #background = pygame.image.load("background.jpg").convert()
+    #window.blit(fond, (0,0))
+
+    #Rafraîchissement de l'écran
+    pygame.display.flip()
+
+    #BOUCLE INFINIE
+    running = True
+    while running:
+        continue
+        #running = int(input())
+
+if __name__ == "__main__":
+    main()
