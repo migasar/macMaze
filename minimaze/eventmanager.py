@@ -1,42 +1,28 @@
-"""Manage the flow of the game"""
+"""An event manager in charge of the interactions between the components of the MVC model"""
 
+
+import pygame
+from pygame.locals import *
+#from pygame import display
+#from pygame import event
 
 from board import Board
-from person import Hero, Enemy
-from equipment import Ether, Needle, Tube
-from position import Position
+from person import Hero
 from view import TextView
-from eventmanager import TextEvent
 
 import settings as constants
 
 
-class Game:
 
-    def __init__(self):
+class TextEvent:
 
-        self.board = Board.load_blueprint(constants.blueprint)
-        # TODO: randomize blueprint
-            #   - create a method to randomize the choice of the file used as a blueprint
-            #   - it will be a way to generate different mazes
-            #   - this method could also be in the class Board
-
-        self.hero = Hero(self.board)
-        self.enemy = Enemy(self.board)
-        
-        self.ether = Ether(self.board)
-        self.needle = Needle(self.board)
-        self.tube = Tube(self.board)
-
-        self.view = TextView(self.board)
-        self.event = TextEvent(self.board, self.hero, self.view)
-
+    def __init__(self, board, hero, view):
+        self.board = board
+        self.hero = hero
+        self.view = view
+    
 
     def starter(self):
-        self.event.starter()
-
-    """
-    def start(self):
         self.view.display_title()
         self.view.display_board()
         self.view.display_explanation()
@@ -90,17 +76,8 @@ class Game:
                 return self.view.display_defeat()
         else:
             return self.new_turn()
-    """
-
-def main():
-
-    game = Game()
-    #game.start()
-
-    game.starter()
-
-    #print(game.board.grid[-1].y)
 
 
-if __name__ == "__main__":
-    main()
+
+class GraphicEvent:
+    pass

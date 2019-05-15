@@ -5,5 +5,5 @@
 #   - create a class Event to treat keyboard input from the gamer
 #   - it could be based on pygame
 
-class event:
+class Control:
     pass
