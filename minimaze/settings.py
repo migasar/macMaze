@@ -29,18 +29,18 @@ slogan_fenetre = 'Sauvez MacGyver, Sauvez mon projet'
 
 
 # listing of ressources for the game
-image_path = 'images/tile_path_resized40.png'
-image_wall = 'images/tile_wall_resized40.png'
-image_way = 'images/tile_point_resized40.png'
+image_path = 'resources/images/tile_path_resized40.png'
+image_wall = 'resources/images/tile_wall_resized40.png'
+image_way = 'resources/images/tile_point_resized40.png'
 
-image_hero = 'images/perso_hero_resized40.png'
-image_guardian = 'images/perso_enemy_resized40.png'
+image_hero = 'resources/images/perso_hero_resized40.png'
+image_guardian = 'resources/images/perso_enemy_resized40.png'
 
-image_ether = 'images/item_ether_resized40.png'
-image_needle = 'images/item_needle_resized40.png'
-image_tube = 'images/item_tube_resized40.png'
+image_ether = 'resources/images/item_ether_resized40.png'
+image_needle = 'resources/images/item_needle_resized40.png'
+image_tube = 'resources/images/item_tube_resized40.png'
 
-image_syringe = 'images/item_syringe_resized40.png'
+image_syringe = 'resources/images/item_syringe_resized40.png'
 
 
 blueprint = '{}/board_01.txt'.format(

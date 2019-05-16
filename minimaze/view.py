@@ -1,11 +1,6 @@
 """Manage the display of every elements of the game"""
 
 
-import pygame
-from pygame.locals import *
-#from pygame import display
-#from pygame import event
-
 from board import Board
 
 import settings as constants
@@ -86,56 +81,4 @@ class TextView:
         self.new_order = input("Qu'allez vous faire ?  ")
         return self.new_order
 
-
-'''
-# TODO: Pygame GUI
-#   - create another class View based on pygame for a version with a GUI
-
-class GraphicView:
-
-    def __init__(self, board):
-        self.board = board
-
-
-
-
-def main():
-
-    pygame.init()
-
-    #Ouverture de la fenêtre Pygame
-    screen = pygame.display.set_mode((800, 600),  RESIZABLE) #FULLSCREEN
-
-    #Chargement et collage du fond
-    #background = pygame.image.load("background.jpg").convert()
-    #screen.blit(fond, (0,0))
-
-    #Rafraîchissement de l'écran
-    pygame.display.flip()
-
-
-    #INFINTE LOOP
-    # Variable to keep our main loop running
-    running = True
-
-
-    # Our main loop!
-    while running:
-        # for loop through the event queue
-        for event in pygame.event.get():
-            # Check for KEYDOWN event; KEYDOWN is a constant defined in pygame.locals, which we imported earlier
-            if event.type == KEYDOWN:
-                # If the Esc key has been pressed set running to false to exit the main loop
-                if event.key == K_ESCAPE:
-                    running = False
-            # Check for QUIT event; if QUIT, set running to false
-            elif event.type == QUIT:
-                running = False
-
-pygame.event.get()
-
-
-if __name__ == "__main__":
-    main()
-'''
 

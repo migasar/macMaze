@@ -35,6 +35,8 @@ class Game:
     def starter(self):
         self.event.starter()
 
+
+    # FIXME: replace main loop in game file by an event manager
     """
     def start(self):
         self.view.display_title()
