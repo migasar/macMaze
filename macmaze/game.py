@@ -1,15 +1,14 @@
 """Manage the flow of the game"""
 
 
-from board import Board
-from person import Hero, Enemy
-from equipment import Ether, Needle, Tube
-from position import Position
-from view import TextView
+from models.board import Board
+from models.person import Hero, Enemy
+from models.equipment import Ether, Needle, Tube
+from models.position import Position
+from views.textview import TextView
 from event import TextEvent
 
-import settings as constants
-
+from config import settings as constants
 
 
 class Game:
@@ -35,9 +34,6 @@ class Game:
 
     def starter(self):
         self.event.starter()
-
-
-
 
 
     # FIXME: replace main loop in game file by an event manager
@@ -112,5 +108,3 @@ def main():
 if __name__ == "__main__":
     main()
 """
-
-print(constants.blueprint)
