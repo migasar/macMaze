@@ -8,7 +8,7 @@ from pygame.locals import *
 
 from models.board import Board
 from models.person import Hero
-from views.view import TextView
+from views.textview import TextView
 
 from config import settings as constants
 
