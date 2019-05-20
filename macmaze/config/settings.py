@@ -20,7 +20,11 @@ HERO_CHAR = '@'
 # parameters of the window
 tile_number = 15
 tile_size = 40
-screen_width = tile_number * tile_size
+
+screen_width = tile_number * tile_size 
+play_turf_height = tile_number * tile_size
+bottom_turf_height = 2 * tile_size
+screen_height = play_turf_height + bottom_turf_height
 
 
 # customization of the window
