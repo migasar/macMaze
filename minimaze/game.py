@@ -6,10 +6,8 @@ from person import Hero, Enemy
 from equipment import Ether, Needle, Tube
 from position import Position
 from view import TextView
-from event import TextEvent
 
 import settings as constants
-
 
 
 class Game:
@@ -30,18 +28,8 @@ class Game:
         self.tube = Tube(self.board)
 
         self.view = TextView(self.board)
-        self.event = TextEvent(self.board, self.hero, self.view)
 
 
-    def starter(self):
-        self.event.starter()
-
-
-
-
-
-    # FIXME: replace main loop in game file by an event manager
-    """
     def start(self):
         self.view.display_title()
         self.view.display_board()
@@ -96,21 +84,15 @@ class Game:
                 return self.view.display_defeat()
         else:
             return self.new_turn()
-    """
 
-"""
+
 def main():
 
     game = Game()
-    #game.start()
-
-    game.starter()
-
-    #print(game.board.grid[-1].y)
+    game.start()
 
 
 if __name__ == "__main__":
     main()
-"""
 
-print(constants.blueprint)
+
