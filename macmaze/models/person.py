@@ -14,7 +14,6 @@ class Person:
         self.position = None
         self.homing(self.aim, self.char)
 
-
     def homing(self, aim, char):
         # initialize the starting position of the person
         home = self.board.get_case("landing", aim)
@@ -30,15 +29,16 @@ class Hero(Person):
 
     # a list containing the items collected by the hero
     toolbox = []
-
     # a boolean inidcating if the hero has reached the end of the maze
     terminus = False
 
 
+    ## methods for every move of the hero on the board
+    ## 4 moves (up, down, left, right), depending of the value of next_step
+    ######
     def move(self, next_step):
-        # root method to initiate every move of the hero on the board
-        # 4 moves (up, down, left, right), depending of the value of next_step
-
+        # method to initiate every move of the hero 
+        
         back_step = Position(self.position.x, self.position.y)
         motion = True
 
@@ -60,10 +60,10 @@ class Hero(Person):
 
                 # change the position of the hero
                 self.position = next_step
-                # FIXME: modifying position silently
-                #   - the new position of the hero comes as a side-effect,
-                #   - instead of returning directly the new position,
-                #   - it might confuse someone reading or modifying this code
+                # FIXME: this modify the position silently
+                    # - the new position of the hero comes as a side-effect,
+                    # - instead of returning directly the new position,
+                    # - it might confuse someone reading or modifying this code
 
         return motion
 
@@ -78,8 +78,12 @@ class Hero(Person):
 
     def move_right(self):
         return self.move(Position(self.position.x + 1, self.position.y))
+    ######
 
-    
+
+    ## methods to solve the collisions
+    ## between the hero and of other elements standing on a case 
+    ######
     def check_path(self, case):
         # check the attributes of the case on the next position
         # initiate the methods in case of collisions
@@ -103,7 +107,6 @@ class Hero(Person):
         
         return pathway
  
-
     def colliding(self, case):
         # determine the type of collision and the method to solve it
 
@@ -138,6 +141,7 @@ class Hero(Person):
                 # LOSE --> phantom walk
                 # FIXME: phantom walk defeat
                 #   - I should find a way to clarify how the game understand that the hero has lost in front of the guardian
+    ######
 
 
 class Enemy(Person):

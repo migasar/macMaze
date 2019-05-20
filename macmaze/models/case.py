@@ -17,5 +17,5 @@ class Case:
 
     @property
     def free(self):
-        #check if the case is empty
+        # check if the case is empty
         return self.walk == True and self.toping == "" and self.landing == ""

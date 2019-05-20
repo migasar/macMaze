@@ -17,7 +17,6 @@ class Board:
     def __init__(self, grid):
         self.grid = grid
 
-
     @classmethod
     def load_blueprint(cls, filename):
         grid = []
@@ -50,6 +49,8 @@ class Board:
         return cls(grid)
 
 
+    ## methods related to the size of the board
+    ######
     @property
     def width(self):
         return self.grid[-1].x
@@ -61,8 +62,11 @@ class Board:
     def inside(self,step):
         # check if the position is still inside the boundaries of the board 
         return 1 <= step.x <= self.width and 1 <= step.y <= self.height
+    ######
 
 
+    ## methods to get to a specific case of the board
+    ######
     def pathfinder(self):
         # return a list with every empty cases of the board
         pathway = []
@@ -78,27 +82,24 @@ class Board:
         free_path = self.grid[path_index]
         return free_path
 
-
     def get_case(self, att, val):
         # return a case with a specific attribute
-        for i, block in enumerate(self.grid):
+        for block in self.grid:
             if getattr(block, att) == val:
-                return block
-
-    def get_case_index(self, att, val):
-        # return the index of a case with a specific attribute
-        for i, block in enumerate(self.grid):
-            if getattr(block, att) == val:
-                return i
-
+                return block 
+    
     def get_coordinates(self, attx, atty, valx, valy):
         # return a case matching a specific position
-        for i, block in enumerate(self.grid):
+        for block in self.grid:
             if getattr(block, attx) == valx and getattr(block, atty) == valy:
                 return block
-   
+    ######
 
+
+    ## method to know how the game ends
+    ######
     def game_over(self):
         # check if the hero has won the game
         end = self.get_case("landing", "goal")
         return end.toping == constants.HERO_CHAR
+    ######

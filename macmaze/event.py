@@ -1,4 +1,7 @@
-"""An event manager in charge of the interactions between the components of the MVC model"""
+"""
+An event manager in charge of the interactions 
+between the components of the MVC model
+"""
 
 
 import pygame
@@ -13,7 +16,6 @@ from views.textview import TextView
 from config import settings as constants
 
 
-
 class TextEvent:
 
     def __init__(self, board, hero, view):
@@ -21,7 +23,6 @@ class TextEvent:
         self.hero = hero
         self.view = view
     
-
     def starter(self):
         self.view.display_title()
         self.view.display_board()
@@ -76,7 +77,6 @@ class TextEvent:
                 return self.view.display_defeat()
         else:
             return self.new_turn()
-
 
 
 class GraphicEvent:
