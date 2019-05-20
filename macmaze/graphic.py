@@ -31,14 +31,12 @@ def main():
     pygame.init()
 
     #Ouverture de la fenêtre Pygame
-    screen = pygame.display.set_mode((600, 800)) 
+    screen = pygame.display.set_mode((600, 680)) 
 
     play_turf = pygame.Surface((600, 600))
 
-    head_turf = pygame.Surface((600, 100))
-    head_turf.fill((200, 200, 200))
-    tail_turf = pygame.Surface((600, 100))
-    tail_turf.fill((200, 200, 200))
+    tail_turf = pygame.Surface((600, 80))
+    tail_turf.fill((225, 225, 225))
 
     #Chargement et collage du fond
     #background = pygame.image.load("background.jpg").convert()
@@ -72,9 +70,8 @@ def main():
     # syringe_rect = syringe.get_rect()
 
 
-    screen.blit(head_turf, (0, 0))
-    screen.blit(play_turf, (0, 100))
-    screen.blit(tail_turf, (0, 700))
+    screen.blit(play_turf, (0, 0))
+    screen.blit(tail_turf, (0, 600))
 
     """
     play_turf.blit(path, (40, 40))
@@ -91,19 +88,19 @@ def main():
     play_turf.blit(syringe, (80, 280))
     """
 
-    screen.blit(path, (40, 100))
-    screen.blit(wall, (0, 140))
-    screen.blit(way, (0, 100))
+    screen.blit(path, (40, 0))
+    screen.blit(wall, (0, 40))
+    screen.blit(way, (0, 0))
 
-    screen.blit(hero, (40, 220))
-    screen.blit(hero, (0, 100))
-    screen.blit(guardian, (120, 220))
+    screen.blit(hero, (40, 120))
+    screen.blit(hero, (0, 0))
+    screen.blit(guardian, (120, 120))
 
-    screen.blit(ether, (40, 300))
-    screen.blit(needle, (80, 300))
-    screen.blit(tube, (120, 300))
+    screen.blit(ether, (40, 200))
+    screen.blit(needle, (80, 200))
+    screen.blit(tube, (120, 200))
 
-    screen.blit(syringe, (80, 380))
+    screen.blit(syringe, (80, 280))
 
     #Rafraîchissement de l'écran
     pygame.display.flip()

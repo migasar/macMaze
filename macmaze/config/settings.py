@@ -18,14 +18,14 @@ HERO_CHAR = '@'
 
 
 # parameters of the window
-nombre_sprite_cote = 15
-taille_sprite = 40
-cote_fenetre = nombre_sprite_cote * taille_sprite
+tile_number = 15
+tile_size = 40
+screen_width = tile_number * tile_size
 
 
 # customization of the window
-titre_fenetre = 'Mac Maze'
-slogan_fenetre = 'Sauvez MacGyver, Sauvez mon projet'
+game_title = 'Mac Maze'
+game_bid = 'Sauvez MacGyver, Sauvez mon projet'
 
 
 # listing of ressources for the game

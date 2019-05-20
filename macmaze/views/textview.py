@@ -29,8 +29,8 @@ class TextView:
         print("")
         print("\t**********************************************")
         print(
-            "\t  " + constants.titre_fenetre 
-            + " - " + constants.slogan_fenetre
+            "\t  " + constants.game_title 
+            + " - " + constants.game_bid
             )
         print("\t**********************************************")
 
