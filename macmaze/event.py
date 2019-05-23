@@ -11,12 +11,12 @@ from pygame.locals import *
 
 from models.board import Board
 from models.person import Hero
-from views.textview import TextView
+from views.cli_view import CLIview
 
 from config import settings as constants
 
 
-class TextEvent:
+class CLIevent:
 
     def __init__(self, board, hero, view):
         self.board = board
@@ -79,5 +79,5 @@ class TextEvent:
             return self.new_turn()
 
 
-class GraphicEvent:
+class GUIevent:
     pass

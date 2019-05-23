@@ -6,7 +6,7 @@ from models.board import Board
 from config import settings as constants
 
 
-class TextView:
+class CLIview:
 
     def __init__(self, board):
         self.board = board

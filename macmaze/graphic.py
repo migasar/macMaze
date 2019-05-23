@@ -19,7 +19,7 @@ from config import settings as constants
 #   - create another class View based on pygame for a version with a GUI
 
 
-class GraphicView:
+class GUIview:
 
     def __init__(self, board):
         self.board = board

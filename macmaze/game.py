@@ -6,8 +6,8 @@ from models.person import Hero, Enemy
 from models.equipment import Ether, Needle, Tube
 from models.position import Position
 
-from views.textview import TextView
-from event import TextEvent
+from views.cli_view import CLIview
+from event import CLIevent
 
 from config import settings as constants
 
@@ -29,8 +29,8 @@ class Game:
         self.needle = Needle(self.board)
         self.tube = Tube(self.board)
 
-        self.view = TextView(self.board)
-        self.event = TextEvent(self.board, self.hero, self.view)
+        self.view = CLIview(self.board)
+        self.event = CLIevent(self.board, self.hero, self.view)
 
     def starter(self):
         self.event.starter()
