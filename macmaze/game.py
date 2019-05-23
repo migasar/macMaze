@@ -29,17 +29,18 @@ class Game:
         self.needle = Needle(self.board)
         self.tube = Tube(self.board)
 
+
         self.view = CLIview(self.board)
         self.event = CLIevent(self.board, self.hero, self.view)
 
-    def starter(self):
+    def start(self):
         self.event.starter()
 
 
 def main():
 
     game = Game()
-    game.starter()
+    game.start()
     
 
 if __name__ == "__main__":
