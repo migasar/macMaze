@@ -18,7 +18,7 @@ class Equipment:
         # initialize the position of the equipment on the grid
         cluster = self.board.random_path()
         cluster.toping = char
-        self.position = Position(cluster.x, cluster.y)
+        self.position = Position(cluster.x_case, cluster.y_case)
         return self.position
 
 

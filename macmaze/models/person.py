@@ -18,7 +18,7 @@ class Person:
         # initialize the starting position of the person
         home = self.board.get_case("landing", aim)
         home.toping = char
-        self.position = Position(home.x, home.y)
+        self.position = Position(home.x_case, home.y_case)
         return self.position
 
 
@@ -39,7 +39,7 @@ class Hero(Person):
     def move(self, next_step):
         # method to initiate every move of the hero 
         
-        back_step = Position(self.position.x, self.position.y)
+        back_step = Position(self.position.x_pos, self.position.y_pos)
         motion = True
 
         # check that the new position is still inside the board
@@ -47,7 +47,7 @@ class Hero(Person):
             motion = False
         
         else:
-            blockade = self.board.get_coordinates("x", "y", next_step.x, next_step.y)
+            blockade = self.board.get_coordinates("x_case", "y_case", next_step.x_pos, next_step.y_pos)
 
             # manage potential collision with other elements on the next case
             if self.check_path(blockade) is False:
@@ -55,7 +55,7 @@ class Hero(Person):
             
             else:
                 # clean the case of the previous position
-                back = self.board.get_coordinates("x", "y", back_step.x, back_step.y)
+                back = self.board.get_coordinates("x_case", "y_case", back_step.x_pos, back_step.y_pos)
                 back.toping = ""
 
                 # change the position of the hero
@@ -68,16 +68,16 @@ class Hero(Person):
         return motion
 
     def move_up(self):
-        return self.move(Position(self.position.x, self.position.y - 1))
+        return self.move(Position(self.position.x_pos, self.position.y_pos - 1))
 
     def move_down(self):
-        return self.move(Position(self.position.x, self.position.y + 1))
+        return self.move(Position(self.position.x_pos, self.position.y_pos + 1))
 
     def move_left(self):
-        return self.move(Position(self.position.x - 1, self.position.y))
+        return self.move(Position(self.position.x_pos - 1, self.position.y_pos))
 
     def move_right(self):
-        return self.move(Position(self.position.x + 1, self.position.y))
+        return self.move(Position(self.position.x_pos + 1, self.position.y_pos))
     ######
 
 

@@ -3,4 +3,4 @@
 
 from collections import namedtuple
 
-Position = namedtuple('Position', ['x', 'y'])
+Position = namedtuple('Position', ['x_pos', 'y_pos'])

@@ -7,8 +7,8 @@ from dataclasses import dataclass
 @dataclass(order=True)
 class Case:
 
-    x: int
-    y: int
+    x_case: int
+    y_case: int
 
     walk: bool
     toping: str = ""

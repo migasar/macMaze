@@ -14,16 +14,37 @@ class CLIview:
 
     def display_board(self):
         print("")
+        display_grid = []
+
+        for y, line in enumerate(self.board.grid):
+
+            display_line = ""
+            for block in self.board.grid[y]:
+                if block.toping:
+                    display_line += block.toping
+                else:
+                    display_line += block.visual
+            display_grid.append(display_line)
+        
+        for line in display_grid:
+            print(line)
+
+    # FIXME
+    """
+    def display_board(self):
+        print("")
         visual_line = ""
-        for block in self.board.grid:
-            if block.toping:
-                visual_line += block.toping
-            else:
-                visual_line += block.visual
+
+        for y, line in self.board.grid:
+            for block in self.board.grid[y]:
+                if block.toping:
+                    visual_line += block.toping
+                else:
+                    visual_line += block.visual
         visual_grid = [visual_line[i:i+15] for i in range(0, 225, 15)]
         for line in visual_grid:
             print(line)
-
+    """
 
     def display_title(self):
         print("")
