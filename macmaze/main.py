@@ -5,7 +5,7 @@ from game import Game
 def main():
 
     game = Game()
-    game.starter()
+    game.start()
 
 if __name__ == "__main__":
     main()

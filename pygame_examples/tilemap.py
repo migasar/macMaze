@@ -292,6 +292,8 @@ class Level(object):
         return self.get_bool(x, y, 'block')
 
 
+
+
 class Game(object):
     """The main game object."""
 
