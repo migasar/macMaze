@@ -46,27 +46,27 @@ def main():
     square = pygame.Surface((40, 40))
 
 
-    path = pygame.image.load(constants.image_path).convert()
+    path = pygame.image.load(constants.PATH_IMAGE).convert()
     # path_rect = path.get_rect()
-    wall = pygame.image.load(constants.image_wall).convert()
+    wall = pygame.image.load(constants.WALL_IMAGE).convert()
     # wall_rect = wall.get_rect()
-    way = pygame.image.load(constants.image_way).convert()
+    way = pygame.image.load(constants.GATE_IMAGE).convert()
     # way_rect = way.get_rect()
 
 
-    hero = pygame.image.load(constants.image_hero).convert()
+    hero = pygame.image.load(constants.HERO_IMAGE).convert()
     # hero_rect = hero.get_rect()
-    guardian = pygame.image.load(constants.image_guardian).convert()
+    guardian = pygame.image.load(constants.ENEMY_IMAGE).convert()
     # guardian_rect = guardian.get_rect()
 
-    ether = pygame.image.load(constants.image_ether).convert()
+    ether = pygame.image.load(constants.ETHER_IMAGE).convert()
     # ether_rect = ether.get_rect()
-    needle = pygame.image.load(constants.image_needle).convert()
+    needle = pygame.image.load(constants.NEEDLE_IMAGE).convert()
     # needle_rect = needle.get_rect()
-    tube = pygame.image.load(constants.image_tube).convert_alpha() 
+    tube = pygame.image.load(constants.TUBE_IMAGE).convert_alpha() 
     # tube_rect = tube.get_rect()
 
-    syringe = pygame.image.load(constants.image_syringe).convert_alpha() 
+    syringe = pygame.image.load(constants.SYRINGE_IMAGE).convert_alpha() 
     # syringe_rect = syringe.get_rect()
 
 

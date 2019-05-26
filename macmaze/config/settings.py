@@ -18,36 +18,63 @@ HERO_CHAR = '@'
 
 
 # parameters of the window
-tile_number = 15
-tile_size = 40
+TILE_NUMBER = 15
+TILE_SIZE = 40
 
-screen_width = tile_number * tile_size 
-play_turf_height = tile_number * tile_size
-bottom_turf_height = 2 * tile_size
-screen_height = play_turf_height + bottom_turf_height
+SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE 
+PLAYTURF_HEIGHT = TILE_NUMBER * TILE_SIZE
+TAILTURF_HEIGHT = 2 * TILE_SIZE
+SCREEN_HEIGHT = PLAYTURF_HEIGHT + TAILTURF_HEIGHT
 
 
 # customization of the window
-game_title = 'Mac Maze'
-game_bid = 'Sauvez MacGyver, Sauvez mon projet'
+GAME_TITLE = 'Mac Maze'
+GAME_BID = 'Sauvez MacGyver, Sauvez mon projet'
 
 
 # listing of ressources for the game
-image_path = 'resources/images/tile_path_resized40.png'
-image_wall = 'resources/images/tile_wall_resized40.png'
-image_way = 'resources/images/tile_point_resized40.png'
+PATH_IMAGE = 'resources/images/tile_path_resized40.png'
+WALL_IMAGE = 'resources/images/tile_wall_resized40.png'
+GATE_IMAGE = 'resources/images/tile_point_resized40.png'
 
-image_hero = 'resources/images/perso_hero_resized40.png'
-image_guardian = 'resources/images/perso_enemy_resized40.png'
+HERO_IMAGE = 'resources/images/perso_hero_resized40.png'
+ENEMY_IMAGE = 'resources/images/perso_enemy_resized40.png'
 
-image_ether = 'resources/images/item_ether_resized40.png'
-image_needle = 'resources/images/item_needle_resized40.png'
-image_tube = 'resources/images/item_tube_resized40.png'
+ETHER_IMAGE = 'resources/images/item_ether_resized40.png'
+NEEDLE_IMAGE = 'resources/images/item_needle_resized40.png'
+TUBE_IMAGE = 'resources/images/item_tube_resized40.png'
 
-image_syringe = 'resources/images/item_syringe_resized40.png'
+SYRINGE_IMAGE = 'resources/images/item_syringe_resized40.png'
 
+# dictionnary of images of the game
+IMAGESDICT = {
+    'path_image': 'resources/images/tile_path_resized40.png',
+    'wall_image': 'resources/images/tile_wall_resized40.png',
+    'gate_image': 'resources/images/tile_point_resized40.png',
+    'hero_image': 'resources/images/perso_hero_resized40.png',
+    'enemy_image': 'resources/images/perso_enemy_resized40.png',
+    'ether_image': 'resources/images/item_ether_resized40.png',
+    'needle_image': 'resources/images/item_needle_resized40.png',
+    'tube_image': 'resources/images/item_tube_resized40.png',
+    'syringe_image': 'resources/images/item_syringe_resized40.png'
+}
 
-blueprint = '{}/board_01.txt'.format(
+TILEMAPPING = {
+    'S': IMAGESDICT['gate_image'],
+    'G': IMAGESDICT['gate_image'],
+    '#': IMAGESDICT['wall_image'],
+    '.': IMAGESDICT['gate_image']
+}
+
+ITEMSMAPPING = {
+    '@': IMAGESDICT['hero_image'],
+    'X': IMAGESDICT['enemy_image'],
+    '1': IMAGESDICT['ether_image'],
+    '2': IMAGESDICT['needle_image'],
+    '3': IMAGESDICT['tube_image']
+}
+
+BLUEPRINT = '{}/board_01.txt'.format(
     os.path.dirname(__file__)
     )
 # TODO: learn path 

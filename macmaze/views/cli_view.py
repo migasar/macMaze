@@ -35,8 +35,8 @@ class CLIview:
         print("")
         print("\t**********************************************")
         print(
-            "\t  " + constants.game_title 
-            + " - " + constants.game_bid
+            "\t  " + constants.GAME_TITLE 
+            + " - " + constants.GAME_BID
             )
         print("\t**********************************************")
 

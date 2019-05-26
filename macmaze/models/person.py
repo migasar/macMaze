@@ -16,7 +16,7 @@ class Person:
 
     def homing(self, aim, char):
         # initialize the starting position of the person
-        home = self.board.get_case("landing", aim)
+        home = self.board.get_case('landing', aim)
         home.toping = char
         self.position = Position(home.x_case, home.y_case)
         return self.position
@@ -24,7 +24,7 @@ class Person:
 
 class Hero(Person):
 
-    aim = "start"
+    aim = 'start'
     char = constants.HERO_CHAR
 
     # a list containing the items collected by the hero
@@ -48,7 +48,7 @@ class Hero(Person):
         
         else:
             blockade = self.board.get_coordinates(
-                "x_case", "y_case", next_step.x_pos, next_step.y_pos
+                'x_case', 'y_case', next_step.x_pos, next_step.y_pos
                 )
 
             # manage potential collision with other elements on the next case
@@ -57,8 +57,8 @@ class Hero(Person):
             
             else:
                 # clean the case of the previous position
-                back = self.board.get_coordinates("x_case", "y_case", back_step.x_pos, back_step.y_pos)
-                back.toping = ""
+                back = self.board.get_coordinates('x_case', 'y_case', back_step.x_pos, back_step.y_pos)
+                back.toping = ''
 
                 # change the position of the hero
                 self.position = next_step
@@ -97,12 +97,12 @@ class Hero(Person):
             case.toping = constants.HERO_CHAR
             pathway = True
 
-        elif case.landing == "start":
+        elif case.landing == 'start':
             # check if the hero came back to starting case
             case.toping = constants.HERO_CHAR
             pathway = True
 
-        elif case.toping != "":
+        elif case.toping != '':
             # check if there is already something on the next position
             self.colliding(case)
             pathway = True
@@ -148,5 +148,5 @@ class Hero(Person):
 
 class Enemy(Person):
 
-    aim = "goal"
+    aim = 'goal'
     char = constants.ENEMY_CHAR

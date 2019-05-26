@@ -22,20 +22,18 @@ class Board:
         grid = []
 
         with open(filename) as infile:
-
             content = [
                 line.strip() for line in infile.readlines() if line.strip()
                 ]
 
             for y, line in enumerate(content):
                 grid.append([])
-
                 for x, col in enumerate(line):
-                    if col == "S":
-                        block = Case(x+1, y+1, walk=True, landing="start", visual=col)
-                    elif col == "G":
-                        block = Case(x+1, y+1, walk=True, landing="goal", visual=col)
-                    elif col == ".":
+                    if col == 'S':
+                        block = Case(x+1, y+1, walk=True, landing='start', visual=col)
+                    elif col == 'G':
+                        block = Case(x+1, y+1, walk=True, landing='goal', visual=col)
+                    elif col == '.':
                         block = Case(x+1, y+1, walk=True, visual=col)
                     else:
                         block = Case(x+1, y+1, walk=False, visual=col)
@@ -102,6 +100,6 @@ class Board:
     ######
     def game_over(self):
         # check if the hero has won the game
-        end = self.get_case("landing", "goal")
+        end = self.get_case('landing', 'goal')
         return end.toping == constants.HERO_CHAR
     ######
