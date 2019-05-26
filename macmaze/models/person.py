@@ -47,7 +47,9 @@ class Hero(Person):
             motion = False
         
         else:
-            blockade = self.board.get_coordinates("x_case", "y_case", next_step.x_pos, next_step.y_pos)
+            blockade = self.board.get_coordinates(
+                "x_case", "y_case", next_step.x_pos, next_step.y_pos
+                )
 
             # manage potential collision with other elements on the next case
             if self.check_path(blockade) is False:

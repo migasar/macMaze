@@ -31,7 +31,6 @@ class Board:
                 grid.append([])
 
                 for x, col in enumerate(line):
-
                     if col == "S":
                         block = Case(x+1, y+1, walk=True, landing="start", visual=col)
                     elif col == "G":
@@ -44,40 +43,6 @@ class Board:
                     grid[y].append(block)
 
         return cls(grid)
-
-    """
-    @classmethod
-    def load_blueprint(cls, filename):
-        grid = []
-
-        with open(filename, 'r') as infile:
-
-            content = [
-                line.strip() for line in infile.readlines() if line.strip()
-                ]
-
-            for y, line in enumerate(content):
-                for x, col in enumerate(line):
-                    if col == "S":
-                        grid.append(
-                            Case(x+1, y+1, walk=True, landing="start", visual=col)
-                            )
-                    elif col == "G":
-                        grid.append(
-                            Case(x+1, y+1, walk=True, landing="goal", visual=col)
-                            )
-                    elif col == ".":
-                        grid.append(
-                            Case(x+1, y+1, walk=True, visual=col)
-                            )
-                    else:
-                        grid.append(
-                            Case(x+1, y+1, walk=False, visual=col)
-                            )
-
-        return cls(grid)
-    """
-
 
 
     ## methods related to the size of the board
@@ -125,8 +90,11 @@ class Board:
         # return a case matching a specific position
         for y, line in enumerate(self.grid):
             for block in self.grid[y]:
-                if getattr(block, attx) == valx and getattr(block, atty) == valy:
-                    return block
+                if (
+                    getattr(block, attx) == valx 
+                    and getattr(block, atty) == valy
+                    ):
+                        return block
     ######
 
 
