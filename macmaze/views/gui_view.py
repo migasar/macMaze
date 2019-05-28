@@ -23,5 +23,14 @@ class GUIview:
 
     def __init__(self, board):
         self.board = board
+    
+    def display_board(self, screen):
 
+        for y, line in enumerate(self.board.grid):
 
+            for tile in self.board.grid[y]:
+                x = tile.x_case * constants.TILE_SIZE
+                y = tile.y_case * constants.TILE_SIZE
+
+                tile_image = constants.TILES_MAPPING[tile.visual]
+                screen.blit(tile_image, (x,y))
