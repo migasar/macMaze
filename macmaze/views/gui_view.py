@@ -34,5 +34,10 @@ class GUIview:
 
                 tile_image = constants.TILEMAPPING[tile.visual]
                 tile_surf = pygame.image.load(tile_image).convert()
-
                 screen.blit(tile_surf, (x,y))
+
+                if tile.toping:
+                    toping_image = constants.ITEMSMAPPING[tile.toping]
+                    toping_surf = pygame.image.load(toping_image).convert()
+                    screen.blit(toping_surf, (x, y))
+

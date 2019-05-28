@@ -115,20 +115,17 @@ class Hero(Person):
         if case.toping == constants.ENEMY_CHAR:
             self.showdown(case)
         else:
-            self.loading(case)
+            self.toolup(case)
 
-    def loading(self, case):
+    def toolup(self, case):
         # manage collision between the hero and the equipment
 
         if case.toping == constants.ITEM_1_CHAR:
-            # ether
-            self.toolbox.append(1)
+            self.toolbox.append(1)  # ether
         elif case.toping == constants.ITEM_2_CHAR:
-            # needle
-            self.toolbox.append(2)
+            self.toolbox.append(2)  # needle
         elif case.toping == constants.ITEM_3_CHAR:
-            # tube
-            self.toolbox.append(3)
+            self.toolbox.append(3)  # tube
 
         case.toping = constants.HERO_CHAR 
 
