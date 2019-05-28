@@ -32,5 +32,7 @@ class GUIview:
                 x = tile.x_case * constants.TILE_SIZE
                 y = tile.y_case * constants.TILE_SIZE
 
-                tile_image = constants.TILES_MAPPING[tile.visual]
-                screen.blit(tile_image, (x,y))
+                tile_image = constants.TILEMAPPING[tile.visual]
+                tile_surf = pygame.image.load(tile_image).convert()
+
+                screen.blit(tile_surf, (x,y))

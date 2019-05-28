@@ -32,8 +32,10 @@ class GUIview:
                 x = tile.x_case * constants.TILE_SIZE
                 y = tile.y_case * constants.TILE_SIZE
 
-                tile_image = constants.TILES_MAPPING[tile.visual]
-                screen.blit(tile_image, (x,y))
+                tile_image = constants.TILEMAPPING[tile.visual]
+                tile_surf = pygame.image.load(tile_image).convert()
+
+                screen.blit(tile_surf, (x,y))
 
 
 def main():
@@ -52,6 +54,7 @@ def main():
     #background = pygame.image.load("background.jpg").convert()
     #screen.blit(fond, (0,0))
 
+    
     # not used
     square = pygame.Surface((40, 40))
 
@@ -78,6 +81,8 @@ def main():
 
     syringe = pygame.image.load(constants.SYRINGE_IMAGE).convert_alpha() 
     # syringe_rect = syringe.get_rect()
+    
+
 
 
     screen.blit(play_turf, (0, 0))

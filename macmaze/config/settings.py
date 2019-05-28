@@ -46,6 +46,9 @@ TUBE_IMAGE = 'resources/images/item_tube_resized40.png'
 
 SYRINGE_IMAGE = 'resources/images/item_syringe_resized40.png'
 
+WESTWORLD_MAZE = 'resources/images/westworld_labyrinth_thin.png'
+
+
 # dictionnary of images of the game
 IMAGESDICT = {
     'path_image': 'resources/images/tile_path_resized40.png',
@@ -63,7 +66,7 @@ TILEMAPPING = {
     'S': IMAGESDICT['gate_image'],
     'G': IMAGESDICT['gate_image'],
     '#': IMAGESDICT['wall_image'],
-    '.': IMAGESDICT['gate_image']
+    '.': IMAGESDICT['path_image']
 }
 
 ITEMSMAPPING = {

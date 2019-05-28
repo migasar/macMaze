@@ -12,6 +12,11 @@ from event import CLIevent
 from config import settings as constants
 
 
+from views.gui_view import GUIview
+import pygame
+from pygame.locals import *
+
+
 class Game:
 
     def __init__(self):
@@ -29,9 +34,11 @@ class Game:
         self.needle = Needle(self.board)
         self.tube = Tube(self.board)
 
-
+        """
         self.view = CLIview(self.board)
         self.event = CLIevent(self.board, self.hero, self.view)
+        """
+        self.view = GUIview(self.board)
 
     def start(self):
         self.event.starter()
@@ -40,7 +47,50 @@ class Game:
 def main():
 
     game = Game()
-    game.start()
+    #game.start()
+
+
+    ######
+    ## PYGAME LOOP
+
+    pygame.init()
+
+    #Ouverture de la fenêtre Pygame
+    screen = pygame.display.set_mode((600, 640)) 
+
+    """
+    #Icone
+    icon = pygame.image.load(constants.WESTWORLD_MAZE)
+    pygame.display.set_icon(icon)
+    """
+    # FIXME: the image for the icon can't be loaded
+
+    #Titre
+    pygame.display.set_caption('MacMaze')
+
+
+    game.view.display_board(screen)
+
+    pygame.display.flip()
+
+
+    running = True
+    
+    # Our main loop!
+    while running:
+        # for loop through the event queue
+        for event in pygame.event.get():
+            # Check for KEYDOWN event; KEYDOWN is a constant defined in pygame.locals, which we imported earlier
+            if event.type == KEYDOWN:
+                # If the Esc key has been pressed set running to false to exit the main loop
+                if event.key == K_ESCAPE:
+                    running = False
+            # Check for QUIT event; if QUIT, set running to false
+            elif event.type == QUIT:
+                running = False
+    
+    ######
+    ######
     
 
 if __name__ == "__main__":

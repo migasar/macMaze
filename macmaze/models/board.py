@@ -28,15 +28,16 @@ class Board:
 
             for y, line in enumerate(content):
                 grid.append([])
+                
                 for x, col in enumerate(line):
                     if col == 'S':
-                        block = Case(x+1, y+1, walk=True, landing='start', visual=col)
+                        block = Case(x, y, walk=True, landing='start', visual=col)
                     elif col == 'G':
-                        block = Case(x+1, y+1, walk=True, landing='goal', visual=col)
+                        block = Case(x, y, walk=True, landing='goal', visual=col)
                     elif col == '.':
-                        block = Case(x+1, y+1, walk=True, visual=col)
+                        block = Case(x, y, walk=True, visual=col)
                     else:
-                        block = Case(x+1, y+1, walk=False, visual=col)
+                        block = Case(x, y, walk=False, visual=col)
 
                     grid[y].append(block)
 
@@ -55,7 +56,7 @@ class Board:
 
     def inside(self,step):
         # check if the position is still inside the boundaries of the board 
-        return 1 <= step.x_pos <= self.width and 1 <= step.y_pos <= self.height
+        return 0 <= step.x_pos <= self.width and 0 <= step.y_pos <= self.height
     ######
 
 
