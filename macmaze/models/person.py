@@ -16,9 +16,9 @@ class Person:
 
     def homing(self, aim, char):
         # initialize the starting position of the person
-        home = self.board.get_case('landing', aim)
+        home = self.board.get_square('landing', aim)
         home.toping = char
-        self.position = Position(home.x_case, home.y_case)
+        self.position = Position(home.x_square, home.y_square)
         return self.position
 
 
@@ -48,16 +48,16 @@ class Hero(Person):
         
         else:
             blockade = self.board.get_coordinates(
-                'x_case', 'y_case', next_step.x_pos, next_step.y_pos
+                'x_square', 'y_square', next_step.x_pos, next_step.y_pos
                 )
 
-            # manage potential collision with other elements on the next case
+            # manage potential collision with other elements on the next square
             if self.check_path(blockade) is False:
                 motion = False
             
             else:
-                # clean the case of the previous position
-                back = self.board.get_coordinates('x_case', 'y_case', back_step.x_pos, back_step.y_pos)
+                # clean the square of the previous position
+                back = self.board.get_coordinates('x_square', 'y_square', back_step.x_pos, back_step.y_pos)
                 back.toping = ''
 
                 # change the position of the hero
@@ -84,58 +84,58 @@ class Hero(Person):
 
 
     ## methods to solve the collisions
-    ## between the hero and of other elements standing on a case 
+    ## between the hero and of other elements standing on a square 
     ######
-    def check_path(self, case):
-        # check the attributes of the case on the next position
-        # initiate the methods in case of collisions
+    def check_path(self, square):
+        # check the attributes of the square on the next position
+        # initiate the methods in square of collisions
 
         pathway = False
 
-        if case.free is True:
+        if square.free is True:
             # check that the new position is not a wall
-            case.toping = constants.HERO_CHAR
+            square.toping = constants.HERO_CHAR
             pathway = True
 
-        elif case.landing == 'start':
-            # check if the hero came back to starting case
-            case.toping = constants.HERO_CHAR
+        elif square.landing == 'start':
+            # check if the hero came back to starting square
+            square.toping = constants.HERO_CHAR
             pathway = True
 
-        elif case.toping != '':
+        elif square.toping != '':
             # check if there is already something on the next position
-            self.colliding(case)
+            self.colliding(square)
             pathway = True
         
         return pathway
  
-    def colliding(self, case):
+    def colliding(self, square):
         # determine the type of collision and the method to solve it
 
-        if case.toping == constants.ENEMY_CHAR:
-            self.showdown(case)
+        if square.toping == constants.ENEMY_CHAR:
+            self.showdown(square)
         else:
-            self.toolup(case)
+            self.toolup(square)
 
-    def toolup(self, case):
+    def toolup(self, square):
         # manage collision between the hero and the equipment
 
-        if case.toping == constants.ITEM_1_CHAR:
+        if square.toping == constants.ITEM_1_CHAR:
             self.toolbox.append(1)  # ether
-        elif case.toping == constants.ITEM_2_CHAR:
+        elif square.toping == constants.ITEM_2_CHAR:
             self.toolbox.append(2)  # needle
-        elif case.toping == constants.ITEM_3_CHAR:
+        elif square.toping == constants.ITEM_3_CHAR:
             self.toolbox.append(3)  # tube
 
-        case.toping = constants.HERO_CHAR 
+        square.toping = constants.HERO_CHAR 
 
-    def showdown(self, case):
+    def showdown(self, square):
         # manage collision between the hero and the guardian
 
         self.terminus = True
         if len(self.toolbox) == 3:
             # WIN
-            case.toping = constants.HERO_CHAR
+            square.toping = constants.HERO_CHAR
             # else: 
                 # LOSE --> phantom walk
                 # FIXME: phantom walk defeat

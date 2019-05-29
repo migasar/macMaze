@@ -58,6 +58,9 @@ def main():
     #Ouverture de la fenêtre Pygame
     screen = pygame.display.set_mode((600, 640)) 
 
+    #Titre
+    pygame.display.set_caption('MacMaze')
+
     """
     #Icone
     icon = pygame.image.load(constants.WESTWORLD_MAZE)
@@ -65,19 +68,17 @@ def main():
     """
     # FIXME: the image for the icon can't be loaded
 
-    #Titre
-    pygame.display.set_caption('MacMaze')
 
-
-    game.view.display_board(screen)
-
+    game.view.draw_board(screen)
     pygame.display.flip()
 
 
+    ######
+    # MAIN LOOP
+
     running = True
-    
-    # Our main loop!
     while running:
+
         # for loop through the event queue
         for event in pygame.event.get():
             # Check for KEYDOWN event; KEYDOWN is a constant defined in pygame.locals, which we imported earlier

@@ -26,6 +26,7 @@ pygame.display.set_icon(icon)
 pygame.display.set_caption(titre_fenetre)
 
 
+
 #BOUCLE PRINCIPALE
 continuer = 1
 while continuer:	
@@ -39,6 +40,7 @@ while continuer:
 	#On remet ces variables à 1 à chaque tour de boucle
 	continuer_jeu = 1
 	continuer_accueil = 1
+
 
 	#BOUCLE D'ACCUEIL
 	while continuer_accueil:
@@ -66,8 +68,7 @@ while continuer:
 				elif event.key == K_F2:
 					continuer_accueil = 0
 					choix = 'n2'
-			
-		
+	
 
 	#on vérifie que le joueur a bien fait un choix de niveau
 	#pour ne pas charger s'il quitte
@@ -84,7 +85,7 @@ while continuer:
 		dk = Perso("images/dk_droite.png", "images/dk_gauche.png", 
 		"images/dk_haut.png", "images/dk_bas.png", niveau)
 
-				
+
 	#BOUCLE DE JEU
 	while continuer_jeu:
 	

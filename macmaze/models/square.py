@@ -1,14 +1,14 @@
-"""Manage the cases of the board and their content"""
+"""Manage the squares of the board and their content"""
 
 
 from dataclasses import dataclass
 
 
 @dataclass(order=True)
-class Case:
+class Square:
 
-    x_case: int
-    y_case: int
+    x_square: int
+    y_square: int
 
     walk: bool
     toping: str = ''
@@ -17,5 +17,5 @@ class Case:
 
     @property
     def free(self):
-        # check if the case is empty
+        # check if the square is empty
         return self.walk == True and self.toping == '' and self.landing == ''
