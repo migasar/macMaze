@@ -79,16 +79,36 @@ def main():
     running = True
     while running:
 
+		#Limitation de vitesse de la boucle
+        pygame.time.Clock().tick(30)
+
         # for loop through the event queue
         for event in pygame.event.get():
+
+            # Check for QUIT event; if QUIT, set running to false
+            if event.type == QUIT:
+                running = False
+
             # Check for KEYDOWN event; KEYDOWN is a constant defined in pygame.locals, which we imported earlier
-            if event.type == KEYDOWN:
+            
+            elif event.type == KEYDOWN:
+
                 # If the Esc key has been pressed set running to false to exit the main loop
                 if event.key == K_ESCAPE:
                     running = False
-            # Check for QUIT event; if QUIT, set running to false
-            elif event.type == QUIT:
-                running = False
+
+            	#Touches de déplacement de Donkey Kong
+                elif event.key == K_RIGHT:
+                    game.hero.move_right()
+                    print(game.hero.position)
+                elif event.key == K_LEFT:
+                    game.hero.move_left()
+                elif event.key == K_UP:
+                    game.hero.move_up()
+                elif event.key == K_DOWN:
+                    game.hero.move_down()	
+                # FIXME: hero changes of position internally,
+                #    but his image doesn't move on the screen
     
     ######
     ######
