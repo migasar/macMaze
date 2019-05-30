@@ -110,6 +110,9 @@ def main():
                 # FIXME: hero changes of position internally,
                 #    but his image doesn't move on the screen
     
+        game.view.draw_board(screen)
+        pygame.display.flip()
+
     ######
     ######
     
