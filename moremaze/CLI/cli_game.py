@@ -1,19 +1,18 @@
 """Manage the flow of the game"""
 
 
-from models.board import Board
-from models.person import Hero, Enemy
-from models.equipment import Ether, Needle, Tube
-from models.position import Position
+from CLI.board import Board
+from CLI.person import Hero, Enemy
+from CLI.equipment import Ether, Needle, Tube
+from CLI.position import Position
 
-from views.cli_view import CLIview
-from event import CLIevent
+from CLI.cli_view import CLIview
+from CLI.cli_event import CLIevent
 
-from config import settings as constants
+import config.constants as constants
 
 
-from views.gui_view import GUIview
-import pygame
+import pygame 
 from pygame.locals import *
 
 
@@ -51,11 +50,11 @@ def main():
 
 
     ######
-    ## PYGAME LOOP
+    ## pygame LOOP
 
     pygame.init()
 
-    #Ouverture de la fenêtre Pygame
+    #Ouverture de la fenêtre pygame
     screen = pygame.display.set_mode((600, 640)) 
 
     #Titre
@@ -100,6 +99,7 @@ def main():
             	#Touches de déplacement de Donkey Kong
                 elif event.key == K_RIGHT:
                     game.hero.move_right()
+                    print(game.hero.position)
                 elif event.key == K_LEFT:
                     game.hero.move_left()
                 elif event.key == K_UP:
