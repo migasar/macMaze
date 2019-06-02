@@ -3,11 +3,12 @@
 Launch the game and set its interface (CLI or GUI)
 """
 
-from GUI.gui_controller import Game as gui_game
-from CLI.cli_controller import Game as cli_game
+from controllers.gui_controller import Game as gui_game
+from controllers.cli_controller import Game as cli_game
 
 
 def game_factory(graphic = True):
+    """Set the type of interface of the game"""
 
     if graphic == True:
         factory = gui_game
@@ -19,7 +20,9 @@ def game_factory(graphic = True):
 
 
 def main():
-    game_factory(True)
+    """Launch the game"""
+    
+    game_factory(graphic = False)
 
 
 if __name__ == "__main__":

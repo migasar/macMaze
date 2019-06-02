@@ -18,7 +18,7 @@ from models.person import Hero, Guard
 from models.equipment import Ether, Needle, Tube
 from models.position import Position
 
-from GUI.gui_view import GUIview
+from views.gui_view import GUIview
 
 import config.constants as constants
 

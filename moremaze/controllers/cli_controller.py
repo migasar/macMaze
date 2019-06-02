@@ -1,29 +1,26 @@
-"""
-An event manager in charge of the interactions 
-between the components of the MVC model
-"""
+"""Manage the commands of the gamer"""
 
-# FIXME: not sure that pygame is needed
-import pygame 
-from pygame.locals import *
-#from pygame import display
-#from pygame import event
 
 from models.board import Board
-from models.person import Hero
-from CLI.cli_view import CLIview
+from models.person import Hero, Guard
+
+from models.equipment import Ether, Needle, Tube
+from models.position import Position
+
+from views.cli_view import CLIview
 
 import config.constants as constants
 
 
-class CLIevent:
+class CLIcontroller:
 
     def __init__(self, board, hero, view):
         self.board = board
         self.hero = hero
         self.view = view
     
-    def starter(self):
+    
+    def start(self):
         self.view.display_title()
         self.view.display_board()
         self.view.display_explanation()
@@ -78,3 +75,30 @@ class CLIevent:
         else:
             return self.new_turn()
 
+
+class Game:
+
+    def __init__(self):
+        
+        self.board = Board.load_blueprint(pick=False)
+
+        self.hero = Hero(self.board)
+        self.guard = Guard(self.board)
+        
+        self.ether = Ether(self.board)
+        self.needle = Needle(self.board)
+        self.tube = Tube(self.board)
+
+        self.view = CLIview(self.board)
+        self.controller = CLIcontroller(self.board, self.hero, self.view)
+
+
+"""
+def main():
+
+    game = Game()
+    game.controller.start()
+
+if __name__ == "__main__":
+    main()
+"""
