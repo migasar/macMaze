@@ -13,7 +13,7 @@ def launcher(appli):
 
 
 def main():
-    # launcher(pygame)
+    #launcher('pygame')
     launcher('terminal')
 
 
