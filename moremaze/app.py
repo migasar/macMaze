@@ -1,19 +1,27 @@
 # -*- coding: utf-8 -*-
+
+"""
 from GUI.gui_game import main as gui_main
 from CLI.cli_game import main as cli_main
+"""
+
+from GUI.gui_game import main as gui_main
+from CLI.cli_controller import Game as cli_game
 
 
-def launcher(appli = True):
+def game_factory(appli = True):
 
     if appli == True:
-        launchpad = gui_main
+        factory = gui_main
     else :
-        launchpad = cli_main
-    return launchpad()
+        factory = cli_game
+    
+    game = factory()
+    return game.controller.starter()
 
 
 def main():
-    launcher(True)
+    game_factory(False)
 
 
 if __name__ == "__main__":
