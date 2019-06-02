@@ -32,12 +32,16 @@ class GUIview:
                 x = tile.x_square * constants.TILE_SIZE
                 y = tile.y_square * constants.TILE_SIZE
 
-                tile_image = constants.TILEMAPPING[tile.visual]
+                tile_image = constants.reach_image(constants.IMAGES_DICT[tile.visual])
+                # tile_image = constants.IMAGES_DICT[tile.visual]
+                # FIXME: test of a change in the code
                 tile_surf = pygame.image.load(tile_image).convert()
                 screen.blit(tile_surf, (x,y))
 
                 if tile.toping:
-                    toping_image = constants.ITEMSMAPPING[tile.toping]
+                    toping_image = constants.reach_image(constants.IMAGES_DICT[tile.toping])
+                    # toping_image = constants.IMAGES_DICT[tile.toping]
+                    # FIXME: test of a change in the code
                     toping_surf = pygame.image.load(toping_image).convert()
                     screen.blit(toping_surf, (x, y))
 

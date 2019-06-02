@@ -13,8 +13,8 @@ def launcher(appli):
 
 
 def main():
-    #launcher('pygame')
-    launcher('terminal')
+    launcher('pygame')
+    # launcher('terminal')
 
 
 if __name__ == "__main__":

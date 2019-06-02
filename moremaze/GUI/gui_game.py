@@ -99,7 +99,6 @@ def main():
             	#Touches de déplacement de Donkey Kong
                 elif event.key == K_RIGHT:
                     game.hero.move_right()
-                    print(game.hero.position)
                 elif event.key == K_LEFT:
                     game.hero.move_left()
                 elif event.key == K_UP:

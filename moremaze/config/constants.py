@@ -1,88 +1,104 @@
 """Settings of the game"""
 
+
 import os
 
+"""
+import pygame
+from pygame.compat import geterror
+
+# Contains all game constants, parameters and main functions of the program
+
+pygame.init()
+
+def load_image(name, conv=True, colorkey=None):
+    '''Functions to create  visual resources'''
+    fullname = os.path.join('moremaze', 'data', 'images', name)
+    try:
+        image = pygame.image.load(fullname)
+    except pygame.error:
+        print('Cannot load image:', fullname)
+        raise SystemExit(str(geterror()))
+    if conv == True:
+        image = image.convert_alpha()
+    if colorkey is not None:
+        if colorkey is -1:
+            colorkey = image.get_at((0, 0))
+        image.set_colorkey(colorkey)
+    return image
+"""
+
+
+def reach_image(name):
+    fullpath = os.path.join('moremaze', 'data', 'images', name)
+    return fullpath
+
+def reach_board(name):
+    fullpath = os.path.join('moremaze', 'data', 'boards', name)
+    return fullpath
+
+
+# Representation of game elements
 
 START_CHAR = 'S'
 GOAL_CHAR = 'G'
 PATH_CHAR = '.'
 WALL_CHAR = '#'
-
-ITEM_CHAR = 'I'
+HERO_CHAR = '@'
+ENEMY_CHAR = 'X'
 ITEM_1_CHAR = '1'
 ITEM_2_CHAR = '2'
 ITEM_3_CHAR = '3'
 
-ENEMY_CHAR = 'X'
-HERO_CHAR = '@'
 
+# Size elements
 
-# parameters of the window
 TILE_NUMBER = 15
 TILE_SIZE = 40
-
-SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE 
 PLAYTURF_HEIGHT = TILE_NUMBER * TILE_SIZE
 TAILTURF_HEIGHT = 2 * TILE_SIZE
 SCREEN_HEIGHT = PLAYTURF_HEIGHT + TAILTURF_HEIGHT
+SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE 
 
 
-# customization of the window
+# Introduction of the game
 GAME_TITLE = 'Mac Maze'
 GAME_BID = 'Sauvez MacGyver, Sauvez mon projet'
 
 
-# listing of ressources for the game
-PATH_IMAGE = 'data/images/tile_path.png'
-WALL_IMAGE = 'data/images/tile_wall.png'
-GATE_IMAGE = 'data/images/tile_gate.png'
-
-HERO_IMAGE = 'data/images/perso_hero.png'
-ENEMY_IMAGE = 'data/images/perso_enemy.png'
-
-ETHER_IMAGE = 'data/images/item_ether.png'
-NEEDLE_IMAGE = 'data/images/item_needle.png'
-TUBE_IMAGE = 'data/images/item_tube.png'
-
-SYRINGE_IMAGE = 'data/images/item_syringe.png'
-
-WESTWORLD_MAZE = 'data/images/westworld_logo.png'
+# Image elements
+PATH_IMAGE = 'tile_path.png'
+WALL_IMAGE = 'tile_wall.png'
+GATE_IMAGE = 'tile_gate.png'
+HERO_IMAGE = 'perso_hero.png'
+ENEMY_IMAGE = 'perso_enemy.png'
+ETHER_IMAGE = 'item_ether.png'
+NEEDLE_IMAGE = 'item_needle.png'
+TUBE_IMAGE = 'item_tube.png'
+SYRINGE_IMAGE = 'item_syringe.png'
+WESTWORLD_MAZE = 'westworld_logo.png'
 
 
-# dictionnary of images of the game
-IMAGESDICT = {
-    'path_image': 'data/images/tile_path.png',
-    'wall_image': 'data/images/tile_wall.png',
-    'gate_image': 'data/images/tile_gate.png',
-    'hero_image': 'data/images/perso_hero.png',
-    'enemy_image': 'data/images/perso_enemy.png',
-    'ether_image': 'data/images/item_ether.png',
-    'needle_image': 'data/images/item_needle.png',
-    'tube_image': 'data/images/item_tube.png',
-    'syringe_image': 'data/images/item_syringe.png'
-}
-
-TILEMAPPING = {
-    'S': IMAGESDICT['gate_image'],
-    'G': IMAGESDICT['gate_image'],
-    '#': IMAGESDICT['wall_image'],
-    '.': IMAGESDICT['path_image']
-}
-
-ITEMSMAPPING = {
-    '@': IMAGESDICT['hero_image'],
-    'X': IMAGESDICT['enemy_image'],
-    '1': IMAGESDICT['ether_image'],
-    '2': IMAGESDICT['needle_image'],
-    '3': IMAGESDICT['tube_image']
+IMAGES_DICT = {
+    'S': GATE_IMAGE,
+    'G': GATE_IMAGE,
+    '#': WALL_IMAGE,
+    '.': PATH_IMAGE,
+    '@': HERO_IMAGE,
+    'X': ENEMY_IMAGE,
+    '1': ETHER_IMAGE,
+    '2': NEEDLE_IMAGE,
+    '3': TUBE_IMAGE
 }
 
 
-BOARD_1 = os.path.join('moremaze', 'data', 'boards', 'board_01.txt')
-BOARD_2 = os.path.join('data', 'boards', 'board_02.txt')
-BOARD_3 = os.path.join('data', 'boards', 'board_03.txt')
+BOARDS_LIST = [
+    'board_01.txt', 'board_02.txt', 'board_03.txt'
+]
 
-BLUEPRINT = BOARD_1
+BLUEPRINT = reach_board(BOARDS_LIST[0])
+
+
 
 """
 BLUEPRINT = '{}/board_01.txt'.format(
