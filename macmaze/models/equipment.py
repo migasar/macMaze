@@ -1,10 +1,10 @@
+# -*- coding: utf-8 -*-
 """Manage the items that need to be collected"""
 
-
 from models.position import Position
-from models.board import Board
 
-import config.constants as constants
+from config import constants
+
 
 
 class Equipment:

@@ -1,9 +1,8 @@
+# -*- coding: utf-8 -*-
 """Manage the display of every elements of the game"""
 
+from config import constants
 
-from models.board import Board
-
-import config.constants as constants
 
 
 class CLIview:
@@ -86,5 +85,3 @@ class CLIview:
         print("")
         self.new_order = input("Qu'allez vous faire ?  ")
         return self.new_order
-
-

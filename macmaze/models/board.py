@@ -1,15 +1,15 @@
+# -*- coding: utf-8 -*-
 """
 Manage the board of the game 
 and the interactions between its squares and the other elements of the game
 """
 
-
 from random import choice
 
-from models.position import Position
 from models.square import Square
 
-import config.constants as constants
+from config import constants
+
 
 
 class Board:
@@ -56,8 +56,8 @@ class Board:
             )
 
 
-    ## methods related to the size of the board
-    ######
+    # methods related to the size of the board
+
     @property
     def width(self):
         return self.grid[-1][-1].x_square
@@ -69,11 +69,10 @@ class Board:
     def inside(self,step):
         # check if the position is still inside the boundaries of the board 
         return 0 <= step.x_pos <= self.width and 0 <= step.y_pos <= self.height
-    ######
 
 
-    ## methods to get to a specific square of the board
-    ######
+    # methods to get to a specific square of the board
+
     def pathfinder(self):
         # return a list with every empty squares of the board
         pathway = []
@@ -106,13 +105,12 @@ class Board:
                     and getattr(block, atty) == valy
                     ):
                         return block
-    ######
 
 
-    ## method to know how the game ends
-    ######
+    # method to know how the game ends
+    
     def game_over(self):
         # check if the hero has won the game
         end = self.get_square('landing', 'goal')
         return end.toping == constants.HERO_CHAR
-    ######
+    

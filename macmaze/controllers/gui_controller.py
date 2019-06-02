@@ -1,26 +1,18 @@
-"""Manage the commands of the gamer"""
-
+# -*- coding: utf-8 -*-
 """
-An event manager in charge of the interactions 
-between the components of the MVC model
+Manage the flow of the game 
+and the interactions between the components of the project
 """
-
-"""Manage the flow of the game"""
-
 
 import pygame  
 from pygame.locals import *
 
-
 from models.board import Board
 from models.person import Hero, Guard
-
 from models.equipment import Ether, Needle, Tube
-from models.position import Position
 
 from views.gui_view import GUIview
 
-import config.constants as constants
 
 
 class GUIcontroller:
@@ -91,7 +83,6 @@ class GUIcontroller:
             pygame.display.flip()
 
 
-
 class Game:
 
     def __init__(self):
@@ -119,4 +110,3 @@ if __name__ == "__main__":
     main()
 
 """
-

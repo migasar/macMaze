@@ -1,22 +1,11 @@
+# -*- coding: utf-8 -*-
 """Manage the display of every elements of the game"""
-
 
 import pygame
 from pygame.locals import *
-# from pygame import display
-# from pygame import Surface
-# from pygame import image
-# from pygame import Rect
-# from pygame import event
 
-from models.board import Board
+from config import constants
 
-import config.constants as constants
-
-
-
-# TODO: Pygame GUI
-#   - create another class View based on pygame for a version with a GUI
 
 
 class GUIview:
@@ -40,4 +29,3 @@ class GUIview:
                     toping_image = constants.reach_image(constants.IMAGES_DICT[tile.toping])
                     toping_surf = pygame.image.load(toping_image).convert()
                     screen.blit(toping_surf, (x, y))
-

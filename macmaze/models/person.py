@@ -1,10 +1,10 @@
-"""Manage the characters"""
-
+# -*- coding: utf-8 -*-
+"""Manage the personas"""
 
 from models.position import Position
-from models.board import Board
 
-import config.constants as constants
+from config import constants
+
 
 
 class Person:
@@ -33,9 +33,8 @@ class Hero(Person):
     terminus = False
 
 
-    ## methods for every move of the hero on the board
-    ## 4 moves (up, down, left, right), depending of the value of next_step
-    ######
+    # methods for every move of the hero on the board
+
     def move(self, next_step):
         # method to initiate every move of the hero 
         
@@ -80,12 +79,10 @@ class Hero(Person):
 
     def move_right(self):
         return self.move(Position(self.position.x_pos + 1, self.position.y_pos))
-    ######
 
 
-    ## methods to solve the collisions
-    ## between the hero and of other elements standing on a square 
-    ######
+    # methods to solve the collisions
+   
     def check_path(self, square):
         # check the attributes of the square on the next position
         # initiate the methods in square of collisions
@@ -140,7 +137,6 @@ class Hero(Person):
                 # LOSE --> phantom walk
                 # FIXME: phantom walk defeat
                 #   - I should find a way to clarify how the game understand that the hero has lost in front of the guard
-    ######
 
 
 class Guard(Person):

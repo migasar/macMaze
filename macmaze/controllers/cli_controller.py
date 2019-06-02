@@ -1,15 +1,15 @@
-"""Manage the commands of the gamer"""
-
+# -*- coding: utf-8 -*-
+"""
+Manage the flow of the game 
+and the interactions between the components of the project
+"""
 
 from models.board import Board
 from models.person import Hero, Guard
-
 from models.equipment import Ether, Needle, Tube
-from models.position import Position
 
 from views.cli_view import CLIview
 
-import config.constants as constants
 
 
 class CLIcontroller:
