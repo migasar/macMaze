@@ -22,7 +22,7 @@ GOAL_CHAR = 'G'
 PATH_CHAR = '.'
 WALL_CHAR = '#'
 HERO_CHAR = '@'
-ENEMY_CHAR = 'X'
+GUARD_CHAR = 'X'
 ITEM_1_CHAR = '1'
 ITEM_2_CHAR = '2'
 ITEM_3_CHAR = '3'
@@ -46,7 +46,7 @@ PATH_IMAGE = 'tile_path.png'
 WALL_IMAGE = 'tile_wall.png'
 GATE_IMAGE = 'tile_gate.png'
 HERO_IMAGE = 'perso_hero.png'
-ENEMY_IMAGE = 'perso_enemy.png'
+GUARD_IMAGE = 'perso_guard.png'
 ETHER_IMAGE = 'item_ether.png'
 NEEDLE_IMAGE = 'item_needle.png'
 TUBE_IMAGE = 'item_tube.png'
@@ -60,7 +60,7 @@ IMAGES_DICT = {
     '#': WALL_IMAGE,
     '.': PATH_IMAGE,
     '@': HERO_IMAGE,
-    'X': ENEMY_IMAGE,
+    'X': GUARD_IMAGE,
     '1': ETHER_IMAGE,
     '2': NEEDLE_IMAGE,
     '3': TUBE_IMAGE

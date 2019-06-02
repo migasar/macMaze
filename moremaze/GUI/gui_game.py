@@ -2,7 +2,7 @@
 
 
 from models.board import Board
-from models.person import Hero, Enemy
+from models.person import Hero, Guard
 from models.equipment import Ether, Needle, Tube
 from models.position import Position
 
@@ -23,7 +23,7 @@ class Game:
         self.board = Board.load_blueprint(pick=False)
 
         self.hero = Hero(self.board)
-        self.enemy = Enemy(self.board)
+        self.guard = Guard(self.board)
         
         self.ether = Ether(self.board)
         self.needle = Needle(self.board)
