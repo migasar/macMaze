@@ -1,8 +1,8 @@
 """Manage the items that need to be collected"""
 
 
-from GUI.position import Position
-from GUI.board import Board
+from models.position import Position
+from models.board import Board
 
 import config.constants as constants
 

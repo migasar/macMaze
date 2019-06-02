@@ -9,8 +9,8 @@ from pygame.locals import *
 #from pygame import display
 #from pygame import event
 
-from GUI.board import Board
-from GUI.person import Hero
+from models.board import Board
+from models.person import Hero
 from GUI.gui_view import GUIview
 
 import config.constants as constants

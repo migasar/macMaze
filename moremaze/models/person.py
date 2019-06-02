@@ -1,8 +1,8 @@
 """Manage the characters"""
 
 
-from CLI.position import Position
-from CLI.board import Board
+from models.position import Position
+from models.board import Board
 
 import config.constants as constants
 

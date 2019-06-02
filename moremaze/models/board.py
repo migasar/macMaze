@@ -6,8 +6,8 @@ and the interactions between its squares and the other elements of the game
 
 from random import choice
 
-from GUI.position import Position
-from GUI.square import Square
+from models.position import Position
+from models.square import Square
 
 import config.constants as constants
 
@@ -18,7 +18,13 @@ class Board:
         self.grid = grid
 
     @classmethod
-    def load_blueprint(cls, filename):
+    def load_blueprint(cls, pick = True):
+
+        if pick == True:
+            filename = constants.BLUEPRINT
+        else:
+            filename = cls.pick_board()
+
         grid = []
 
         with open(filename) as infile:
@@ -42,6 +48,12 @@ class Board:
                     grid[y].append(block)
 
         return cls(grid)
+
+    @classmethod
+    def pick_board(cls):
+        return constants.reach_board(
+            choice(constants.BOARDS_LIST)
+            )
 
 
     ## methods related to the size of the board

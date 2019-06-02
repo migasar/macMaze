@@ -3,18 +3,17 @@ from GUI.gui_game import main as gui_main
 from CLI.cli_game import main as cli_main
 
 
-def launcher(appli):
+def launcher(appli = True):
 
-    if appli == 'pygame':
+    if appli == True:
         launchpad = gui_main
-    elif appli == 'terminal':
+    else :
         launchpad = cli_main
     return launchpad()
 
 
 def main():
-    launcher('pygame')
-    # launcher('terminal')
+    launcher(True)
 
 
 if __name__ == "__main__":

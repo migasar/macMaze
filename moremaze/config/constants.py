@@ -1,32 +1,10 @@
-"""Settings of the game"""
+"""
+Settings of the game
+Contains all game constants and parameters of the program
+"""
 
 
 import os
-
-"""
-import pygame
-from pygame.compat import geterror
-
-# Contains all game constants, parameters and main functions of the program
-
-pygame.init()
-
-def load_image(name, conv=True, colorkey=None):
-    '''Functions to create  visual resources'''
-    fullname = os.path.join('moremaze', 'data', 'images', name)
-    try:
-        image = pygame.image.load(fullname)
-    except pygame.error:
-        print('Cannot load image:', fullname)
-        raise SystemExit(str(geterror()))
-    if conv == True:
-        image = image.convert_alpha()
-    if colorkey is not None:
-        if colorkey is -1:
-            colorkey = image.get_at((0, 0))
-        image.set_colorkey(colorkey)
-    return image
-"""
 
 
 def reach_image(name):
@@ -39,7 +17,6 @@ def reach_board(name):
 
 
 # Representation of game elements
-
 START_CHAR = 'S'
 GOAL_CHAR = 'G'
 PATH_CHAR = '.'
@@ -52,7 +29,6 @@ ITEM_3_CHAR = '3'
 
 
 # Size elements
-
 TILE_NUMBER = 15
 TILE_SIZE = 40
 PLAYTURF_HEIGHT = TILE_NUMBER * TILE_SIZE
@@ -64,7 +40,6 @@ SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE
 # Introduction of the game
 GAME_TITLE = 'Mac Maze'
 GAME_BID = 'Sauvez MacGyver, Sauvez mon projet'
-
 
 # Image elements
 PATH_IMAGE = 'tile_path.png'
@@ -96,8 +71,8 @@ BOARDS_LIST = [
     'board_01.txt', 'board_02.txt', 'board_03.txt'
 ]
 
-BLUEPRINT = reach_board(BOARDS_LIST[0])
 
+BLUEPRINT = reach_board(BOARDS_LIST[0])
 
 
 """

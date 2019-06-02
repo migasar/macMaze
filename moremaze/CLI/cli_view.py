@@ -1,7 +1,7 @@
 """Manage the display of every elements of the game"""
 
 
-from CLI.board import Board
+from models.board import Board
 
 import config.constants as constants
 

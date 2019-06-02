@@ -1,10 +1,10 @@
 """Manage the flow of the game"""
 
 
-from CLI.board import Board
-from CLI.person import Hero, Enemy
-from CLI.equipment import Ether, Needle, Tube
-from CLI.position import Position
+from models.board import Board
+from models.person import Hero, Enemy
+from models.equipment import Ether, Needle, Tube
+from models.position import Position
 
 from CLI.cli_view import CLIview
 from CLI.cli_event import CLIevent
@@ -15,12 +15,8 @@ import config.constants as constants
 class Game:
 
     def __init__(self):
-
-        self.board = Board.load_blueprint(constants.BLUEPRINT)
-        # TODO: randomize blueprint
-            #   - create a method to randomize the choice of the file used as a blueprint
-            #   - it will be a way to generate different mazes
-            #   - this method could also be in the class Board
+        
+        self.board = Board.load_blueprint(pick=False)
 
         self.hero = Hero(self.board)
         self.enemy = Enemy(self.board)
