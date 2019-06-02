@@ -1,82 +1,100 @@
-"""Settings of the game"""
-
 import os
+import pygame
+from pygame.compat import geterror
+
+# Contains all game constants, parameters and main functions of the program
+pygame.init()
 
 
-START_CHAR = 'S'
-GOAL_CHAR = 'G'
-PATH_CHAR = '.'
-WALL_CHAR = '#'
-
-ITEM_CHAR = 'I'
-ITEM_1_CHAR = '1'
-ITEM_2_CHAR = '2'
-ITEM_3_CHAR = '3'
-
-ENEMY_CHAR = 'X'
-HERO_CHAR = '@'
-
-
-# parameters of the window
-TILE_NUMBER = 15
-TILE_SIZE = 40
-
-SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE 
-PLAYTURF_HEIGHT = TILE_NUMBER * TILE_SIZE
-TAILTURF_HEIGHT = 2 * TILE_SIZE
-SCREEN_HEIGHT = PLAYTURF_HEIGHT + TAILTURF_HEIGHT
+def load_sound(name, music=True):
+    '''Functions to create  musical resources'''
+    class NoneSound:
+        def play(self): pass
+    if not pygame.mixer or not pygame.mixer.get_init():
+        return NoneSound()
+    fullname = os.path.join('data', 'sound', name)
+    if music == True:
+        try:
+            sound = pygame.mixer.music.load(fullname)
+        except pygame.error:
+            print('Cannot load sound: %s' % fullname)
+            raise SystemExit(str(geterror()))
+    else:
+        try:
+            sound = pygame.mixer.Sound(fullname)
+        except pygame.error:
+            print('Cannot load sound: %s' % fullname)
+            raise SystemExit(str(geterror()))
+    return sound
 
 
-# customization of the window
-GAME_TITLE = 'Mac Maze'
-GAME_BID = 'Sauvez MacGyver, Sauvez mon projet'
+def load_image(name, conv=True, colorkey=None):
+    '''Functions to create  visual resources'''
+    fullname = os.path.join('data', 'images', name)
+    try:
+        image = pygame.image.load(fullname)
+    except pygame.error:
+        print('Cannot load image:', fullname)
+        raise SystemExit(str(geterror()))
+    if conv == True:
+        image = image.convert_alpha()
+    if colorkey is not None:
+        if colorkey is -1:
+            colorkey = image.get_at((0, 0))
+        image.set_colorkey(colorkey)
+    return image
 
 
-# listing of ressources for the game
-PATH_IMAGE = 'resources/images/tile_path_resized40.png'
-WALL_IMAGE = 'resources/images/tile_wall_resized40.png'
-GATE_IMAGE = 'resources/images/tile_point_resized40.png'
+# Read file
+START_CHAR = 'M'
+ARRIVAL_CHAR = 'A'
+GATES_CHAR = "#"
+WALL_CHAR = "X"
+OBJ_CHAR = "O"
 
-HERO_IMAGE = 'resources/images/perso_hero_resized40.png'
-ENEMY_IMAGE = 'resources/images/perso_enemy_resized40.png'
+# Representation
+START_REP = 'M'
+CHAR_REP = "M"
+ARRIVAL_REP = 'A'
+GATES_REP = " "
+WALL_REP = "X"
+OBJ_REP = "O"
 
-ETHER_IMAGE = 'resources/images/item_ether_resized40.png'
-NEEDLE_IMAGE = 'resources/images/item_needle_resized40.png'
-TUBE_IMAGE = 'resources/images/item_tube_resized40.png'
+# Game Element
+FPS = 60
 
-SYRINGE_IMAGE = 'resources/images/item_syringe_resized40.png'
+# Size elements
+SIZE_SPRITE = 30
+SIZE_SCREEN_WIDTH = 450
+SIZE_SCREEN_HEIGHT = 500
+SIZE_MENU_HEIGHT = 50
+SIZE_MENU_WIDTH = 450
 
-WESTWORLD_MAZE = 'resources/images/westworld_labyrinth_thin.png'
 
+# Image elements
+MAZE_1 = os.path.join('data', 'mazes', 'labyrinth1.txt')
+MAZE_2 = os.path.join('data', 'mazes', 'labyrinth2.txt')
+CHARACTER = 'MacGyver.png'
+WALL = 'block.png'
+SYRINGE = 'syringe.png'
+ETHER = 'ether.png'
+TUBE = 'tube.png'
+GUARD = 'guard.png'
+NAME_GAME = "McGyver Maze"
+BACKGROUND = "background.png"
 
-# dictionnary of images of the game
-IMAGESDICT = {
-    'path_image': 'resources/images/tile_path_resized40.png',
-    'wall_image': 'resources/images/tile_wall_resized40.png',
-    'gate_image': 'resources/images/tile_point_resized40.png',
-    'hero_image': 'resources/images/perso_hero_resized40.png',
-    'enemy_image': 'resources/images/perso_enemy_resized40.png',
-    'ether_image': 'resources/images/item_ether_resized40.png',
-    'needle_image': 'resources/images/item_needle_resized40.png',
-    'tube_image': 'resources/images/item_tube_resized40.png',
-    'syringe_image': 'resources/images/item_syringe_resized40.png'
-}
+# Font elements
+MENU = "menu.png"
+FONT_GAME = "Chalkboard.ttc"
+SIZE_FONT_MENU = 17
+COLOR_FONT_MENU = (0, 0, 0)
 
-TILEMAPPING = {
-    'S': IMAGESDICT['gate_image'],
-    'G': IMAGESDICT['gate_image'],
-    '#': IMAGESDICT['wall_image'],
-    '.': IMAGESDICT['path_image']
-}
+# Sound element
+BACKGROUND_MUSIC = 'music.wav'
+DROP_SOUND = 'drop.ogg'
+WIN_SOUND = 'win.ogg'
+LOSE_SOUND = 'lose.ogg'
+VOLUME = 0.2
+MUSIC_OFF = 'musicOff.png'
+MUSIC_ON = 'musicOn.png'
 
-ITEMSMAPPING = {
-    '@': IMAGESDICT['hero_image'],
-    'X': IMAGESDICT['enemy_image'],
-    '1': IMAGESDICT['ether_image'],
-    '2': IMAGESDICT['needle_image'],
-    '3': IMAGESDICT['tube_image']
-}
-
-BLUEPRINT = '{}/board_01.txt'.format(
-    os.path.dirname(__file__)
-    )

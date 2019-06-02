@@ -8,11 +8,11 @@ import os
 
 
 def reach_image(name):
-    fullpath = os.path.join('moremaze', 'data', 'images', name)
+    fullpath = os.path.join('macmaze', 'data', 'images', name)
     return fullpath
 
 def reach_board(name):
-    fullpath = os.path.join('moremaze', 'data', 'boards', name)
+    fullpath = os.path.join('macmaze', 'data', 'boards', name)
     return fullpath
 
 

@@ -9,7 +9,7 @@ from random import choice
 from models.position import Position
 from models.square import Square
 
-from config import settings as constants
+import config.constants as constants
 
 
 class Board:
@@ -18,7 +18,13 @@ class Board:
         self.grid = grid
 
     @classmethod
-    def load_blueprint(cls, filename):
+    def load_blueprint(cls, pick = True):
+
+        if pick == True:
+            filename = constants.BLUEPRINT
+        else:
+            filename = cls.pick_board()
+
         grid = []
 
         with open(filename) as infile:
@@ -42,6 +48,12 @@ class Board:
                     grid[y].append(block)
 
         return cls(grid)
+
+    @classmethod
+    def pick_board(cls):
+        return constants.reach_board(
+            choice(constants.BOARDS_LIST)
+            )
 
 
     ## methods related to the size of the board

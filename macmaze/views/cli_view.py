@@ -3,7 +3,7 @@
 
 from models.board import Board
 
-from config import settings as constants
+import config.constants as constants
 
 
 class CLIview:

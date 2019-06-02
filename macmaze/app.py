@@ -22,7 +22,7 @@ def game_factory(graphic = True):
 def main():
     """Launch the game"""
     
-    game_factory(graphic = False)
+    game_factory(graphic = True)
 
 
 if __name__ == "__main__":

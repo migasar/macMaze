@@ -4,7 +4,7 @@
 from models.position import Position
 from models.board import Board
 
-from config import settings as constants
+import config.constants as constants
 
 
 class Person:
@@ -112,7 +112,7 @@ class Hero(Person):
     def colliding(self, square):
         # determine the type of collision and the method to solve it
 
-        if square.toping == constants.ENEMY_CHAR:
+        if square.toping == constants.GUARD_CHAR:
             self.showdown(square)
         else:
             self.toolup(square)
@@ -130,7 +130,7 @@ class Hero(Person):
         square.toping = constants.HERO_CHAR 
 
     def showdown(self, square):
-        # manage collision between the hero and the guardian
+        # manage collision between the hero and the guard
 
         self.terminus = True
         if len(self.toolbox) == 3:
@@ -139,11 +139,11 @@ class Hero(Person):
             # else: 
                 # LOSE --> phantom walk
                 # FIXME: phantom walk defeat
-                #   - I should find a way to clarify how the game understand that the hero has lost in front of the guardian
+                #   - I should find a way to clarify how the game understand that the hero has lost in front of the guard
     ######
 
 
-class Enemy(Person):
+class Guard(Person):
 
     aim = 'goal'
-    char = constants.ENEMY_CHAR
+    char = constants.GUARD_CHAR
