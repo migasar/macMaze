@@ -77,16 +77,18 @@ ITEMSMAPPING = {
     '3': IMAGESDICT['tube_image']
 }
 
-"""
-BOARD_1 = os.path.join('data', 'boards', 'board_01.txt')
+
+BOARD_1 = os.path.join('moremaze', 'data', 'boards', 'board_01.txt')
 BOARD_2 = os.path.join('data', 'boards', 'board_02.txt')
 BOARD_3 = os.path.join('data', 'boards', 'board_03.txt')
 
 BLUEPRINT = BOARD_1
+
 """
 BLUEPRINT = '{}/board_01.txt'.format(
     os.path.dirname(__file__)
     )
+"""
 
 # TODO: learn path 
 #   - to deal with call between files in different diretories of my project

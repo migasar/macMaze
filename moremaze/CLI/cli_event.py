@@ -77,7 +77,3 @@ class CLIevent:
                 return self.view.display_defeat()
         else:
             return self.new_turn()
-
-
-class GUIevent:
-    pass
