@@ -1,27 +1,25 @@
 # -*- coding: utf-8 -*-
-
 """
-from GUI.gui_game import main as gui_main
-from CLI.cli_game import main as cli_main
+Launch the game and set its interface (CLI or GUI)
 """
 
-from GUI.gui_game import main as gui_main
+from GUI.gui_controller import Game as gui_game
 from CLI.cli_controller import Game as cli_game
 
 
-def game_factory(appli = True):
+def game_factory(graphic = True):
 
-    if appli == True:
-        factory = gui_main
+    if graphic == True:
+        factory = gui_game
     else :
         factory = cli_game
     
     game = factory()
-    return game.controller.starter()
+    return game.controller.start()
 
 
 def main():
-    game_factory(False)
+    game_factory(True)
 
 
 if __name__ == "__main__":

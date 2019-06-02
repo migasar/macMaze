@@ -2,7 +2,10 @@
 
 
 from models.board import Board
-from models.person import Hero
+from models.person import Hero, Guard
+
+from models.equipment import Ether, Needle, Tube
+from models.position import Position
 
 from CLI.cli_view import CLIview
 
@@ -16,7 +19,8 @@ class CLIcontroller:
         self.hero = hero
         self.view = view
     
-    def starter(self):
+    
+    def start(self):
         self.view.display_title()
         self.view.display_board()
         self.view.display_explanation()
@@ -72,19 +76,6 @@ class CLIcontroller:
             return self.new_turn()
 
 
-######
-######
-from models.board import Board
-from models.person import Hero, Guard
-from models.equipment import Ether, Needle, Tube
-from models.position import Position
-
-from CLI.cli_view import CLIview
-
-import config.constants as constants
-######
-# FIXME: clean the imports
-
 class Game:
 
     def __init__(self):
@@ -101,18 +92,12 @@ class Game:
         self.view = CLIview(self.board)
         self.controller = CLIcontroller(self.board, self.hero, self.view)
 
-    """
-    def start(self):
-        self.controller.starter()
-    """
 
 """
 def main():
 
     game = Game()
-    #game.start()
-    game.controller.starter()
-
+    game.controller.start()
 
 if __name__ == "__main__":
     main()
