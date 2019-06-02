@@ -80,5 +80,3 @@ ITEMSMAPPING = {
 BLUEPRINT = '{}/board_01.txt'.format(
     os.path.dirname(__file__)
     )
-# TODO: learn path 
-#   - to deal with call between files in different diretories of my project
