@@ -8,7 +8,7 @@ from controllers.cli_controller import Game as cli_game
 
 
 
-def game_factory(graphic = True):
+def game_factory(graphical = True):
     """Set the type of interface of the game"""
 
     if graphic == True:
@@ -23,7 +23,7 @@ def game_factory(graphic = True):
 def main():
     """Launch the game"""
     
-    game_factory(graphic = True)
+    game_factory(graphical = True)
 
 
 if __name__ == "__main__":
