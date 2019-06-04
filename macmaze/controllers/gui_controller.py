@@ -10,6 +10,7 @@ from models.board import Board
 from models.person import Hero, Guard
 from models.equipment import Ether, Needle, Tube
 from views.gui_view import GUIview
+from config import constants
 
 
 class GUIcontroller:
@@ -30,9 +31,12 @@ class GUIcontroller:
         pygame.display.set_caption('MacMaze')
 
         # FIXME: the image for the icon can't be loaded
-            # Icone
-            # icon = pygame.image.load(constants.WESTWORLD_MAZE)
+            # icon = constants.reach_image(
+            #     constants.WESTWORLD_MAZE
+            #         )
+            # icon_surf = pygame.image.load(icon).convert_alpha()
             # pygame.display.set_icon(icon)
+            
 
         self.view.draw_board(screen)
         pygame.display.flip()
