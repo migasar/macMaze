@@ -15,8 +15,8 @@ class CLIcontroller:
         self.board = board
         self.hero = hero
         self.view = view
-    
-    
+
+
     def start(self):
         self.view.display_title()
         self.view.display_board()
@@ -76,12 +76,10 @@ class CLIcontroller:
 class Game:
 
     def __init__(self):
-        
         self.board = Board.load_blueprint(pick=False)
 
         self.hero = Hero(self.board)
         self.guard = Guard(self.board)
-        
         self.ether = Ether(self.board)
         self.needle = Needle(self.board)
         self.tube = Tube(self.board)

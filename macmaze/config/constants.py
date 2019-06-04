@@ -19,7 +19,7 @@ def reach_board(name):
     return fullpath
 
 
-# Representation of game elements
+# representation of game elements
 START_CHAR = 'S'
 GOAL_CHAR = 'G'
 PATH_CHAR = '.'
@@ -31,7 +31,7 @@ ITEM_2_CHAR = '2'
 ITEM_3_CHAR = '3'
 
 
-# Size elements
+# size elements
 TILE_NUMBER = 15
 TILE_SIZE = 40
 PLAYTURF_HEIGHT = TILE_NUMBER * TILE_SIZE
@@ -40,12 +40,12 @@ SCREEN_HEIGHT = PLAYTURF_HEIGHT + TAILTURF_HEIGHT
 SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE 
 
 
-# Introduction of the game
+# introduction of the game
 GAME_TITLE = 'Mac Maze'
 GAME_BID = 'Sauvez MacGyver, Sauvez mon projet'
 
 
-# Image elements
+# image elements
 PATH_IMAGE = 'tile_path.png'
 WALL_IMAGE = 'tile_wall.png'
 GATE_IMAGE = 'tile_gate.png'
@@ -70,7 +70,7 @@ IMAGES_DICT = {
 }
 
 
-# Board elements
+# board elements
 BOARDS_LIST = [
     'board_01.txt', 'board_02.txt', 'board_03.txt'
 ]

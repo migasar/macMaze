@@ -21,21 +21,18 @@ class GUIcontroller:
 
 
     def start(self):
+        """Manage the Pygame loop"""
 
         # Pygame initialization
         pygame.init()
-
         # Pygame window setup
         screen = pygame.display.set_mode((600, 640)) 
-
         pygame.display.set_caption('MacMaze')
 
-        """
-        #Icone
-        icon = pygame.image.load(constants.WESTWORLD_MAZE)
-        pygame.display.set_icon(icon)
-        """
         # FIXME: the image for the icon can't be loaded
+            # Icone
+            # icon = pygame.image.load(constants.WESTWORLD_MAZE)
+            # pygame.display.set_icon(icon)
 
         self.view.draw_board(screen)
         pygame.display.flip()
@@ -84,12 +81,10 @@ class GUIcontroller:
 class Game:
 
     def __init__(self):
-
         self.board = Board.load_blueprint(pick=False)
 
         self.hero = Hero(self.board)
         self.guard = Guard(self.board)
-        
         self.ether = Ether(self.board)
         self.needle = Needle(self.board)
         self.tube = Tube(self.board)

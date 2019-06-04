@@ -18,5 +18,6 @@ class Square:
 
     @property
     def free(self):
-        # check if the square is empty
+        """Verify if the square is empty"""
+
         return self.walk == True and self.toping == '' and self.landing == ''

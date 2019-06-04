@@ -34,8 +34,7 @@ class Hero(Person):
     terminus = False
 
 
-    # Methods for every move of the hero on the board
-
+    # methods for every move of the hero on the board
     def move(self, next_step):
         """Method to initiate every move of the hero"""
         
@@ -82,11 +81,12 @@ class Hero(Person):
         return self.move(Position(self.position.x_pos + 1, self.position.y_pos))
 
 
-    # Methods to solve the collisions
-   
+    # methods to solve the collisions
     def check_path(self, square):
-        """Check the attributes of the square on the next position"""
-        """nitiate the methods in case of collisions"""
+        """
+        Check the attributes of the square on the next position, 
+        and initiate the methods in case of collisions
+        """
 
         pathway = False
 
@@ -108,7 +108,7 @@ class Hero(Person):
         return pathway
  
     def colliding(self, square):
-        # determine the type of collision and the method to solve it
+        """Determine the type of collision and the method to solve it"""
 
         if square.toping == constants.GUARD_CHAR:
             self.showdown(square)
@@ -116,7 +116,10 @@ class Hero(Person):
             self.toolup(square)
 
     def toolup(self, square):
-        # manage collision between the hero and the equipment
+        """
+        Put an item in the inventory of the hero, 
+        when he gets in collision with it 
+        """
 
         if square.toping == constants.ITEM_1_CHAR:
             self.toolbox.append(1)  # ether
@@ -128,7 +131,7 @@ class Hero(Person):
         square.toping = constants.HERO_CHAR 
 
     def showdown(self, square):
-        # manage collision between the hero and the guard
+        """Decide of the issue when the hero and the guard collide"""
 
         self.terminus = True
         if len(self.toolbox) == 3:

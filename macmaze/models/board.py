@@ -17,6 +17,10 @@ class Board:
 
     @classmethod
     def load_blueprint(cls, pick = True):
+        """
+        Create a grid of squares that will serve as the maze for the game.
+        The maze follows a scheme obtained from a text file.
+        """
 
         if pick == True:
             filename = constants.BLUEPRINT
@@ -53,20 +57,24 @@ class Board:
 
     @classmethod
     def pick_board(cls):
+        """Select randomly the scheme of the board"""
 
         return constants.reach_board(
             choice(constants.BOARDS_LIST)
             )
 
 
-    # Methods related to the size of the board
-
+    # methods related to the size of the board
     @property
     def width(self):
+        """Return the width of the board (with the number of squares as unit)"""
+
         return self.grid[-1][-1].x_square
 
     @property
     def height(self):
+        """Return the height of the board (with the number of squares as unit)"""
+
         return self.grid[-1][-1].y_square
 
     def inside(self,step):
@@ -75,8 +83,7 @@ class Board:
         return 0 <= step.x_pos <= self.width and 0 <= step.y_pos <= self.height
 
 
-    # Methods to get to a specific square of the board
-
+    # methods to get to a specific square of the board
     def pathfinder(self):
         """Return a list with every empty squares of the board"""
 
@@ -96,7 +103,7 @@ class Board:
         return free_path
 
     def get_square(self, att, val):
-        """Return a square with a specific attribute"""
+        """Return a square matching a specific attribute"""
 
         for y, line in enumerate(self.grid):
             for block in self.grid[y]:
@@ -115,8 +122,7 @@ class Board:
                         return block
 
 
-    # Method to know how the game ends
-
+    # method to know how the game ends
     def game_over(self):
         """Check if the hero has won the game"""
 
