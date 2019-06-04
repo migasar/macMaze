@@ -1,5 +1,6 @@
-"""Manage the squares of the board and their content"""
-
+"""
+Manage the squares of the board and their content
+"""
 
 from dataclasses import dataclass
 

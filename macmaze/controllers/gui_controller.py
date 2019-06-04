@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Manage the flow of the game 
 and the interactions between the components of the project
@@ -10,9 +9,7 @@ from pygame.locals import *
 from models.board import Board
 from models.person import Hero, Guard
 from models.equipment import Ether, Needle, Tube
-
 from views.gui_view import GUIview
-
 
 
 class GUIcontroller:
@@ -21,7 +18,8 @@ class GUIcontroller:
         self.board = board
         self.hero = hero
         self.view = view
-    
+
+
     def start(self):
 
         # Pygame initialization
@@ -108,5 +106,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 """

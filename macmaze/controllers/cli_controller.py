@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Manage the flow of the game 
 and the interactions between the components of the project
@@ -7,9 +6,7 @@ and the interactions between the components of the project
 from models.board import Board
 from models.person import Hero, Guard
 from models.equipment import Ether, Needle, Tube
-
 from views.cli_view import CLIview
-
 
 
 class CLIcontroller:

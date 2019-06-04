@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
-"""Manage the personas"""
+"""
+Manage the personas
+"""
 
 from models.position import Position
-
 from config import constants
-
 
 
 class Person:
@@ -14,8 +13,10 @@ class Person:
         self.position = None
         self.homing(self.aim, self.char)
 
+
     def homing(self, aim, char):
-        # initialize the starting position of the person
+        """Initialize the starting position of the person"""
+
         home = self.board.get_square('landing', aim)
         home.toping = char
         self.position = Position(home.x_square, home.y_square)
@@ -33,10 +34,10 @@ class Hero(Person):
     terminus = False
 
 
-    # methods for every move of the hero on the board
+    # Methods for every move of the hero on the board
 
     def move(self, next_step):
-        # method to initiate every move of the hero 
+        """Method to initiate every move of the hero"""
         
         back_step = Position(self.position.x_pos, self.position.y_pos)
         motion = True
@@ -81,11 +82,11 @@ class Hero(Person):
         return self.move(Position(self.position.x_pos + 1, self.position.y_pos))
 
 
-    # methods to solve the collisions
+    # Methods to solve the collisions
    
     def check_path(self, square):
-        # check the attributes of the square on the next position
-        # initiate the methods in square of collisions
+        """Check the attributes of the square on the next position"""
+        """nitiate the methods in case of collisions"""
 
         pathway = False
 

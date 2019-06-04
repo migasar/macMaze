@@ -1,17 +1,20 @@
 """
 Settings of the game
-Contains all game constants and parameters of the program
+Contains all the game constants and the parameters of the program
 """
-
 
 import os
 
 
 def reach_image(name):
+    """Method to create the path to load an image"""
+
     fullpath = os.path.join('macmaze', 'data', 'images', name)
     return fullpath
 
 def reach_board(name):
+    """Method to create the path to load the scheme of the board"""
+
     fullpath = os.path.join('macmaze', 'data', 'boards', name)
     return fullpath
 
@@ -41,6 +44,7 @@ SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE
 GAME_TITLE = 'Mac Maze'
 GAME_BID = 'Sauvez MacGyver, Sauvez mon projet'
 
+
 # Image elements
 PATH_IMAGE = 'tile_path.png'
 WALL_IMAGE = 'tile_wall.png'
@@ -52,7 +56,6 @@ NEEDLE_IMAGE = 'item_needle.png'
 TUBE_IMAGE = 'item_tube.png'
 SYRINGE_IMAGE = 'item_syringe.png'
 WESTWORLD_MAZE = 'westworld_logo.png'
-
 
 IMAGES_DICT = {
     'S': GATE_IMAGE,
@@ -67,19 +70,17 @@ IMAGES_DICT = {
 }
 
 
+# Board elements
 BOARDS_LIST = [
     'board_01.txt', 'board_02.txt', 'board_03.txt'
 ]
 
-
 BLUEPRINT = reach_board(BOARDS_LIST[0])
-
 
 """
 BLUEPRINT = '{}/board_01.txt'.format(
     os.path.dirname(__file__)
     )
 """
-
 # TODO: learn path 
 #   - to deal with call between files in different diretories of my project

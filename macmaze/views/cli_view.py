@@ -1,8 +1,8 @@
-# -*- coding: utf-8 -*-
-"""Manage the display of every elements of the game"""
+"""
+Manage the display of every elements of the game
+"""
 
 from config import constants
-
 
 
 class CLIview:
