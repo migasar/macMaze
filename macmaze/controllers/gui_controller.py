@@ -3,7 +3,7 @@ Manage the flow of the game
 and the interactions between the components of the project
 """
 
-import pygame  
+import pygame
 from pygame.locals import *
 
 from models.board import Board
@@ -26,17 +26,10 @@ class GUIcontroller:
 
         # Pygame initialization
         pygame.init()
+
         # Pygame window setup
         screen = pygame.display.set_mode((600, 640)) 
         pygame.display.set_caption('MacMaze')
-
-        # FIXME: the image for the icon can't be loaded
-            # icon = constants.reach_image(
-            #     constants.WESTWORLD_MAZE
-            #         )
-            # icon_surf = pygame.image.load(icon).convert_alpha()
-            # pygame.display.set_icon(icon)
-            
 
         self.view.draw_board(screen)
         pygame.display.flip()
