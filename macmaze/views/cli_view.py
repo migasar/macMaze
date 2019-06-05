@@ -43,8 +43,6 @@ class CLIview:
         print("")
         print("\t**********************************************")
         print("\t Vous quittez le jeu.")
-        print("\t Le labyrinthe n'était sans doute pas fait pour vous, ")
-        print("\t mais nous vous remercions d'avoir essayé.")
         print("")
 
 
@@ -52,14 +50,12 @@ class CLIview:
         print("")
         print("\t**********************************************")
         print("\t Bravo, vous avez trouvé le chemin du labyrinthe,")
-        print("\t mais ces jeux violents auront une fin violente.")
         print("")
 
     def display_defeat(self):
         print("")
         print("\t**********************************************")
-        print("\t Désolé, le gardien vous a vaincu,")
-        print("\t et ces jeux violents ont eu une fin violente.")
+        print("\t Désolé, le gardien a vaincu MacGyver.")
         print("")       
 
 

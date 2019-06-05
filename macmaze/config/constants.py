@@ -35,7 +35,7 @@ ITEM_3_CHAR = '3'
 TILE_NUMBER = 15
 TILE_SIZE = 40
 PLAYTURF_HEIGHT = TILE_NUMBER * TILE_SIZE
-TAILTURF_HEIGHT = 2 * TILE_SIZE
+TAILTURF_HEIGHT = 1 * TILE_SIZE
 SCREEN_HEIGHT = PLAYTURF_HEIGHT + TAILTURF_HEIGHT
 SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE 
 
@@ -55,7 +55,10 @@ ETHER_IMAGE = 'item_ether.png'
 NEEDLE_IMAGE = 'item_needle.png'
 TUBE_IMAGE = 'item_tube.png'
 SYRINGE_IMAGE = 'item_syringe.png'
-WESTWORLD_MAZE = 'westworld_logo.png'
+RIP_IMAGE = 'visual_RIP.png'
+SPLASH_IMAGE = 'visual_splash.png'
+STAIRS_IMAGE = 'visual_stairs.png'
+RIBBON_IMAGE = 'ribbon_sand.png'
 
 IMAGES_DICT = {
     'S': GATE_IMAGE,

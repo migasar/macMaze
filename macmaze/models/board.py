@@ -121,10 +121,3 @@ class Board:
                     ):
                         return block
 
-
-    # method to know how the game ends
-    def game_over(self):
-        """Check if the hero has won the game"""
-
-        end = self.get_square('landing', 'goal')
-        return end.toping == constants.HERO_CHAR
