@@ -10,7 +10,6 @@ class CLIview:
     def __init__(self, board):
         self.board = board
 
-
     def display_board(self):
 
         print("")
@@ -25,16 +24,15 @@ class CLIview:
                 else:
                     display_line += block.visual
             display_grid.append(display_line)
-        
+
         for line in display_grid:
             print(line)
-
 
     def display_title(self):
         print("")
         print("\t**********************************************")
         print(
-            "\t  " + constants.GAME_TITLE 
+            "\t  " + constants.GAME_TITLE
             + " - " + constants.GAME_BID
             )
         print("\t**********************************************")
@@ -44,7 +42,6 @@ class CLIview:
         print("\t**********************************************")
         print("\t Vous quittez le jeu.")
         print("")
-
 
     def display_victory(self):
         print("")
@@ -56,8 +53,7 @@ class CLIview:
         print("")
         print("\t**********************************************")
         print("\t Désolé, le gardien a vaincu MacGyver.")
-        print("")       
-
+        print("")
 
     def display_failure_input(self):
         print("")
@@ -66,7 +62,6 @@ class CLIview:
     def display_no_motion(self):
         print("")
         print("\t Mac Gyver ne peut pas aller par là.")
-
 
     def display_explanation(self):
         print("")

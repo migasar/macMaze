@@ -20,4 +20,4 @@ class Square:
     def free(self):
         """Verify if the square is empty"""
 
-        return self.walk == True and self.toping == '' and self.landing == ''
+        return self.walk is True and self.toping == '' and self.landing == ''

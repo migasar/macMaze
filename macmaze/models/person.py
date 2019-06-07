@@ -13,7 +13,6 @@ class Person:
         self.position = None
         self.homing(self.aim, self.char)
 
-
     def homing(self, aim, char):
         """Initialize the starting position of the person"""
 
@@ -33,7 +32,7 @@ class Hero(Person):
     # a boolean inidcating if the hero has reached the end of the maze
     terminus = False
 
-
+    ######
     # methods for every move of the hero on the board
     def move(self, next_step):
         """Method to initiate every move of the hero"""

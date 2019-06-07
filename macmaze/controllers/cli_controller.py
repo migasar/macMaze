@@ -1,5 +1,5 @@
 """
-Manage the flow of the game 
+Manage the flow of the game
 and the interactions between the components of the project
 """
 
@@ -23,16 +23,14 @@ class CLIcontroller:
         self.view.display_explanation()
         self.turn_action()
 
-
     def new_turn(self):
         self.view.display_board()
         self.turn_action()
-    
+
     def repeat_turn(self):
         self.view.display_failure_input()
         self.view.display_explanation()
         self.turn_action()
-
 
     def turn_action(self):
 
@@ -44,28 +42,28 @@ class CLIcontroller:
 
         elif self.view.new_order == "s":
             next_step = self.hero.move_up()
-            if self.check_move(next_step) == False:
+            if self.check_move(next_step) is False:
                 self.view.display_no_motion()
             else:
                 self.hero.move(next_step)
             return self.turn_solver()
         elif self.view.new_order == "x":
             next_step = self.hero.move_down()
-            if self.check_move(next_step) == False:
+            if self.check_move(next_step) is False:
                 self.view.display_no_motion()
             else:
                 self.hero.move(next_step)
             return self.turn_solver()
         elif self.view.new_order == "w":
             next_step = self.hero.move_left()
-            if self.check_move(next_step) == False:
+            if self.check_move(next_step) is False:
                 self.view.display_no_motion()
             else:
                 self.hero.move(next_step)
             return self.turn_solver()
         elif self.view.new_order == "c":
             next_step = self.hero.move_right()
-            if self.check_move(next_step) == False:
+            if self.check_move(next_step) is False:
                 self.view.display_no_motion()
             else:
                 self.hero.move(next_step)
@@ -73,7 +71,6 @@ class CLIcontroller:
 
         else:
             return self.repeat_turn()
-
 
     def turn_solver(self):
         # check if it is the last turn
@@ -85,16 +82,15 @@ class CLIcontroller:
         else:
             return self.new_turn()
 
-
     ######
-    # methods to solve the collisions (from Person)
+    # methods to solve the collisions
     def check_move(self, next_step):
         """Method to verify if the next move is possible"""
-        
+
         motion = True
 
         # check that the new position is still inside the board
-        if self.board.inside(next_step) == False:
+        if self.board.inside(next_step) is False:
             motion = False
         else:
             blockade = self.board.get_coordinates(
@@ -109,7 +105,7 @@ class CLIcontroller:
 
     def check_path(self, block):
         """
-        Check the attributes of the square on the next position, 
+        Check the attributes of the square on the next position,
         and initiate the methods in case of collisions
         """
 
@@ -129,9 +125,9 @@ class CLIcontroller:
             # check if there is already something on the next position
             self.colliding(block)
             pathway = True
-        
+
         return pathway
- 
+
     def colliding(self, block):
         """Determine the type of collision and the method to solve it"""
 
@@ -142,8 +138,8 @@ class CLIcontroller:
 
     def toolup(self, block):
         """
-        Put an item in the inventory of the hero, 
-        when he gets in collision with it 
+        Put an item in the inventory of the hero,
+        when he gets in collision with it
         """
 
         if block.toping == constants.ITEM_1_CHAR:
@@ -153,7 +149,7 @@ class CLIcontroller:
         elif block.toping == constants.ITEM_3_CHAR:
             self.hero.toolbox.append(3)  # tube
 
-        block.toping = constants.HERO_CHAR 
+        block.toping = constants.HERO_CHAR
 
     def showdown(self, block):
         """Decide of the issue when the hero and the guard collide"""
@@ -162,13 +158,14 @@ class CLIcontroller:
         if len(self.hero.toolbox) == 3:
             # WIN
             block.toping = constants.HERO_CHAR
-            # else: 
-                # LOSE --> phantom walk
-                # FIXME: phantom walk defeat
-                #   - I should find a way to clarify how the game understand that the hero has lost in front of the guard
-    
+            # else:
+            # LOSE --> phantom walk
+            # FIXME: phantom walk defeat
+            # I should find a way to clarify how the game understand
+            # that the hero has lost in front of the guard
+
     ######
-    # method to know how the game ends (from Board)
+    # method to know how the game ends
     def game_over(self):
         """Check if the hero has won the game"""
 

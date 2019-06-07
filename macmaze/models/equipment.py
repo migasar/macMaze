@@ -12,7 +12,6 @@ class Equipment:
         self.board = board
         self.position = None
         self.clustering(self.char)
- 
 
     def clustering(self, char):
         """Initialize the position of the equipment on the grid"""

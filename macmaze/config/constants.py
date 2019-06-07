@@ -9,13 +9,14 @@ import os
 def reach_image(name):
     """Method to create the path to load an image"""
 
-    fullpath = os.path.join('macmaze', 'data', 'images', name)
+    fullpath = os.path.join('macmaze', 'resources', 'images', name)
     return fullpath
+
 
 def reach_board(name):
     """Method to create the path to load the scheme of the board"""
 
-    fullpath = os.path.join('macmaze', 'data', 'boards', name)
+    fullpath = os.path.join('macmaze', 'resources', 'boards', name)
     return fullpath
 
 
@@ -37,7 +38,7 @@ TILE_SIZE = 40
 PLAYTURF_HEIGHT = TILE_NUMBER * TILE_SIZE
 TAILTURF_HEIGHT = 1 * TILE_SIZE
 SCREEN_HEIGHT = PLAYTURF_HEIGHT + TAILTURF_HEIGHT
-SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE 
+SCREEN_WIDTH = TILE_NUMBER * TILE_SIZE
 
 
 # introduction of the game
