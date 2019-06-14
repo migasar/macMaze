@@ -89,6 +89,8 @@ class GUIcontroller:
 
             self.view.draw_board(self.screen)
             self.view.draw_menu(self.screen)
+            self.view.draw_outcome(self.screen)
+            # FIXME: test draw_outcome
             pygame.display.update()
 
     ######
@@ -164,6 +166,8 @@ class GUIcontroller:
         """Decide of the issue when the hero and the guard collide"""
 
         self.hero.terminus = True
+        # self.view.draw_outcome(self.screen)
+        # FIXME: test draw_outcome
         if len(self.hero.toolbox) == 3:
             # WIN
             block.toping = constants.HERO_CHAR

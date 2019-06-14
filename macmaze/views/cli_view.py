@@ -37,6 +37,8 @@ class CLIview:
             )
         print("\t**********************************************")
 
+    ######
+    # methods to display the end of the game
     def display_goodbye(self):
         print("")
         print("\t**********************************************")
@@ -55,6 +57,8 @@ class CLIview:
         print("\t Désolé, le gardien a vaincu MacGyver.")
         print("")
 
+    ######
+    # methods to display a problem with the action
     def display_failure_input(self):
         print("")
         print("\t Désolé, votre commande n'est pas valide.")
@@ -63,6 +67,8 @@ class CLIview:
         print("")
         print("\t Mac Gyver ne peut pas aller par là.")
 
+    ######
+    # methods to display information to the player
     def display_explanation(self):
         print("")
         print("\t Dirigez MacGyver jusqu'à la sortie du labyrinthe")

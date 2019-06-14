@@ -14,6 +14,7 @@ class GUIview:
         self.hero = hero
 
     def draw_board(self, screen):
+        """draw the board of the game and the elements to play a party"""
 
         for y, line in enumerate(self.board.grid):
             for tile in self.board.grid[y]:
@@ -38,8 +39,9 @@ class GUIview:
                     screen.blit(toping_surf, (x, y))
 
     def draw_menu(self, screen):
+        """draw the menubar at the bottom of the window"""
 
-        # draw the background for the menu
+        # draw the background for the menubar
         background_image = constants.reach_image(constants.RIBBON_IMAGE)
         background_surf = pygame.image.load(background_image).convert()
         screen.blit(background_surf, (0, constants.PLAYTURF_HEIGHT))
@@ -57,7 +59,6 @@ class GUIview:
             pygame.display.flip()
 
         else:
-
             for i, item in enumerate(self.hero.toolbox):
                 # draw the items that have been colected on the menubar
 
@@ -70,3 +71,20 @@ class GUIview:
 
                 screen.blit(item_surf, (x, y))
                 pygame.display.flip()
+
+    def draw_outcome(self, screen):
+
+        if self.hero.terminus is True:
+            x = 0
+            y = constants.PLAYTURF_HEIGHT
+
+            if len(self.hero.toolbox) == 3:
+                item_image = constants.reach_image(constants.STAIRS_IMAGE)
+            else:
+                item_image = constants.reach_image(constants.RIP_IMAGE)
+            item_surf = pygame.image.load(item_image).convert()
+
+            screen.blit(item_surf, (x, y))
+            pygame.display.flip()
+
+            # FIXME: test draw_outcome
