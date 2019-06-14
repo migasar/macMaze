@@ -48,7 +48,6 @@ class GUIview:
 
             x = constants.SCREEN_WIDTH - ((i + 1) * constants.TILE_SIZE)
             y = constants.PLAYTURF_HEIGHT
-            print(f'toolbox : {self.hero.toolbox}')
 
             item_image = constants.reach_image(
                 constants.IMAGES_DICT[str(item)]
