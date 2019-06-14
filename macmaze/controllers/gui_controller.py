@@ -98,6 +98,11 @@ class GUIcontroller:
     def check_move(self, next_step):
         """Method to verify if the next move is possible"""
 
+        # check if the game should have ended
+        if self.hero.terminus is True:
+            self.new_game()
+            # FIXME : test for new_game
+
         motion = True
 
         # check that the new position is still inside the board
@@ -184,6 +189,15 @@ class GUIcontroller:
 
         end = self.board.get_square('landing', 'goal')
         return end.toping == constants.HERO_CHAR
+
+    def new_game(self):
+        """Start a new party"""
+
+        self.hero.toolbox = []
+        self.running = False
+        game = GUIgame()
+        return game.controller.start()
+        # FIXME: test for new_game
 
 
 class GUIgame:
