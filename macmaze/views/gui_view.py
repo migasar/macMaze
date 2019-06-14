@@ -45,8 +45,8 @@ class GUIview:
         screen.blit(background_surf, (0, constants.PLAYTURF_HEIGHT))
 
         if len(self.hero.toolbox) == 3:
-        # draw the syringe on the menubar
-        # when all items have been colected
+            # draw the syringe on the menubar
+            # when all items have been collected
 
             x = constants.SCREEN_WIDTH - constants.TILE_SIZE
             y = constants.PLAYTURF_HEIGHT
@@ -55,11 +55,11 @@ class GUIview:
 
             screen.blit(item_surf, (x, y))
             pygame.display.flip()
-        
+
         else:
-            
+
             for i, item in enumerate(self.hero.toolbox):
-            # draw the items that have been colected on the menubar
+                # draw the items that have been colected on the menubar
 
                 x = constants.SCREEN_WIDTH - ((i + 1) * constants.TILE_SIZE)
                 y = constants.PLAYTURF_HEIGHT
