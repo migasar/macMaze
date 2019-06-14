@@ -46,8 +46,9 @@ class GUIview:
 
         for i, item in enumerate(self.hero.toolbox):
 
-            x = constants.SCREEN_WIDTH - (i * constants.TILE_SIZE)
+            x = constants.SCREEN_WIDTH - ((i + 1) * constants.TILE_SIZE)
             y = constants.PLAYTURF_HEIGHT
+            print(f'toolbox : {self.hero.toolbox}')
 
             item_image = constants.reach_image(
                 constants.IMAGES_DICT[str(item)]

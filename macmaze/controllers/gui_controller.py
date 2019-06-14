@@ -88,7 +88,7 @@ class GUIcontroller:
                             self.hero.move(next_step)
 
             self.view.draw_board(self.screen)
-            # self.view.draw_menu(self.screen)
+            self.view.draw_menu(self.screen)
             pygame.display.update()
 
     ######
