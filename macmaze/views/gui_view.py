@@ -44,15 +44,29 @@ class GUIview:
         background_surf = pygame.image.load(background_image).convert()
         screen.blit(background_surf, (0, constants.PLAYTURF_HEIGHT))
 
-        for i, item in enumerate(self.hero.toolbox):
+        if len(self.hero.toolbox) == 3:
+        # draw the syringe on the menubar
+        # when all items have been colected
 
-            x = constants.SCREEN_WIDTH - ((i + 1) * constants.TILE_SIZE)
+            x = constants.SCREEN_WIDTH - constants.TILE_SIZE
             y = constants.PLAYTURF_HEIGHT
-
-            item_image = constants.reach_image(
-                constants.IMAGES_DICT[str(item)]
-                )
+            item_image = constants.reach_image(constants.SYRINGE_IMAGE)
             item_surf = pygame.image.load(item_image).convert()
 
             screen.blit(item_surf, (x, y))
             pygame.display.flip()
+        
+        else:
+            
+            for i, item in enumerate(self.hero.toolbox):
+            # draw the items that have been colected on the menubar
+
+                x = constants.SCREEN_WIDTH - ((i + 1) * constants.TILE_SIZE)
+                y = constants.PLAYTURF_HEIGHT
+                item_image = constants.reach_image(
+                    constants.IMAGES_DICT[str(item)]
+                    )
+                item_surf = pygame.image.load(item_image).convert()
+
+                screen.blit(item_surf, (x, y))
+                pygame.display.flip()
