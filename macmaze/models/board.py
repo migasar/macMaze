@@ -5,7 +5,7 @@ and the interactions between its squares and the other elements of the game
 
 from random import choice
 
-from models.square import Square
+from macmaze.models.square import Square
 from config import constants
 
 

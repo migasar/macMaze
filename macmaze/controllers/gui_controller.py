@@ -6,10 +6,10 @@ and the interactions between the components of the project
 import pygame
 from pygame.locals import *
 
-from models.board import Board
-from models.person import Hero, Guard
-from models.equipment import Ether, Needle, Tube
-from views.gui_view import GUIview
+from macmaze.models.board import Board
+from macmaze.models.person import Hero, Guard
+from macmaze.models.equipment import Ether, Needle, Tube
+from macmaze.views.gui_view import GUIview
 from config import constants
 
 

@@ -9,14 +9,14 @@ import os
 def reach_image(name):
     """Method to create the path to load an image"""
 
-    fullpath = os.path.join('macmaze', 'resources', 'images', name)
+    fullpath = os.path.join('resources', 'images', name)
     return fullpath
 
 
 def reach_board(name):
     """Method to create the path to load the scheme of the board"""
 
-    fullpath = os.path.join('macmaze', 'resources', 'boards', name)
+    fullpath = os.path.join('resources', 'boards', name)
     return fullpath
 
 

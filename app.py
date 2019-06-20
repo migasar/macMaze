@@ -3,8 +3,8 @@
 Launch the game and set its interface (CLI or GUI)
 """
 
-from controllers.cli_controller import CLIgame
-from controllers.gui_controller import GUIgame
+from macmaze.controllers.cli_controller import CLIgame
+from macmaze.controllers.gui_controller import GUIgame
 
 
 def game_factory(graphical=True):

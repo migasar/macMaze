@@ -2,7 +2,7 @@
 Manage the items that need to be collected
 """
 
-from models.position import Position
+from macmaze.models.position import Position
 from config import constants
 
 

@@ -3,10 +3,10 @@ Manage the flow of the game
 and the interactions between the components of the project
 """
 
-from models.board import Board
-from models.person import Hero, Guard
-from models.equipment import Ether, Needle, Tube
-from views.cli_view import CLIview
+from macmaze.models.board import Board
+from macmaze.models.person import Hero, Guard
+from macmaze.models.equipment import Ether, Needle, Tube
+from macmaze.views.cli_view import CLIview
 from config import constants
 
 
@@ -18,6 +18,7 @@ class CLIcontroller:
         self.view = view
 
     def start(self):
+        """Start the game by calling the first elements to be displayed"""
         self.view.display_title()
         self.view.display_board()
         self.view.display_explanation()
@@ -28,11 +29,13 @@ class CLIcontroller:
         self.turn_action()
 
     def repeat_turn(self):
+        """Call the elements indicating that turn must be played again"""
         self.view.display_failure_input()
         self.view.display_explanation()
         self.turn_action()
 
     def turn_action(self):
+        """Takes the order of the player for the next turn"""
 
         # invit de commande
         self.view.display_invitation()
@@ -73,6 +76,8 @@ class CLIcontroller:
             return self.repeat_turn()
 
     def turn_solver(self):
+        """Verify if the result of the turn brings the end of the game """
+
         # check if it is the last turn
         if self.hero.terminus is True:
             if self.game_over() is True:
