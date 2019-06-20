@@ -38,7 +38,7 @@ class GUIcontroller:
         self.view.draw_menu(self.screen)
 
         # variable to maintain the loop as long as it is True
-        self.running = False
+        self.running = True
 
         pygame.display.update()
 
@@ -46,7 +46,6 @@ class GUIcontroller:
         """Manage the Pygame loop"""
 
         # Pygame main loop
-        self.running = True
         while self.running:
 
             # limit the speed of the loop
@@ -90,7 +89,6 @@ class GUIcontroller:
             self.view.draw_board(self.screen)
             self.view.draw_menu(self.screen)
             self.view.draw_outcome(self.screen)
-            # FIXME: test draw_outcome
             pygame.display.update()
 
     ######
@@ -100,8 +98,7 @@ class GUIcontroller:
 
         # check if the game should have ended
         if self.hero.terminus is True:
-            self.new_game()
-            # FIXME : test for new_game
+            self.running = False
 
         motion = True
 
@@ -171,8 +168,7 @@ class GUIcontroller:
         """Decide of the issue when the hero and the guard collide"""
 
         self.hero.terminus = True
-        # self.view.draw_outcome(self.screen)
-        # FIXME: test draw_outcome
+
         if len(self.hero.toolbox) == 3:
             # WIN
             block.toping = constants.HERO_CHAR
@@ -189,15 +185,6 @@ class GUIcontroller:
 
         end = self.board.get_square('landing', 'goal')
         return end.toping == constants.HERO_CHAR
-
-    def new_game(self):
-        """Start a new party"""
-
-        self.hero.toolbox = []
-        self.running = False
-        game = GUIgame()
-        return game.controller.start()
-        # FIXME: test for new_game
 
 
 class GUIgame:

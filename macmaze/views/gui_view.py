@@ -13,6 +13,7 @@ class GUIview:
         self.board = board
         self.hero = hero
 
+    # methods to display screens of the game
     def draw_board(self, screen):
         """draw the board of the game and the elements to play a party"""
 
@@ -73,7 +74,9 @@ class GUIview:
                 pygame.display.flip()
 
     def draw_outcome(self, screen):
+        """draw visuals in the menubar to indicate the issue of the game"""
 
+        # check if the game has reached its end
         if self.hero.terminus is True:
             x = 0
             y = constants.PLAYTURF_HEIGHT
@@ -86,5 +89,3 @@ class GUIview:
 
             screen.blit(item_surf, (x, y))
             pygame.display.flip()
-
-            # FIXME: test draw_outcome
