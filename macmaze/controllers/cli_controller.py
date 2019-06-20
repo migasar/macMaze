@@ -186,14 +186,3 @@ class CLIgame:
 
         self.view = CLIview(self.board)
         self.controller = CLIcontroller(self.board, self.hero, self.view)
-
-
-"""
-def main():
-
-    game = Game()
-    game.controller.start()
-
-if __name__ == "__main__":
-    main()
-"""

@@ -200,14 +200,3 @@ class GUIgame:
 
         self.view = GUIview(self.board, self.hero)
         self.controller = GUIcontroller(self.board, self.hero, self.view)
-
-
-"""
-def main():
-
-    game = Game()
-    game.controller.start()
-
-if __name__ == "__main__":
-    main()
-"""

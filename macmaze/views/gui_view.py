@@ -13,6 +13,7 @@ class GUIview:
         self.board = board
         self.hero = hero
 
+    ######
     # methods to display screens of the game
     def draw_board(self, screen):
         """draw the board of the game and the elements to play a party"""
@@ -73,6 +74,8 @@ class GUIview:
                 screen.blit(item_surf, (x, y))
                 pygame.display.flip()
 
+    ######
+    # methods to display visuals in the game
     def draw_outcome(self, screen):
         """draw visuals in the menubar to indicate the issue of the game"""
 
@@ -81,11 +84,17 @@ class GUIview:
             x = 0
             y = constants.PLAYTURF_HEIGHT
 
+            font = pygame.font.Font(None, 48)
+
             if len(self.hero.toolbox) == 3:
                 item_image = constants.reach_image(constants.STAIRS_IMAGE)
+                text = font.render("MacGyver s'est échappé", 1, (10, 10, 10))
             else:
                 item_image = constants.reach_image(constants.RIP_IMAGE)
+                text = font.render("MacGyver a échoué", 1, (10, 10, 10))
+
             item_surf = pygame.image.load(item_image).convert()
 
             screen.blit(item_surf, (x, y))
+            screen.blit(text, (2 * constants.TILE_SIZE, y))
             pygame.display.flip()
