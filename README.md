@@ -1,4 +1,4 @@
-# macMaze
+# MacMaze
 
 ## Help MacGyver to escape : a basic maze game  
 
